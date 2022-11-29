@@ -1,0 +1,130 @@
+
+.main{
+  width: 100%;
+  display: block;
+  background: #ffffff;
+}
+.content-wrap{
+  width: 100%;
+  margin:0 auto;
+  overflow: hidden;
+  background: #ffffff;
+}
+.content-left{
+  background: #ffffff;
+  color:#004300;
+  float: left;
+  width: 100%;
+  padding: 5px;
+}
+.main-wrap{
+  text-align: center;
+  padding: 20px 0 0 0;
+}
+.main-day{
+  font-size: 35px;
+  font-weight: bold;
+}
+.main-date{
+  font-size: 120px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+.todo-wrap{
+  padding: 0 0 0 40px;
+}
+.todo-title{
+  font-size: 20px;
+  font-weight: 100;
+  margin: 0 0 10px 0;
+}
+.content-right{
+  float: left;
+  width: 90%;
+  padding: 5px;
+}
+.sun{
+  color:#ef3333;
+}
+.sat{
+  color:#2107e0;
+}
+.content-right table tr td{
+  width: 40px;
+  height: 20px;
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+}
+.active{
+  background: #0b0809;
+  border-radius: 50%;
+  color: #004300;
+}
+
+@media(min-width: 1000px){
+  .main{
+    display: flex;
+    align-items: center;
+    justify-content:  center;
+    width: 100vw;
+    height: 100vh;
+    background: #ffffff;
+  }
+  .content-wrap{
+    width: 800px;
+    height: 400px;
+    margin:0 auto;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #ffffff;
+  }
+  .content-left{
+    background: #ffffff;
+    color:#004300;
+    float: left;
+    width: 360px;
+    height: 400px;
+    padding: 70px 20px 20px 0;
+  }
+  .main-wrap{
+    text-align: center;
+    margin: 10px 0 0 0;
+  }
+  .main-day{
+    font-size: 50px;
+    font-weight: bold;
+  }
+  .main-date{
+    font-size: 50px;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  .todo-wrap{
+    padding: 0 0 0 40px;
+  }
+  .content-right{
+    float: left;
+    width: 360px;
+    height: 400px;
+    padding: 50px 20px 20px 20px;
+  }
+  .sun{
+    color:#ef3333;
+  }
+  .sat{
+    color:#2107e0;
+  }
+  .content-right table tr td{
+    width: 50px;
+    height: 20px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+  }
+  .active{
+    background: #0b0809;
+    border-radius: 50%;
+    color: #ffffff;
+  }
+}
