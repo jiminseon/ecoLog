@@ -1,6 +1,11 @@
 package model.dao;
 
 import java.sql.ResultSet;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import controller.DispatcherServlet;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,9 +17,11 @@ import model.UserDTO;
  * USERINFO 테이블에 사용자 정보를 추가, 수정, 삭제, 검색 수행 
  */
 
+
 public class UserDao{ 
 	private JDBCUtil jdbcUtil = null;
-	
+
+	private static final Logger logger = LoggerFactory.getLogger(UserDao.class);
 	public UserDao() {			
 		jdbcUtil = new JDBCUtil();	// JDBC
 	}
@@ -27,7 +34,7 @@ public class UserDao{
 		Object[] param = new Object[] {user.getUserId(), user.getPassword(), 
 				user.getName(), user.getPhone(), user.getEmail(), user.getAddress(), user.getBirth()};				
 		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil 에 insert문과 매개 변수 설정
-						
+		logger.info("Initialized Request Mapping!");
 		try {				
 			int result = jdbcUtil.executeUpdate();		// insert 문 실행
 			System.out.println(user.getName() + "삽입되었습니다.");
