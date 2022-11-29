@@ -31,7 +31,7 @@ function userRemove() {
 	  	  <tr>
 			<td width="120" align="center" bgcolor="E6ECDE" height="22">사용자 ID</td>
 			<td width="470" bgcolor="ffffff" style="padding-left: 10">
-				<%=user.getUserId()%>
+				<%=user.getId()%>
 			</td>
 		  </tr>
 		  <tr>
@@ -56,10 +56,10 @@ function userRemove() {
 	 	</table>
 	    <br>
 	    <a href="<c:url value='/user/update'>
-	     		   <c:param name='userId' value='<%=user.getUserId()%>'/>
+	     		   <c:param name='Id' value='<%=user.getId()%>'/>
 			 	 </c:url>">수정</a> &nbsp;
  	    <a href="<c:url value='/user/delete'>
-				   <c:param name='userId' value='<%=user.getUserId()%>'/>
+				   <c:param name='Id' value='<%=user.getId()%>'/>
 			 	 </c:url>" onclick="return userRemove();">삭제</a> &nbsp;
  	    <a href="<c:url value='/user/list' />">목록</a> 	    
  	    <br><br>	   

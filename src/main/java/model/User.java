@@ -5,7 +5,7 @@ import java.util.List;
 
 
 public class User {
-	private String userId;
+	private String Id;
 	private String password;
 	private String name;
 	private String phoneNumber;
@@ -19,11 +19,11 @@ public class User {
 	//private Character ch = new Character(id, nickname);
 	private List<String> imageList;
 	
-	public User(java.lang.String userId, java.lang.String password, java.lang.String name, java.lang.String phoneNumber,
+	public User(java.lang.String Id, java.lang.String password, java.lang.String name, java.lang.String phoneNumber,
 			java.lang.String email, java.lang.String address, java.lang.String birth, java.lang.String nickname, int point,
 		 int regDate) {
 		super();
-		this.userId = userId;
+		this.Id = Id;
 		this.password = password;
 		this.name = name;
 		this.phoneNumber = phoneNumber;
@@ -36,10 +36,10 @@ public class User {
 		this.regDate = regDate;
 	}
 
-	public User(String userId, String password, String name, String phoneNumber, String email, String address,
+	public User(String Id, String password, String name, String phoneNumber, String email, String address,
 			String birth, String nickname) {
 		super();
-		this.userId = userId;
+		this.Id = Id;
 		this.password = password;
 		this.name = name;
 		this.phoneNumber = phoneNumber;
@@ -63,12 +63,12 @@ public class User {
 		return this.password.equals(password);
 	}
 
-	public String getUserId() {
-		return userId;
+	public String getId() {
+		return Id;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setId(String Id) {
+		this.Id = Id;
 	}
 
 	public String getPassword() {
@@ -167,13 +167,13 @@ public class User {
 		this.imageList = imageList;
 	}
 
-	public boolean isSameUser(String userid) {
-        return this.userId.equals(userid);
+	public boolean isSameUser(String Id) {
+        return this.Id.equals(Id);
     }
 
 	@java.lang.Override
 	public String toString() {
-		return "user [userId=" + userId + ", password=" + password + ", name=" + name + ", phoneNumber=" + phoneNumber + ", email=" + email
+		return "user [Id=" + Id + ", password=" + password + ", name=" + name + ", phoneNumber=" + phoneNumber + ", email=" + email
 				+ ", address=" + address + ", birth=" + birth + ", nickname=" + nickname + ", point=" + point
 				+ ", regDate=" + regDate + "]";
 	}

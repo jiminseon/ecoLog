@@ -51,7 +51,7 @@ function userList(targetUri) {
 <br>
 <!-- Update Form  -->
 <form name="form" method="POST" action="<c:url value='/user/update' />">
-  <input type="hidden" name="userId" value="${user.userId}"/>	  
+  <input type="hidden" name="Id" value="${user.Id}"/>	  
   <table style="width: 100%">
 	<tr>
 	  <td width="20"></td>
@@ -66,7 +66,7 @@ function userList(targetUri) {
 	  	  <tr height="40">
 			<td width="150" align="center" bgcolor="E6ECDE">사용자 ID</td>
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				${user.userId}
+				${user.Id}
 			</td>
 		  </tr>
 		  <tr height="40">

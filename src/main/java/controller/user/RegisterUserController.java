@@ -30,7 +30,7 @@ public class RegisterUserController implements Controller {
 
     	// POST request (회원정보가 parameter로 전송됨)
        	User user = new User(
-			request.getParameter("userId"),
+			request.getParameter("Id"),
 			request.getParameter("password"),
 			request.getParameter("name"),
 			request.getParameter("phoneNumber"),

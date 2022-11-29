@@ -1,7 +1,7 @@
 package model;
 
 public class UserDTO {
-	private String userId;
+	private String Id;
 	private String password;
 	private String name;
 	private String phone;
@@ -11,10 +11,10 @@ public class UserDTO {
 	private String nickname;
 
 
-	 public UserDTO(java.lang.String userId, java.lang.String password, java.lang.String name, java.lang.String phone,
+	 public UserDTO(java.lang.String Id, java.lang.String password, java.lang.String name, java.lang.String phone,
   java.lang.String email, java.lang.String address, java.lang.String birth, java.lang.String nickname, int point, int regDate) {
         super();
-        this.userId = userId;
+        this.Id = Id;
         this.password = password;
         this.name = name;
         this.phone = phone;
@@ -24,10 +24,10 @@ public class UserDTO {
         this.nickname = nickname;
 }
 
-    public UserDTO(String userId, String password, String name, String phone, String email, String address,
+    public UserDTO(String Id, String password, String name, String phone, String email, String address,
       String birth, String nickname) {
     super();
-    this.userId = userId;
+    this.Id = Id;
     this.password = password;
     this.name = name;
     this.phone = phone;
@@ -51,11 +51,11 @@ public boolean matchPassword(String password) {
         }
         return this.password.equals(password);
     }
-	public String getUserId() {
-		return userId;
+	public String getId() {
+		return Id;
 	}
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setId(String Id) {
+		this.Id = Id;
 	}
 	public String getPassword() {
 		return password;

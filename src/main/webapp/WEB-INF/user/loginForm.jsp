@@ -9,9 +9,9 @@
 	type="text/css">
 <script>
 function login() {
-	if (form.userId.value == "") {
+	if (form.Id.value == "") {
 		alert("사용자 ID를 입력하십시오.");
-		form.userId.focus();
+		form.Id.focus();
 		return false;
 	} 
 	if (form.password.value == "") {
@@ -71,7 +71,7 @@ td {
 						<tr height="40">
 							<td width="1100" align="center" bgcolor="e6ffe6">사용자 ID</td>
 							<td width="1100" bgcolor="ffffff" style="padding-left: 10">
-								<input type="text" style="width: 240" name="userId">
+								<input type="text" style="width: 240" name="Id">
 							</td>
 						</tr>
 						<tr height="40">

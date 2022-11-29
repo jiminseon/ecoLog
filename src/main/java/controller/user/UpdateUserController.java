@@ -23,7 +23,7 @@ public class UpdateUserController implements Controller {
     	if (request.getMethod().equals("GET")) {	
     		// GET request: 회원정보 수정 form 요청	
     		// 원래는 UpdateUserFormController가 처리하던 작업을 여기서 수행
-    		String updateId = request.getParameter("userId");
+    		String updateId = request.getParameter("Id");
 
     		log.debug("UpdateForm Request : {}", updateId);
     		
@@ -51,13 +51,14 @@ public class UpdateUserController implements Controller {
     	
     	// POST request (회원정보가 parameter로 전송됨)
     	User updateUser = new User(
-    		request.getParameter("userId"),
+    		request.getParameter("Id"),
     		request.getParameter("password"),
     		request.getParameter("name"),
     		request.getParameter("nickName"),
     		request.getParameter("birth"),
     		request.getParameter("phoneNumber"),
-    		request.getParameter("email"));
+    		request.getParameter("email"),
+    		request.getParameter("address"));
 
     	log.debug("Update User : {}", updateUser);
 
