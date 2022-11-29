@@ -8,7 +8,7 @@ import model.User;
 
 /**
  * 사용자 관리를 위해 데이터베이스 작업을 전담하는 DAO 클래스
- * USERINFO 테이블에 사용자 정보를 추가, 수정, 삭제, 검색 수행 
+ * USER_INFO 테이블에 사용자 정보를 추가, 수정, 삭제, 검색 수행 
  */
 public class UserDAO {
 	private JDBCUtil jdbcUtil = null;
@@ -46,7 +46,7 @@ public class UserDAO {
 	public int update(User user) throws SQLException {
 		String sql = "UPDATE USER_INFO "
 				+ "SET password=?, name=?, nickName=?, birth=?, phoneNumber=?, email=? "
-				+ "WHERE userid=?";
+				+ "WHERE id=?";
 		Object[] param = new Object[] {user.getPassword(), user.getName(), user.getphoneNumber(),
 				user.getNickname(), user.getBirth(), user.getEmail(), 
 				user.getUserId()};				
@@ -70,7 +70,7 @@ public class UserDAO {
 	 * 사용자 ID에 해당하는 사용자를 삭제.
 	 */
 	public int remove(String userId) throws SQLException {
-		String sql = "DELETE FROM USERINFO WHERE userid=?";		
+		String sql = "DELETE FROM USER_INFO WHERE ID=?";		
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});	// JDBCUtil에 delete문과 매개 변수 설정
 
 		try {				
@@ -93,7 +93,7 @@ public class UserDAO {
 	 */
 	public User findUser(String userId) throws SQLException {
 		String sql = "SELECT password, name, phoneNumber, email, address, birth, nickName "
-				+ "FROM USERINFO "
+				+ "FROM USER_INFO "
 				+ "WHERE userid=? ";              
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});	// JDBCUtil에 query문과 매개 변수 설정
 
@@ -123,9 +123,9 @@ public class UserDAO {
 //	 * 전체 사용자 정보를 검색하여 List에 저장 및 반환
 //	 */
 //	public List<User> findUserList() throws SQLException {
-//		String sql = "SELECT userId, name, email " 
-//				+ "FROM USERINFO "
-//				+ "ORDER BY userId";
+//		String sql = "SELECT ID, name, email " 
+//				+ "FROM USER_INFO "
+//				+ "ORDER BY ID";
 //		jdbcUtil.setSqlAndParameters(sql, null);		// JDBCUtil에 query문 설정
 //
 //		try {
@@ -157,9 +157,9 @@ public class UserDAO {
 //	 * 해당하는 사용자 정보만을 List에 저장하여 반환.
 //	 */
 //	public List<User> findUserList(int currentPage, int countPerPage) throws SQLException {
-//		String sql = "SELECT userId, name, email, NVL(commId, 0) AS commId, cName " 
-//				+ "FROM USERINFO u LEFT OUTER JOIN Community c ON u.commId = c.cId "
-//				+ "ORDER BY userId";
+//		String sql = "SELECT ID, name, email, NVL(commId, 0) AS commId, cName " 
+//				+ "FROM USER_INFO u LEFT OUTER JOIN Community c ON u.commId = c.cId "
+//				+ "ORDER BY ID";
 //		jdbcUtil.setSqlAndParameters(sql, null,					// JDBCUtil에 query문 설정
 //				ResultSet.TYPE_SCROLL_INSENSITIVE,				// cursor scroll 가능
 //				ResultSet.CONCUR_READ_ONLY);						
@@ -194,7 +194,7 @@ public class UserDAO {
 //	 * 특정 커뮤니티에 속한 사용자들을 검색하여 List에 저장 및 반환
 //	 */
 //	public List<User> findUsersInCommunity(int communityId) throws SQLException {
-//        String sql = "SELECT userId, name, nickName, birth, email FROM UserInfo "
+//        String sql = "SELECT ID, name, nickName, birth, email FROM USER_INFO "
 //     				+ "WHERE commId = ?";                         
 //		jdbcUtil.setSqlAndParameters(sql, new Object[] {communityId});	// JDBCUtil에 query문과 매개 변수 설정
 //
@@ -203,7 +203,7 @@ public class UserDAO {
 //			List<User> memList = new ArrayList<User>();	// member들의 리스트 생성
 //			while (rs.next()) {
 //				User member = new User(			// User 객체를 생성하여 현재 행의 정보를 저장
-//					rs.getString("userId"),
+//					rs.getString("ID"),
 //					rs.getString("password"),
 //					rs.getString("name"),
 //					rs.getString("nickName"),
@@ -225,7 +225,7 @@ public class UserDAO {
 //	 * 특정 커뮤니티에 속한 사용자들의 수를 count하여 반환
 //	 */
 //	public int getNumberOfUsersInCommunity(int communityId) {
-//		String sql = "SELECT COUNT(userId) FROM UserInfo "
+//		String sql = "SELECT COUNT(ID) FROM USER_INFO "
 //				+ "WHERE commId = ?";              
 //		jdbcUtil.setSqlAndParameters(sql, new Object[] {communityId});	// JDBCUtil에 query문과 매개 변수 설정
 //
@@ -245,7 +245,7 @@ public class UserDAO {
 	 * 주어진 사용자 ID에 해당하는 사용자가 존재하는지 검사 
 	 */
 	public boolean existingUser(String userId) throws SQLException {
-		String sql = "SELECT count(*) FROM USERINFO WHERE userid=?";      
+		String sql = "SELECT count(*) FROM USER_INFO WHERE ID=?";      
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});	// JDBCUtil에 query문과 매개 변수 설정
 
 		try {

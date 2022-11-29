@@ -46,7 +46,7 @@ function userCreate() {
 		form.nickName.focus();
 		return false;
 	}
-	if (form.birth.value == "") {
+	if (form.birth_yy.value == "" || form.birth_mm.value == "" || form.birth_dd.value == "") {
 		alert("생년월일을 입력하십시오.");
 		form.birth.focus();
 		return false;
