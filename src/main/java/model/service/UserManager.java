@@ -3,8 +3,12 @@ package model.service;
 import java.sql.SQLException;
 import java.util.List;
 
+import model.BookMark;
+import model.MyMeeting;
 import model.UserDTO;
+import model.dao.MyMeetingDAO;
 import model.dao.UserDao;
+import model.dao.bookMarkDAO;
 
 /**
  * 사용자 관리 API를 사용하는 개발자들이 직접 접근하게 되는 클래스.
@@ -16,6 +20,8 @@ import model.dao.UserDao;
 public class UserManager {
 	private static UserManager userMan = new UserManager();
 	private UserDao userDAO;
+	private bookMarkDAO bmDao;
+	private MyMeetingDAO mtDao;  
 
 	public UserManager() {
 		try {
@@ -85,5 +91,27 @@ public class UserManager {
     return 0;
   }
    
-   
+	public int removeBookMark(String postNum) throws SQLException {
+		return bmDao.remove(postNum);				
+	}
+	
+	public int removeMyMeeting(String postNum) throws SQLException {
+		return mtDao.remove(postNum);				
+	}
+	
+	public int createBookMark(BookMark bm) throws SQLException {
+		return bmDao.create(bm);		
+	}
+
+	public int createMyMeeting(MyMeeting mymt) throws SQLException {
+		return mtDao.create(mymt);		
+	}
+
+	public List<BookMark> getBookMark(String userId) throws SQLException {
+		return bmDao.findBookMarkList(userId);		
+	}
+	
+	public List<MyMeeting> getMyMeeting(String userId) throws SQLException {
+		return mtDao.findMyMtList(userId);		
+	}
 }
