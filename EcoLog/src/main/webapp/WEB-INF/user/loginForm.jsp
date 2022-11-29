@@ -29,7 +29,7 @@ function userCreate(targetUri) {
 <body>
 <br>
 <!-- login form  -->
-<form name="form" method="POST" action="<c:url value='index.jsp' />">
+<form name="form" method="POST" action="<c:url value='/' />">
   <table style="width:100%">
 	<tr>
 	  <td width="20"></td>

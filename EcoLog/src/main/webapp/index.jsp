@@ -75,9 +75,9 @@ function userCreate(targetUri) {
 <body>
 <header>
 	<div class="head">
-	<a href="loginForm.jsp">로그인</a>
-	<a href="registerForm.jsp">회원가입</a>
-	<a href="myPage.jsp">마이페이지</a>
+	<a href="<c:url value='/user/login/form'></c:url>"> 로그인</a>
+	<a href="<c:url value='/user/register/form'></c:url>">회원가입</a>
+	<a href="<c:url value='/user/login/form'></c:url>">마이페이지</a>
 	</div>
 	<p/><font size='7' color='004300' weight="bold">EcoLog</font>
 </header>
@@ -87,7 +87,7 @@ function userCreate(targetUri) {
 			<!-- 로그인 되어있을 때는 character.jsp가 뜨도록 구현해두기 -->
 		</div>
 		<div class="tright">
-		   <%@ include file="/WEB-INF/main/main.jsp" %>
+		   <%@ include file="/WEB-INF/main/calendar.jsp" %>
 		</div>
 	</div>
 	<p/><p/><p/>
@@ -251,8 +251,8 @@ function checkList(e){
 
 function new_window() {
     window.open(
-      "calculator.jsp",
-      "Child",
+      "/WEB-INF/main/calculator.jsp",
+      "calculator",
       "width=400, height=300, top=50, left=50"
     );
   }

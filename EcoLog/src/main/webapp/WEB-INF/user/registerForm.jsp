@@ -64,7 +64,7 @@ function userList(targetUri) {
 	<br>
 	<!-- registration form  -->
 	<form name="form" method="POST"
-		action="<c:url value='index.jsp' />">
+		action="<c:url value='/' />">
 		<table style="width: 100%">
 			<tr>
 				<td width="100" align="center"></td>
