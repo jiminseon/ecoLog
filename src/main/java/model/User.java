@@ -14,14 +14,14 @@ public class User {
 	private String birth;
 	private String nickname;  
 	private int point;
-	private List<Meeting> meeting;
+	//private List<Meeting> meeting;
 	private int regDate; 
 	//private Character ch = new Character(id, nickname);
 	private List<String> imageList;
 	
 	public User(java.lang.String userId, java.lang.String password, java.lang.String name, java.lang.String phone,
 			java.lang.String email, java.lang.String address, java.lang.String birth, java.lang.String nickname, int point,
-			List<Meeting> meeting, int regDate) {
+		 int regDate) {
 		super();
 		this.userId = userId;
 		this.password = password;
@@ -29,15 +29,15 @@ public class User {
 		this.phone = phone;
 		this.email = email;
 		this.address = address;
-		this.birth = birth;
+		this.birth = "20010703";
 		this.nickname = nickname;
 		this.point = point;
-		this.meeting = meeting;
+	//	this.meeting = meeting;
 		this.regDate = regDate;
 	}
 
 	public User(String userId, String password, String name, String phone, String email, String address,
-			String birth, String nickname) {
+			String birth) {
 		super();
 		this.userId = userId;
 		this.password = password;
@@ -58,7 +58,7 @@ public class User {
 	
 
 	
-	/* 占쏙옙橘占싫� 占싯삼옙 */
+	/* 占쏙옙橘占싫  占싯삼옙 */
 	public boolean matchPassword(String password) {
 		if (password == null) {
 			return false;
@@ -138,13 +138,13 @@ public class User {
 		this.point = point;
 	}
 
-	public List<Meeting> getMeeting() {
-		return meeting;
-	}
-
-	public void setMeeting(List<Meeting> meeting) {
-		this.meeting = meeting;
-	}
+//	public List<Meeting> getMeeting() {
+//		return meeting;
+//	}
+//
+//	public void setMeeting(List<Meeting> meeting) {
+//		this.meeting = meeting;
+//	}
 
 	public int getRegDate() {
 		return regDate;

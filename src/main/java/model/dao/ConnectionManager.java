@@ -41,10 +41,10 @@ public class ConnectionManager {
 		try {
     		// DataSource 생성 및 설정
 			BasicDataSource bds = new BasicDataSource();
-	        bds.setDriverClassName(prop.getProperty("DB_DRIVER"));
-	        bds.setUrl(prop.getProperty("DB_URL"));
-	        bds.setUsername(prop.getProperty("DB_USERNAME"));
-	        bds.setPassword(prop.getProperty("DB_PASSWORD"));     
+	        bds.setDriverClassName(prop.getProperty("db.driver"));
+	        bds.setUrl(prop.getProperty("db.url"));
+	        bds.setUsername(prop.getProperty("db.username"));
+	        bds.setPassword(prop.getProperty("db.password"));     
 			ds = bds;
 			
 			// 참고: WAS의 DataSource를 이용할 경우: 

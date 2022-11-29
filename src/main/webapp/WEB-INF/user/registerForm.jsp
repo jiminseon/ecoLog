@@ -34,11 +34,11 @@ function userCreate() {
 		form.nickName.focus();
 		return false;
 	}
-	if (form.birth.value == "") {
-		alert("생년월일을 입력하십시오.");
-		form.birth.focus();
-		return false;
-	}
+//	if (form.birth.value == "") {
+//		alert("생년월일을 입력하십시오.");
+//		form.birth.focus();
+//		return false;
+//	}
 	var emailExp = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 	if(emailExp.test(form.email.value)==false) {
 		alert("이메일 형식이 올바르지 않습니다.");

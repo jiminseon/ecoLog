@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 
 import controller.Controller;
 import model.service.UserManager;
-import model.Community;
+//import model.Community;
 import model.User;
 
 public class UpdateUserController implements Controller {
@@ -36,8 +36,8 @@ public class UpdateUserController implements Controller {
 				UserSessionUtils.isLoginUser("admin", session)) {
 				// 현재 로그인한 사용자가 수정 대상 사용자이거나 관리자인 경우 -> 수정 가능
 								
-				List<Community> commList = manager.findCommunityList();	// 커뮤니티 리스트 검색
-				request.setAttribute("commList", commList);	
+//				List<Community> commList = manager.findCommunityList();	// 커뮤니티 리스트 검색
+//				request.setAttribute("commList", commList);	
 				
 				return "/user/updateForm.jsp";   // 검색한 사용자 정보 및 커뮤니티 리스트를 updateForm으로 전송     
 			}    

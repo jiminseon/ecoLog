@@ -3,8 +3,9 @@ package model.service;
 import java.sql.SQLException;
 import java.util.List;
 
-import model.UserDTO;
-import model.dao.UserDao;
+import model.dao.UserDAO;
+
+import model.User;
 
 /**
  * 사용자 관리 API를 사용하는 개발자들이 직접 접근하게 되는 클래스.
@@ -15,11 +16,11 @@ import model.dao.UserDao;
  */
 public class UserManager {
 	private static UserManager userMan = new UserManager();
-	private UserDao userDAO;
+	private UserDAO userDAO;
 
 	public UserManager() {
 		try {
-			userDAO = new UserDao();
+			userDAO = new UserDAO();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}			
@@ -29,17 +30,17 @@ public class UserManager {
 		return userMan;
 	}
 	
-    public int create(UserDTO user) throws SQLException, ExistingUserException {
+    public int create(User user) throws SQLException, ExistingUserException {
         if (userDAO.existingUser(user.getUserId()) == true) {
             throw new ExistingUserException(user.getUserId() + "는 존재하는 아이디입니다.");
         }
-        return userDAO.createUser(user);
+        return userDAO.create(user);
     }
 
 
-	public UserDTO findUser(String userId)
+	public User findUser(String userId)
 		throws SQLException, UserNotFoundException {
-		UserDTO user = userDAO.findUser(userId);
+		User user = userDAO.findUser(userId);
 		
 		if (user == null) {
 			throw new UserNotFoundException(userId + "는 존재하지 않는 아이디입니다.");
@@ -49,7 +50,7 @@ public class UserManager {
 
 	public boolean login(String userId, String password)
 		throws SQLException, UserNotFoundException, PasswordMismatchException {
-	    UserDTO user = findUser(userId);
+		User user = findUser(userId);
 
 		if (!user.matchPassword(password)) {
 			throw new PasswordMismatchException("비밀번호가 일치하지 않습니다.");
@@ -57,28 +58,16 @@ public class UserManager {
 		return true;
 	}
 
-	public UserDao getUserDAO() {
+	public UserDAO getUserDAO() {
 		return this.userDAO;
 	}
 	
-   public List<UserDTO> findUserList() throws SQLException {               
+   public List<User> findUserList() throws SQLException {               
         return userDAO.findUserList();
     }
 
-
-   public int updateStudent(UserDTO user) {                 
-        return userDAO.updateInfo(user);
-   }
-    
-   public int updateNickname(UserDTO user) throws SQLException {         
-        return userDAO.updateNickname(user);
-   }
    
-   public int deleteStudent(String userId) throws SQLException {         
-       return userDAO.removeUser(userId);
-  }
-   
-   public int existingNickname(UserDTO user) throws SQLException, ExistingUserException {  
+   public int existingNickname(User user) throws SQLException, ExistingUserException {  
        if (userDAO.existingUser(user.getNickname()) == true) {
            throw new ExistingUserException(user.getNickname() + "는 존재하는 닉네임입니다.");
        }
