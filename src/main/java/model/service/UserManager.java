@@ -67,9 +67,9 @@ public class UserManager {
 		return this.userDAO;
 	}
 	
-   public List<User> findUserList() throws SQLException {               
-        return userDAO.findUserList();
-    }
+//   public List<User> findUserList() throws SQLException {               
+//        return userDAO.findUserList();
+//    }
 
    
    public int existingNickname(User user) throws SQLException, ExistingUserException {  
