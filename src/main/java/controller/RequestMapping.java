@@ -5,6 +5,9 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import controller.post.BookMarkController;
+import controller.post.createBookMarkController;
+import controller.post.removeBookMarkController;
 import controller.user.*;
 //import controller.comm.*;
 
@@ -48,6 +51,13 @@ public class RequestMapping {
 //        mappings.put("/community/view/json", new ViewCommunityJsonController());
 
         logger.info("Initialized Request Mapping!");
+        
+        mappings.put("/user/createBM", new createBookMarkController());
+        mappings.put("/user/createMymt", new createMyMeetingController());
+        mappings.put("/user/BookMark", new BookMarkController());
+        mappings.put("/user/MyMeeting", new MyMeetingController());
+        mappings.put("/user/removeBM", new removeBookMarkController());
+        mappings.put("/user/removeMymt", new removeMyMeetingController());
     }
 
     public Controller findController(String uri) {	
