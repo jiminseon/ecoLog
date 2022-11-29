@@ -10,8 +10,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.Controller;
-import model.service.*;
-import model.*;
+import model.service.UserManager;
+import model.Community;
+import model.User;
 
 public class UpdateUserController implements Controller {
     private static final Logger log = LoggerFactory.getLogger(UpdateUserController.class);
@@ -55,12 +56,13 @@ public class UpdateUserController implements Controller {
     		request.getParameter("name"),
     		request.getParameter("nickName"),
     		request.getParameter("birth"),
+    		request.getParameter("phoneNumber"),
     		request.getParameter("email"));
 
     	log.debug("Update User : {}", updateUser);
 
 		UserManager manager = UserManager.getInstance();
-		manager.update(updateUser);			
+		//manager.update(updateUser);			
         return "redirect:/user/list";			
     }
 }

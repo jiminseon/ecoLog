@@ -6,7 +6,7 @@
 %>
 <html>
 <head>
-<title>사용자 관리</title>
+<title>에코로그</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
 <script>
@@ -23,7 +23,7 @@ function userRemove() {
 	  <td>
 	    <table>
 		  <tr>
-			<td class="title">&nbsp;&nbsp;<b>admin용 - 상세정보 보기</b>&nbsp;&nbsp;</td>
+			<td class="title">&nbsp;&nbsp;<b>에코로그</b>&nbsp;&nbsp;</td>
 		  </tr>
 	    </table>  
 	    <br>	  	    

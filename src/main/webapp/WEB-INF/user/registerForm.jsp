@@ -34,11 +34,11 @@ function userCreate() {
 		form.nickName.focus();
 		return false;
 	}
-//	if (form.birth.value == "") {
-//		alert("생년월일을 입력하십시오.");
-	//	form.birth.focus();
-	//	return false;
-//	}
+	if (form.birth.value == "") {
+		alert("생년월일을 입력하십시오.");
+		form.birth.focus();
+		return false;
+	}
 	var emailExp = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 	if(emailExp.test(form.email.value)==false) {
 		alert("이메일 형식이 올바르지 않습니다.");
@@ -64,7 +64,7 @@ function userList(targetUri) {
 	<br>
 	<!-- registration form  -->
 	<form name="form" method="POST"
-		action="<c:url value='/' />">
+		action="<c:url value='/user/register' />">
 		<table style="width: 100%">
 			<tr>
 				<td width="100" align="center"></td>
@@ -146,9 +146,10 @@ function userList(targetUri) {
 					</table> <br>
 					<table style="width: 100%">
 						<tr>
-							<td align="left">
-							<input type="button" value="회원 가입" onClick="userCreate()"> &nbsp; 
-							<input type="button" value="로그인 화면" onClick="userList('<c:url value='/user/login' />')"></td>
+							<td align="left"><input type="button" value="회원 가입"
+								onClick="userCreate()"> &nbsp; <input type="button"
+								value="로그인 화면"
+								onClick="userList('<c:url value='/user/login' />')"></td>
 						</tr>
 					</table>
 				</td>

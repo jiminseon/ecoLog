@@ -1,48 +1,36 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="header.jsp"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>마이페이지</title>
+
 </head>
 <body>
 	<form method="post" action="UpdateServlet" name="frm">
-		<table align="center" width="600">
+		<table align="center" width="1000">
+		<h1>MY PAGE </h1>
+		<h2>${user.nickName} 님, 환영합니다. </h2>
+		<h5>가입일 : ${user.regDate} </h5>
+		<h5>${user.nickName} 님의 마이페이지 입니다. </h5>
 			<tr>
-				<td colspan="2">My Page</td>
+				<td align="left"><input type="button" value="개인정보 수정"
+					onClick=" location='/user/update '" />
+			<tr>
+				<td align="left"><input type="button" value="즐겨찾기 관리"
+					onClick=" location='/user/update '" /> <--그냥 버튼 추가만 해놓은거임/location 지정 x
 			</tr>
 			<tr>
-				<td>ID</td>
-				<td><input type="text" name="id" value="${user.id }" readonly="readonly"></td>
+				<td align="left"><input type="button" value="모임 관리"
+					onClick=" location='/user/update '" /> <--그냥 버튼 추가만 해놓은거임/location 지정 x
+			</tr>
 			</tr>
 			<tr>
-				<td>PASSWORD</td>
-				<td><input type="password" name="pass"></td>
+				<td align="left"><input type="button" value="절약기록 관리"
+					onClick=" location='/user/update '" /> <--그냥 버튼 추가만 해놓은거임/location 지정 x
 			</tr>
-			<tr>
-				<td>NAME</td>
-				<td><input type="text" name="name" value="${user.name }"></td>
-			</tr>
-			<tr>
-				<td>NICKNAME</td>
-				<td><input type="text" name="name" value="${user.nickName }"></td>
-			</tr>
-			<tr>
-				<td>BIRTH</td>
-				<td><input type="text" name="birth" value="${user.birth }"></td>
-			</tr>
-			<tr>
-				<td>EMAIL</td>
-				<td><input type="text" name="email" value="${user.email }"></td>
-			</tr>
-			<tr>
-				<td>PHONENUMBER</td>
-				<td><input type="text" name="phoneNumber" value="${user.phoneNumber }"></td>
-			</tr>
-			<tr align="center">
-			<td colspan="2"><input type="submit" value="modify"> &nbsp; <input type="reset" value="cancle"></td></tr>
 		</table>
 	</form>
 </body>
