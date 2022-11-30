@@ -18,25 +18,26 @@ public class RegisterUserController implements Controller {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-//       	if (request.getMethod().equals("GET")) {	
+       	if (request.getMethod().equals("GET")) {	
 //    		// GET request: 회원정보 등록 form 요청	
-//    		log.debug("RegisterForm Request");
+    		log.debug("RegisterForm Request");
 //
 //    		List<Community> commList = UserManager.getInstance().findCommunityList();	// 커뮤니티 리스트 검색
 //			request.setAttribute("commList", commList);	
 //		
-//			return "/user/registerForm.jsp";   // 검색한 커뮤니티 리스트를 registerForm으로 전송     	
-//	    }	
+			return "/user/registerForm.jsp";   // 검색한 커뮤니티 리스트를 registerForm으로 전송     	
+	    }	
 
     	// POST request (회원정보가 parameter로 전송됨)
        	User user = new User(
-			request.getParameter("userId"),
+			request.getParameter("Id"),
 			request.getParameter("password"),
 			request.getParameter("name"),
-			request.getParameter("nickName"),
-			request.getParameter("birth"),
 			request.getParameter("phoneNumber"),
-			request.getParameter("email"));
+			request.getParameter("email"),
+			request.getParameter("address"),
+			request.getParameter("birth"),
+			request.getParameter("nickName"));
 		
         log.debug("Create User : {}", user);
 

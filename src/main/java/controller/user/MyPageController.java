@@ -22,7 +22,7 @@ public class MyPageController implements Controller {
 		// userList 객체와 현재 로그인한 사용자 ID를 request에 저장하여 전달
 		request.setAttribute("userList", userList);				
 		request.setAttribute("curUserId", 
-				UserSessionUtils.getLoginUserId(request.getSession()));		
+				UserSessionUtils.getLoginId(request.getSession()));		
 
 		return "/user/myPage.jsp";        
     }

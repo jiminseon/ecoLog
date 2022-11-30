@@ -20,16 +20,23 @@
 					onClick=" location='/user/update '" />
 			<tr>
 				<td align="left"><input type="button" value="즐겨찾기 관리"
-					onClick=" location='/user/update '" /> <--그냥 버튼 추가만 해놓은거임/location 지정 x
+					onClick=" location='/user/BookMark '" />
 			</tr>
 			<tr>
 				<td align="left"><input type="button" value="모임 관리"
-					onClick=" location='/user/update '" /> <--그냥 버튼 추가만 해놓은거임/location 지정 x
-			</tr>
+					onClick=" location='/user/MyMeeting '" /> 
 			</tr>
 			<tr>
 				<td align="left"><input type="button" value="절약기록 관리"
-					onClick=" location='/user/update '" /> <--그냥 버튼 추가만 해놓은거임/location 지정 x
+					onClick=" location='/user/update '" /> 
+			</tr>
+			<tr>
+				<td align="left"><input type="button" value="계정 삭제"
+					onClick=" location='/user/delete '" /> 
+			</tr>
+			<tr>
+				<td align="left"><input type="button" value="홈 화면"
+					onClick=" location='/ '" /> 
 			</tr>
 		</table>
 	</form>

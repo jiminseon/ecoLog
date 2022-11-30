@@ -23,7 +23,7 @@ public class UpdateUserController implements Controller {
     	if (request.getMethod().equals("GET")) {	
     		// GET request: 회원정보 수정 form 요청	
     		// 원래는 UpdateUserFormController가 처리하던 작업을 여기서 수행
-    		String updateId = request.getParameter("userId");
+    		String updateId = request.getParameter("Id");
 
     		log.debug("UpdateForm Request : {}", updateId);
     		
@@ -43,26 +43,26 @@ public class UpdateUserController implements Controller {
 			}    
 			
 			// else (수정 불가능한 경우) 사용자 보기 화면으로 오류 메세지를 전달
-			request.setAttribute("updateFailed", true);
-			request.setAttribute("exception", 
-					new IllegalStateException("타인의 정보는 수정할 수 없습니다."));            
-			return "/user/view.jsp";	// 사용자 보기 화면으로 이동 (forwarding)
+			request.setAttribute("updateFailed", true);    
+			System.out.println("실패!");
+			return "/user/myPage.jsp";	// 
 	    }	
     	
     	// POST request (회원정보가 parameter로 전송됨)
     	User updateUser = new User(
-    		request.getParameter("userId"),
+    		request.getParameter("Id"),
     		request.getParameter("password"),
     		request.getParameter("name"),
     		request.getParameter("nickName"),
     		request.getParameter("birth"),
     		request.getParameter("phoneNumber"),
-    		request.getParameter("email"));
+    		request.getParameter("email"),
+    		request.getParameter("address"));
 
     	log.debug("Update User : {}", updateUser);
 
 		UserManager manager = UserManager.getInstance();
-		//manager.update(updateUser);			
-        return "redirect:/user/list";			
+		manager.update(updateUser);			
+        return "redirect:/user/myPage";			
     }
 }

@@ -9,9 +9,9 @@
 <script>
 function userCreate() {
 	
-	if (form.userId.value == "") {
+	if (form.Id.value == "") {
 		alert("사용자 ID를 입력하십시오.");
-		form.userId.focus();
+		form.Id.focus();
 		return false;
 	} 
 	if (form.password.value == "") {
@@ -29,26 +29,30 @@ function userCreate() {
 		form.name.focus();
 		return false;
 	}
-	if (form.nickName.value == "") {
-		alert("닉네임을 입력하십시오.");
-		form.nickName.focus();
+	if(form.phoneNumber.value =="") {
+		alert("전화번호를 입력하십시오.");
+		form.phoneNumber.focus();
 		return false;
 	}
-//	if (form.birth.value == "") {
-//		alert("생년월일을 입력하십시오.");
-//		form.birth.focus();
-//		return false;
-//	}
 	var emailExp = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 	if(emailExp.test(form.email.value)==false) {
 		alert("이메일 형식이 올바르지 않습니다.");
 		form.email.focus();
 		return false;
 	}
-	var phoneExp = /^\d{2,3}-\d{3,4}-\d{4}$/;
-	if(phoneExp.test(form.phone.value)==false) {
-		alert("전화번호 형식이 올바르지 않습니다.");
-		form.phone.focus();
+	if (form.address.value == "") {
+		alert("주소를 입력하십시오.");
+		form.nickName.focus();
+		return false;
+	}
+	if (form.birth.value == "") {
+		alert("생년월일을 입력하십시오.");
+		form.birth.focus();
+		return false;
+	}
+	if (form.nickName.value == "") {
+		alert("닉네임을 입력하십시오.");
+		form.nickName.focus();
 		return false;
 	}
 	form.submit();
@@ -82,7 +86,7 @@ function userList(targetUri) {
 						<tr height="40">
 							<td width="700" align="center" bgcolor="E6ECDE">사용자 ID</td>
 							<td width="700" bgcolor="ffffff" style="padding-left: 10"><input
-								type="text" style="width: 240;" name="userId"></td>
+								type="text" style="width: 240;" name="Id"></td>
 						</tr>
 						<tr height="40">
 							<td width="700" align="center" bgcolor="E6ECDE">비밀번호</td>
@@ -110,24 +114,10 @@ function userList(targetUri) {
 						</tr>
 						<tr height="40">
 							<td width="700" align="center" bgcolor="E6ECDE">생년월일</td>
-							<td width="700" bgcolor="ffffff" style="padding-left: 10"><input
-								type="text" name="birth_yy" maxlength="4" placeholder="년(4자)"
-								size="6"> <select name="birth_mm">
-									<option value="">월</option>
-									<option value="01">1</option>
-									<option value="02">2</option>
-									<option value="03">3</option>
-									<option value="04">4</option>
-									<option value="05">5</option>
-									<option value="06">6</option>
-									<option value="07">7</option>
-									<option value="08">8</option>
-									<option value="09">9</option>
-									<option value="10">10</option>
-									<option value="11">11</option>
-									<option value="12">12</option>
-							</select> <input type="text" name="birth_dd" maxlength="2" placeholder="일"
-								size="4"></td>
+							<td width="700" bgcolor="ffffff" style="padding-left: 10">
+							<input type="text" name="birth" maxlength="8" placeholder="ex)19990101"
+							size="6"> 
+							</td>
 						</tr>
 						<tr height="40">
 							<td width="700" align="center" bgcolor="E6ECDE">이메일 주소</td>
@@ -139,8 +129,15 @@ function userList(targetUri) {
 						<tr height="40">
 							<td width="700" align="center" bgcolor="E6ECDE">전화번호</td>
 							<td width="700" bgcolor="ffffff" style="padding-left: 10"><input
-								type="text" style="width: 240" name="phone"
-								<c:if test="${registerFailed}">value="${user.phone}"</c:if>>
+								type="text" style="width: 240" name="phoneNumber"
+								<c:if test="${registerFailed}">value="${user.phoneNumber}"</c:if>>
+							</td>
+						</tr>
+						<tr height="40">
+							<td width="700" align="center" bgcolor="E6ECDE">주소</td>
+							<td width="700" bgcolor="ffffff" style="padding-left: 10"><input
+								type="text" style="width: 240" name="address"
+								<c:if test="${registerFailed}">value="${user.address}"</c:if>>
 							</td>
 						</tr>
 					</table> <br>

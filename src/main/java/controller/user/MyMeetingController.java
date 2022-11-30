@@ -15,8 +15,8 @@ public class MyMeetingController implements Controller {
 			
 		 //post 방식
 		 UserManager manager = UserManager.getInstance();
-		 String userId = request.getParameter("userId");
-			List<MyMeeting> meetingList = manager.getMyMeeting(userId);
+		 String Id = request.getParameter("Id");
+			List<MyMeeting> meetingList = manager.getMyMeeting(Id);
 			
 			request.setAttribute("meetingList", meetingList);				
 			

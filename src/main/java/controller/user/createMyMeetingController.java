@@ -13,7 +13,7 @@ public class createMyMeetingController implements Controller {
     	// POST request (회원정보가 parameter로 전송됨)
        	MyMeeting mymt = new MyMeeting(
 			request.getParameter("postNum"),
-			request.getParameter("userId"));
+			request.getParameter("Id"));
 		
 		try {
 			UserManager manager = UserManager.getInstance();

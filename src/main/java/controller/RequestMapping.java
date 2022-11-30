@@ -28,15 +28,15 @@ public class RequestMapping {
     //    mappings.put("/user/view", new ViewUserController());
         
         // 회원 가입 폼 요청과 가입 요청 처리 병합 (폼에 커뮤니티 선택 메뉴 추가를 위함)
-      mappings.put("/user/register/form", new ForwardController("/user/registerForm.jsp"));
+     // mappings.put("/user/register/form", new ForwardController("/user/registerForm.jsp"));
       mappings.put("/user/register", new RegisterUserController());
 
         // 사용자 정보 수정 폼 요청과 수정 요청 처리 병합
 //      mappings.put("/user/update/form", new UpdateUserFormController());
 //      mappings.put("/user/update", new UpdateUserController());        
-      //  mappings.put("/user/update", new UpdateUserController());
+        mappings.put("/user/update", new UpdateUserController());
         
-        //mappings.put("/user/delete", new DeleteUserController());
+        mappings.put("/user/delete", new DeleteUserController());
         
         // 커뮤니티 관련 request URI 추가
         // 커뮤니티 리스트 요청 처리 컨트롤러 변경

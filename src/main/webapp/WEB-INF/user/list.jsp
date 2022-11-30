@@ -48,11 +48,11 @@
 	  <c:forEach var="user" items="${userList}">  			  	
   		<tr>
 		  <td width="190" align="center" bgcolor="ffffff" height="20">
-		  	${user.userId}       <%-- <%=user.getUserId()%> --%>
+		  	${user.Id}       <%-- <%=user.getId()%> --%>
 		  </td>
 		  <td width="200" bgcolor="ffffff" style="padding-left: 10">
 			<a href="<c:url value='/user/view'>
-					   <c:param name='userId' value='${user.userId}'/>
+					   <c:param name='Id' value='${user.Id}'/>
 			 		 </c:url>">
 			  ${user.name}</a>	 <%-- <%=user.getName()%></a> --%>
 		  </td>

@@ -36,27 +36,41 @@ public class UserManager {
 	}
 	
     public int create(User user) throws SQLException, ExistingUserException {
-        if (userDAO.existingUser(user.getUserId()) == true) {
-            throw new ExistingUserException(user.getUserId() + "는 존재하는 아이디입니다.");
+        if (userDAO.existingUser(user.getId()) == true) {
+            throw new ExistingUserException(user.getId() + "는 존재하는 아이디입니다.");
         }
         return userDAO.create(user);
     }
 
+    public int update(User user) throws SQLException, UserNotFoundException {
+		
+		return userDAO.update(user);
+	}	
 
-	public User findUser(String userId)
+	public int remove(String userId) throws SQLException, UserNotFoundException {
+		
+		return userDAO.remove(userId);
+	}
+	public User findUser(String Id)
 		throws SQLException, UserNotFoundException {
-		User user = userDAO.findUser(userId);
+		System.out.println("dao로 출발");
+		User user = userDAO.findUser(Id);
+		System.out.println("dao에서 user정보 가져옴");
 		
 		if (user == null) {
-			throw new UserNotFoundException(userId + "는 존재하지 않는 아이디입니다.");
+			System.out.println("user가 널");
+			throw new UserNotFoundException(Id + "는 존재하지 않는 아이디입니다.");
 		}		
+
+		System.out.println("로그인 함수로 전달");
 		return user;
 	}
 
-	public boolean login(String userId, String password)
+	public boolean login(String Id, String password)
 		throws SQLException, UserNotFoundException, PasswordMismatchException {
-		User user = findUser(userId);
-
+		User user = findUser(Id);
+		System.out.println("id찾음");
+		
 		if (!user.matchPassword(password)) {
 			throw new PasswordMismatchException("비밀번호가 일치하지 않습니다.");
 		}
@@ -96,11 +110,11 @@ public class UserManager {
 		return mtDao.create(mymt);		
 	}
 
-	public List<BookMark> getBookMark(String userId) throws SQLException {
-		return bmDao.findBookMarkList(userId);		
+	public List<BookMark> getBookMark(String Id) throws SQLException {
+		return bmDao.findBookMarkList(Id);		
 	}
 	
-	public List<MyMeeting> getMyMeeting(String userId) throws SQLException {
-		return mtDao.findMyMtList(userId);		
+	public List<MyMeeting> getMyMeeting(String Id) throws SQLException {
+		return mtDao.findMyMtList(Id);		
 	}
 }
