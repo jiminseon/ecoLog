@@ -5,6 +5,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import controller.calculator.createCalculator;
 import controller.post.BookMarkController;
 import controller.post.createBookMarkController;
 import controller.post.removeBookMarkController;
@@ -58,6 +59,9 @@ public class RequestMapping {
         mappings.put("/user/MyMeeting", new MyMeetingController());
         mappings.put("/user/removeBM", new removeBookMarkController());
         mappings.put("/user/removeMymt", new removeMyMeetingController());
+        
+        mappings.put("//cal/calulator", new ForwardController("/main/calculator.jsp"));
+        mappings.put("/cal/create", new createCalculator());
     }
 
     public Controller findController(String uri) {	

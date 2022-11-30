@@ -1,39 +1,61 @@
 package model;
 
 public class Calculator {
-	private String id;
-	private int totalPoint;
+	private String cal_day;
+	private String cal_content;
+	private int cal_point;
+	private String color;
+	private int userid;
 	
-	public Calculator() {
+	
+	
+	public Calculator(String cal_day, String cal_content, int cal_point, String color, int userid) {
 		super();
+		this.cal_day = cal_day;
+		this.cal_content = cal_content;
+		this.cal_point = cal_point;
+		this.color = color;
+		this.userid = userid;
 	}
-
-	public Calculator(String id, int totalPoint) {
-		super();
-		this.id = id;
-		this.totalPoint = totalPoint;
+	public String getCal_day() {
+		return cal_day;
 	}
-	
-	public String getId() {
-		return id;
+	public void setCal_day(String cal_day) {
+		this.cal_day = cal_day;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public String getCal_content() {
+		return cal_content;
 	}
-	public int getTotalPoint() {
-		return totalPoint;
+	public void setCal_content(String cal_content) {
+		this.cal_content = cal_content;
 	}
-	public void setTotalPoint(int totalPoint) {
-		this.totalPoint = totalPoint;
+	public int getCal_point() {
+		return cal_point;
 	}
-	
-	public void sumPoint(int p) {
-		totalPoint = totalPoint + p;
+	public void setCal_point(int cal_point) {
+		this.cal_point = cal_point;
 	}
-
+	public String getColor() {
+		return color;
+	}
+	public void setColor(String color) {
+		this.color = color;
+	}
+	public int getUserid() {
+		return userid;
+	}
+	public void setUserid(int userid) {
+		this.userid = userid;
+	}
 	@Override
 	public String toString() {
-		return "Calculator [id=" + id + ", totalPoint=" + totalPoint + "]";
+		return "Calculator [cal_day=" + cal_day + ", cal_content=" + cal_content + ", cal_point=" + cal_point
+				+ ", color=" + color + ", userid=" + userid + "]";
 	}
+	
+	
+	
+	
+	
 
 }

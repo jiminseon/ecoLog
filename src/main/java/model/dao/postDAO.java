@@ -38,21 +38,7 @@ public class postDAO {
 		}	
 	}
 	
-	private static Connection getConnection() {
-		String url = "jdbc:oracle:thin:@dblab.dongduk.ac.kr:1521:orcl";		
-		String user = "dbpr0107";
-		String passwd = "0974";
 
-		// DBMS와의 연결 생성
-		Connection conn = null;
-		try {
-			conn = DriverManager.getConnection(url, user, passwd);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}	 
-		return conn;
-	}
-	
 	
 	public String getDate() {
 	  	String SQL = "SELECT NOW()"; // 현재 시간 가져오기

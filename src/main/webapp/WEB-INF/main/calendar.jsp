@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
     <div class="content-wrap">
-    <form method="post" action="calculator.jsp">
+    <form method="post" action="<c:url value='/WEB-INF/main/calendar.jsp' />">
       <div class="content-left">
         <div class="main-wrap">
           <div id="main-day" class="main-day"></div>
@@ -11,8 +11,8 @@
         <div class="todo-wrap">
           <div class="todo-title"></div>
           <div class="calculator">
-		      <input type="button" value="Send Value" onclick="new_window();">
-		    </p>
+		      <input type="button" value="Send Value" onclick="goCal()">
+		    <p/>
         	
         </div>
       </div>
