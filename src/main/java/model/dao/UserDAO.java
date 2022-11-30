@@ -21,7 +21,7 @@ public class UserDAO {
 	 * 사용자 관리 테이블에 새로운 사용자 생성.
 	 */
 	public int create(User user) throws SQLException {
-		String sql = "INSERT INTO USER_INFO (ID, PASSWORD, NAME, PHONENUMBER, EMAIL, ADDRESS, BIRTH, NICKNAME, POINT, MEETING, REGDATE)"
+		String sql = "INSERT INTO USER_INFO (ID, PASSWORD, NAME, PHONENUMBER, EMAIL, ADDRESS, BIRTH, nickname, POINT, MEETING, REGDATE)"
 				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";	
 		Object[] param = new Object[] {user.getId(), user.getPassword(), 
 				user.getName(), user.getphoneNumber(), user.getEmail(), user.getAddress(), user.getBirth(), user.getNickname(),
@@ -46,7 +46,7 @@ public class UserDAO {
 	 */
 	public int update(User user) throws SQLException {
 		String sql = "UPDATE USER_INFO "
-				+ "SET password=?, name=?, nickName=?, birth=?, phoneNumber=?, email=? "
+				+ "SET password=?, name=?, nickname=?, birth=?, phoneNumber=?, email=? "
 				+ "WHERE Id=?";
 		Object[] param = new Object[] {user.getPassword(), user.getName(), user.getphoneNumber(),
 				user.getNickname(), user.getBirth(), user.getEmail(), 
@@ -93,7 +93,7 @@ public class UserDAO {
 	 * 저장하여 반환.
 	 */
 	public User findUser(String Id) throws SQLException {
-		String sql = "SELECT password, name, phoneNumber, email, address, birth, nickName "
+		String sql = "SELECT password, name, phoneNumber, email, address, birth, nickname "
 				+ "FROM USER_INFO "
 				+ "WHERE Id=? ";              
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {Id});	// JDBCUtil에 query문과 매개 변수 설정
@@ -107,11 +107,14 @@ public class UserDAO {
 						rs.getString("name"),
 						rs.getString("phoneNumber"),
 						rs.getString("email"),
-						rs.getString("address"),
 						rs.getString("birth"),
-						rs.getString("nickName"));
+						rs.getString("address"),
+						rs.getString("nickname"));
+				System.out.println("유저 정보 저장 성공");
 				return user;
 			}
+			System.out.println("유저 정보 저장 실패");
+
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -141,7 +144,7 @@ public class UserDAO {
 						rs.getString("email"),
 						rs.getString("address"),
 						rs.getString("birth"),
-						rs.getString("nickName"));
+						rs.getString("nickname"));
 				userList.add(user);				// List에 User 객체 저장
 			}		
 			return userList;					
@@ -180,7 +183,7 @@ public class UserDAO {
 							rs.getString("email"),
 							rs.getString("address"),
 							rs.getString("birth"),
-							rs.getString("nickName"));
+							rs.getString("nickname"));
 					userList.add(user);							// 리스트에 User 객체 저장
 				} while ((rs.next()) && (--countPerPage > 0));		
 				return userList;							
@@ -192,57 +195,6 @@ public class UserDAO {
 		}
 		return null;
 	}
-//
-//	/**
-//	 * 특정 커뮤니티에 속한 사용자들을 검색하여 List에 저장 및 반환
-//	 */
-//	public List<User> findUsersInCommunity(int communityId) throws SQLException {
-//        String sql = "SELECT Id, name, nickName, birth, email FROM USER_INFO "
-//     				+ "WHERE commId = ?";                         
-//		jdbcUtil.setSqlAndParameters(sql, new Object[] {communityId});	// JDBCUtil에 query문과 매개 변수 설정
-//
-//		try {
-//			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
-//			List<User> memList = new ArrayList<User>();	// member들의 리스트 생성
-//			while (rs.next()) {
-//				User member = new User(			// User 객체를 생성하여 현재 행의 정보를 저장
-//					rs.getString("Id"),
-//					rs.getString("password"),
-//					rs.getString("name"),
-//					rs.getString("nickName"),
-//					rs.getString("birth"),
-//					rs.getString("phoneNumber"),
-//					rs.getString("email"));
-//				memList.add(member);			// List에 Community 객체 저장
-//			}		
-//			return memList;					
-//
-//		} catch (Exception ex) {
-//			ex.printStackTrace();
-//		} finally {
-//			jdbcUtil.close();		// resource 반환
-//		}
-//		return null;
-//	}
-//	/**
-//	 * 특정 커뮤니티에 속한 사용자들의 수를 count하여 반환
-//	 */
-//	public int getNumberOfUsersInCommunity(int communityId) {
-//		String sql = "SELECT COUNT(Id) FROM USER_INFO "
-//				+ "WHERE commId = ?";              
-//		jdbcUtil.setSqlAndParameters(sql, new Object[] {communityId});	// JDBCUtil에 query문과 매개 변수 설정
-//
-//		try {
-//			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
-//			rs.next();										
-//			return rs.getInt(1);			
-//		} catch (Exception ex) {
-//			ex.printStackTrace();
-//		} finally {
-//			jdbcUtil.close();		// resource 반환
-//		}
-//		return 0;
-//	}
 
 	/**
 	 * 주어진 사용자 Id에 해당하는 사용자가 존재하는지 검사 

@@ -61,12 +61,8 @@ td {
 						<tr>
 							<td class="title">&nbsp;&nbsp;에코로그 - 로그인&nbsp;&nbsp;</td>
 						</tr>
-					</table> <!-- 로그인이 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 --> <c:if
-						test="${loginFailed}">
-						<br>
-						<font color="red"><c:out value="${exception.getMessage()}" /></font>
-						<br>
-					</c:if> <br>
+					</table> 
+					<br>
 					<table style="background-color: YellowGreen">
 						<tr height="40">
 							<td width="1100" align="center" bgcolor="e6ffe6">사용자 ID</td>
@@ -83,14 +79,13 @@ td {
 					</table> <br>
 					<table style="width: 100%">
 						<tr>
-							<td align=left><input type="button" value="로그인"
-								onClick="login()"> &nbsp; <input type="button"
-								value="회원가입"
-								onClick="userCreate(
+							<td align=left>
+							<input type="button" value="로그인" onClick="login()"> &nbsp; 
+							<input type="button" value="회원가입" onClick="userCreate(
 								'<c:url value='/user/register'/>')">
 							</td>
 						</tr>
-					</table></td>
+					</table>
 			</tr>
 			<tr height="100">
 				<td>&nbsp;</td>

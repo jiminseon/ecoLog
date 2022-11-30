@@ -43,10 +43,9 @@ public class UpdateUserController implements Controller {
 			}    
 			
 			// else (수정 불가능한 경우) 사용자 보기 화면으로 오류 메세지를 전달
-			request.setAttribute("updateFailed", true);
-			request.setAttribute("exception", 
-					new IllegalStateException("타인의 정보는 수정할 수 없습니다."));            
-			return "/user/view.jsp";	// 사용자 보기 화면으로 이동 (forwarding)
+			request.setAttribute("updateFailed", true);    
+			System.out.println("실패!");
+			return "/user/myPage.jsp";	// 
 	    }	
     	
     	// POST request (회원정보가 parameter로 전송됨)
@@ -63,7 +62,7 @@ public class UpdateUserController implements Controller {
     	log.debug("Update User : {}", updateUser);
 
 		UserManager manager = UserManager.getInstance();
-		//manager.update(updateUser);			
-        return "redirect:/user/list";			
+		manager.update(updateUser);			
+        return "redirect:/user/myPage";			
     }
 }

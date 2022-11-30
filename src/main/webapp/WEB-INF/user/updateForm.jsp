@@ -38,6 +38,16 @@ function userModify() {
 		form.email.focus();
 		return false;
 	}
+	if(form.phoneNumber.value =="") {
+		alert("전화번호를 입력하십시오.");
+		form.phoneNumber.focus();
+		return false;
+	}
+	if (form.address.value == "") {
+		alert("주소를 입력하십시오.");
+		form.nickName.focus();
+		return false;
+	}
 	form.submit();
 }
 
@@ -60,7 +70,17 @@ function userList(targetUri) {
 		  <tr>
 			<td class="title">&nbsp;&nbsp;<b>에코로그 - 수정</b>&nbsp;&nbsp;</td>
 		  </tr>
-	    </table>  
+	    </table>
+	    <div id="pwCheckForm">
+        <form name="check" target=targetUri>
+            <input type="hidden" name="no" value="${guestbook.guestbook_no}"/>
+            비밀번호 :
+            <input type="password" name="guestbook_password" maxlength="50">    
+            <br><br><br>
+            <input type="button" value="확인" onclick="checkPW()">
+            <input type="button" value="창닫기" onclick="window.close()">
+        </form>
+    </div> 
 	    <br>	  
 	    <table style="background-color: YellowGreen">
 	  	  <tr height="40">
@@ -107,13 +127,25 @@ function userList(targetUri) {
 				<input type="text" style="width: 240" name="email" value="${user.email}">
 			</td>
 		  </tr>	
+		  <tr height="40">
+			<td width="150" align="center" bgcolor="E6ECDE">전화번호</td>
+			<td width="250" bgcolor="ffffff" style="padding-left: 10">
+				<input type="text" style="width: 240" name="phoneNumber" value="${user.phoneNumber}">
+			</td>
+		  </tr>	
+		  <tr height="40">
+			<td width="150" align="center" bgcolor="E6ECDE">주소</td>
+			<td width="250" bgcolor="ffffff" style="padding-left: 10">
+				<input type="text" style="width: 240" name="address" value="${user.address}">
+			</td>
+		  </tr>	
 	    </table>
 	    <br>	  
 	    <table style="width: 100%">
 		  <tr>
 			<td align="left">
 			<input type="button" value="수정" onClick="userModify()"> &nbsp;
-			<input type="button" value="홈 화면" onClick="userList('<c:url value='/main/main' />')">
+			<input type="button" value="취소" onClick="userList('<c:url value='/user/myPage' />')">
 			</td>
 		  </tr>
 	    </table>

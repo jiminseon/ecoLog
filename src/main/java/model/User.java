@@ -38,7 +38,6 @@ public class User {
 
 	public User(String Id, String password, String name, String phoneNumber, String email, String address,
 			String birth, String nickname) {
-		super();
 		this.Id = Id;
 		this.password = password;
 		this.name = name;

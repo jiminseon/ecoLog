@@ -42,21 +42,35 @@ public class UserManager {
         return userDAO.create(user);
     }
 
+    public int update(User user) throws SQLException, UserNotFoundException {
+		
+		return userDAO.update(user);
+	}	
 
+	public int remove(String userId) throws SQLException, UserNotFoundException {
+		
+		return userDAO.remove(userId);
+	}
 	public User findUser(String Id)
 		throws SQLException, UserNotFoundException {
+		System.out.println("dao로 출발");
 		User user = userDAO.findUser(Id);
+		System.out.println("dao에서 user정보 가져옴");
 		
 		if (user == null) {
+			System.out.println("user가 널");
 			throw new UserNotFoundException(Id + "는 존재하지 않는 아이디입니다.");
 		}		
+
+		System.out.println("로그인 함수로 전달");
 		return user;
 	}
 
 	public boolean login(String Id, String password)
 		throws SQLException, UserNotFoundException, PasswordMismatchException {
 		User user = findUser(Id);
-
+		System.out.println("id찾음");
+		
 		if (!user.matchPassword(password)) {
 			throw new PasswordMismatchException("비밀번호가 일치하지 않습니다.");
 		}
