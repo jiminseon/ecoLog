@@ -1,261 +1,129 @@
+<%@ page import="java.io.PrintWriter" %>
+<%@page import="model.*" %>
+<%@page import="model.dao.*" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html>
 <head>
-<link rel=stylesheet href="<c:url value='/css/calendar.css' />" type="text/css">
-<link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
-<title>메인</title>
-<style>
-	header {
-		height: 100px;
-		text-align: center;
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+<meta name="viewport" content="width=device-width", initial-scale"="1">
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="/css/custom.css">
+<title>게시판</title>
+<style type="text/css">
+	a, a:hover {
+		color: #000000;
+		text-decoration: none;
 	}
-	div.head {
-		text-align: right;
-	}
-	div.wrap {
-		margin: auto;
-	}
-	div.top, div.bottom {
-	  width: 1100px;
-	  margin: auto;
-	}
-	div.tleft, div.bleft {
-	  width: 240px;
-	  float: left;
-	  margin-right: 10px;
-	  box-sizing: border-box;
-	  border: 1px solid #003458;
-	}
-	div.tright {
-	  width: 850px;
-	  float: right;
-	  box-sizing: border-box;
-	}
-	div.bright {
-	  width: 850px;
-	  float: right;
-	  box-sizing: border-box;
-	  border: 1px solid #003458;
-	}	
-	div.tleft, div.tright {
-		height: 400px;
-	}
-	div.bleft, div.bright {
-		height: 250px;
-		margin-top: 10px;
-	}
-
 </style>
-
-<script>
-function login() {
-	if (form.userId.value == "") {
-		alert("사용자 ID를 입력하십시오.");
-		form.userId.focus();
-		return false;
-	} 
-	if (form.password.value == "") {
-		alert("비밀번호를 입력하십시오.");
-		form.password.focus();
-		return false;
-	}		
-	form.submit();
-}
-
-function userCreate(targetUri) {
-	form.action = targetUri;
-	form.method="GET";		// register form 요청
-	form.submit();
-}
-
-</script>
 </head>
 <body>
-<header>
-	<div class="head">
-	<a href="<c:url value='/user/login/form'></c:url>"> 로그인</a>
-	<a href="<c:url value='/user/register/form'></c:url>">회원가입</a>
-	<a href="<c:url value='/user/login/form'></c:url>">마이페이지</a>
-	</div>
-	<p/><font size='7' color='004300' weight="bold">EcoLog</font>
-</header>
-<div class="wrap">
-	<div class="top">
-		<div class="tleft">
-			<!-- 로그인 되어있을 때는 character.jsp가 뜨도록 구현해두기 -->
+	<%
+		String userID = null;
+		if (session.getAttribute("userID") != null) {
+			userID = (String) session.getAttribute("userID");
+		}
+		int pageNumber = 1;
+		if (request.getParameter("pageNumber") != null) {
+			pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+		}
+	%>
+	<nav class="navbar navbar-default">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+				aria-expanded="false">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="main.jsp">게시판</a>
 		</div>
-		<div class="tright">
-		   <%@ include file="/WEB-INF/main/calendar.jsp" %>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li><a href="main.jsp">메인</a></li>
+				<li class="active"><a href="postList.jsp">게시판</a></li>
+			</ul>
+			<%
+				if (userID == null) {
+			%>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">접속하기<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="login.jsp">로그인</a></li>
+						<li><a href="join.jsp">회원가입</a></li>
+					</ul>
+				</li>
+			</ul>
+			<% 		
+				} else {
+			%>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">회원관리<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="logoutAction.jsp">로그아웃</a></li>
+					</ul>
+				</li>
+			</ul>
+			<%		
+				}
+			%>
+
 		</div>
-	</div>
-	<p/><p/><p/>
-	<div class="bottom">
-		<div class="bleft">
-			<%@ include file="/WEB-INF/main/rank.jsp" %>
-		</div>
-		<div class="bright">
-			게시판 jsp 연결
-		</div>
+	</nav>
+	<div class="container">
+	<div class="row">
+		<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+			<thead>
+				<tr>
+					<th style="background-color: #eeeeee; text-align: center;">번호</th>
+					<th style="background-color: #eeeeee; text-align: center;">제목</th>
+					<th style="background-color: #eeeeee; text-align: center;">유형</th>
+					<th style="background-color: #eeeeee; text-align: center;">작성자</th>
+					<th style="background-color: #eeeeee; text-align: center;">작성일</th>
+				</tr>
+			</thead>
+			<tbody>				
+				<%
+					postDAO postDAO = new postDAO();
+					ArrayList<Post> list = postDAO.getList(pageNumber);
+					for (int i = 0; i < list.size(); i++) {
+				%>
+				<tr>
+					<td><%= list.get(i).getPostNum() %></td>
+					<td><a href="postView.jsp?postNum=<%= list.get(i).getPostNum() %>"><%= list.get(i).getTitle() %></a></a></td>
+					<td><%= list.get(i).getWriter() %></td>
+					<td><%= list.get(i).getWriteDate().substring(0, 11)%></td>
+				</tr>
+				<%		
+					}
+				%>
+			</tbody>
+		</table>
+		<%
+			if (pageNumber != 1) {
+		%>
+			<a href="postList.jsp?pageNumber=<%=pageNumber - 1%>" class="btn btn-success btn-arrow-left">이전</a>
+		<%
+			} if (postDAO.nextPage(pageNumber + 1)) {
+		%>
+			<a href="postList.jsp?pageNumber=<%=pageNumber + 1%>" class="btn btn-success btn-arrow-left">다음</a>
+		<%
+			}
+		%>
+		<a href="postWrite.jsp" class="btn btn-primary pull-right">글쓰기</a>
 	</div>
 </div>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="js/bootstrap.js"></script>
 </body>
- <script type="text/javascript">
- 
- var currentTitle = document.getElementById('current-year-month');
- var calendarBody = document.getElementById('calendar-body');
- var mainTodayDay = document.getElementById('main-day');
- var mainTodayDate = document.getElementById('main-date');
- var today = new Date();
- var first = new Date(today.getFullYear(), today.getMonth(),1);
- var dayList = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
- var monthList = ['January','February','March','April','May','June','July','August','September','October','November','December'];
- var leapYear=[31,29,31,30,31,30,31,31,30,31,30,31];
- var notLeapYear=[31,28,31,30,31,30,31,31,30,31,30,31];
- var pageFirst = first;
- var pageYear;
- if(first.getFullYear() % 4 === 0){
-     pageYear = leapYear;
- }else{
-     pageYear = notLeapYear;
- }
-
- function showCalendar(){
-  currentTitle.innerHTML = monthList[first.getMonth()] + '&nbsp;&nbsp;&nbsp;&nbsp;'+ first.getFullYear();
-  let monthCnt = 100;
-     let cnt = 1;
-     for(var i = 0; i < 6; i++){
-         var $tr = document.createElement('tr');
-         $tr.setAttribute('id', monthCnt);   
-         for(var j = 0; j < 7; j++){
-             if((i === 0 && j < first.getDay()) || cnt > pageYear[first.getMonth()]){
-                 var $td = document.createElement('td');
-                 $tr.appendChild($td);     
-             }else{
-                 var $td = document.createElement('td');
-                 $td.textContent = cnt;
-                 $td.setAttribute('id', cnt);                
-                 $tr.appendChild($td);
-                 cnt++;
-             }
-         }
-         monthCnt++;
-         calendarBody.appendChild($tr);
-     }
-    mainTodayDay.innerHTML = dayList[today.getDay()];
-    mainTodayDate.innerHTML = today.getDate();
- }
- showCalendar();
- 
- function removeCalendar(){
-     let catchTr = 100;
-     for(var i = 100; i< 106; i++){
-         var $tr = document.getElementById(catchTr);
-         $tr.remove();
-         catchTr++;
-     }
- }
- 
- function prev(){
-    if(pageFirst.getMonth() === 1){
-        pageFirst = new Date(first.getFullYear()-1, 12, 1);
-        first = pageFirst;
-        if(first.getFullYear() % 4 === 0){
-            pageYear = leapYear;
-        }else{
-            pageYear = notLeapYear;
-        }
-    }else{
-        pageFirst = new Date(first.getFullYear(), first.getMonth()-1, 1);
-        first = pageFirst;
-    }
-    today = new Date(today.getFullYear(), today.getMonth()-1, today.getDate());
-    currentTitle.innerHTML = monthList[first.getMonth()] + '&nbsp;&nbsp;&nbsp;&nbsp;'+ first.getFullYear();
-    removeCalendar();
-    showCalendar();
-    showMain();
-    clickedDate1 = document.getElementById(today.getDate());
-    clickedDate1.classList.add('active');
-    clickStart();
-    reshowingList();
-}
-
-function next(){
-    if(pageFirst.getMonth() === 12){
-        pageFirst = new Date(first.getFullYear()+1, 1, 1);
-        first = pageFirst;
-        if(first.getFullYear() % 4 === 0){
-            pageYear = leapYear;
-        }else{
-            pageYear = notLeapYear;
-        }
-    }else{
-        pageFirst = new Date(first.getFullYear(), first.getMonth()+1, 1);
-        first = pageFirst;
-    }
-    today = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
-    currentTitle.innerHTML = monthList[first.getMonth()] + '&nbsp;&nbsp;&nbsp;&nbsp;'+ first.getFullYear();
-    removeCalendar();
-    showCalendar(); 
-    showMain();
-    clickedDate1 = document.getElementById(today.getDate());
-    clickedDate1.classList.add('active');  
-    clickStart();
-    reshowingList();
-}
-
-var clickedDate1 = document.getElementById(today.getDate());
-clickedDate1.classList.add('active');
-var prevBtn = document.getElementById('prev');
-var nextBtn = document.getElementById('next');
-prevBtn.addEventListener('click',prev);
-nextBtn.addEventListener('click',next);
-var tdGroup = [];
-function clickStart(){
-    for(let i = 1; i <= pageYear[first.getMonth()]; i++){
-        tdGroup[i] = document.getElementById(i);
-        tdGroup[i].addEventListener('click',changeToday);
-    }
-}
-function changeToday(e){
-    for(let i = 1; i <= pageYear[first.getMonth()]; i++){
-        if(tdGroup[i].classList.contains('active')){
-            tdGroup[i].classList.remove('active');
-        }
-    }
-    clickedDate1 = e.currentTarget;
-    clickedDate1.classList.add('active');
-    today = new Date(today.getFullYear(), today.getMonth(), clickedDate1.id);
-    showMain();
-    keyValue = today.getFullYear() + '' + today.getMonth()+ '' + today.getDate();
-    reshowingList();
-}
-
-
-function showMain(){
-    mainTodayDay.innerHTML = dayList[today.getDay()];
-    mainTodayDate.innerHTML = today.getDate();
-}
-
-function reshowingList(){
-    keyValue = today.getFullYear() + '' + today.getMonth()+ '' + today.getDate();
-
-}
-
-var dataCnt = 1;
-var keyValue = today.getFullYear() + '' + today.getMonth()+ '' + today.getDate();
-function checkList(e){
-    e.currentTarget.classList.add('checked');
-}
-
-function new_window() {
-    window.open(
-      "/WEB-INF/main/calculator.jsp",
-      "calculator",
-      "width=400, height=300, top=50, left=50"
-    );
-  }
-		
-  </script>
 </html>
