@@ -5,7 +5,7 @@
 <head>
 <link rel=stylesheet href="<c:url value='/css/calendar.css' />" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
-<title>메인</title>
+<title>ë©ì¸</title>
 <style>
 	header {
 		height: 100px;
@@ -50,27 +50,41 @@
 </style>
 
 <script>
-function goCal() {
-	<% 
-		String id = (String) session.getAttribute("id")
-	
- }
+function login() {
+	if (form.userId.value == "") {
+		alert("ì¬ì©ì IDë¥¼ ìë ¥íì­ìì¤.");
+		form.userId.focus();
+		return false;
+	} 
+	if (form.password.value == "") {
+		alert("ë¹ë°ë²í¸ë¥¼ ìë ¥íì­ìì¤.");
+		form.password.focus();
+		return false;
+	}		
+	form.submit();
+}
+
+function userCreate(targetUri) {
+	form.action = targetUri;
+	form.method="GET";		// register form ìì²­
+	form.submit();
+}
 
 </script>
 </head>
 <body>
 <header>
 	<div class="head">
-	<a href="<c:url value='/user/login/form'></c:url>"> 로그인</a>
-	<a href="<c:url value='/user/register'></c:url>">회원가입</a>
-	<a href="<c:url value='/user/login/form'></c:url>">마이페이지</a>
+	<a href="<c:url value='/user/login/form'></c:url>"> ë¡ê·¸ì¸</a>
+	<a href="<c:url value='/user/register/form'></c:url>">íìê°ì</a>
+	<a href="<c:url value='/user/login/form'></c:url>">ë§ì´íì´ì§</a>
 	</div>
 	<p/><font size='7' color='004300' weight="bold">EcoLog</font>
 </header>
 <div class="wrap">
 	<div class="top">
 		<div class="tleft">
-			<!-- 로그인 되어있을 때는 character.jsp가 뜨도록 구현해두기 -->
+			<!-- ë¡ê·¸ì¸ ëì´ìì ëë character.jspê° ë¨ëë¡ êµ¬íí´ëê¸° -->
 		</div>
 		<div class="tright">
 		   <%@ include file="/WEB-INF/main/calendar.jsp" %>
@@ -82,7 +96,7 @@ function goCal() {
 			<%@ include file="/WEB-INF/main/rank.jsp" %>
 		</div>
 		<div class="bright">
-			게시판 jsp 연결
+			ê²ìí jsp ì°ê²°
 		</div>
 	</div>
 </div>
@@ -234,6 +248,14 @@ var keyValue = today.getFullYear() + '' + today.getMonth()+ '' + today.getDate()
 function checkList(e){
     e.currentTarget.classList.add('checked');
 }
+
+function new_window() {
+    window.open(
+      "/WEB-INF/main/calculator.jsp",
+      "calculator",
+      "width=400, height=300, top=50, left=50"
+    );
+  }
 		
   </script>
 </html>
