@@ -50,11 +50,6 @@
 </style>
 
 <script>
-function goCal() {
-	<% 
-		String id = (String) session.getAttribute("id")
-	
- }
 
 </script>
 </head>
