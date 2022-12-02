@@ -1,7 +1,8 @@
 package model;
 
-import java.sql.Date;
 import java.util.List;
+
+
 
 public class User {
 	private String Id;
@@ -13,6 +14,7 @@ public class User {
 	private String birth;
 	private String nickname;  
 	private int point;
+	//private List<Meeting> meeting;
 	private int regDate; 
 	//private Character ch = new Character(id, nickname);
 	private List<String> imageList;
@@ -30,6 +32,7 @@ public class User {
 		this.birth = birth;
 		this.nickname = nickname;
 		this.point = point;
+	//	this.meeting = meeting;
 		this.regDate = regDate;
 	}
 
@@ -45,24 +48,12 @@ public class User {
 		this.nickname = nickname;
 	}
 	
-	public User(String Id, String password, String name, String phoneNumber, String email, String address,
-			String birth, String nickname, int regDate) {
-		this.Id = Id;
-		this.password = password;
-		this.name = name;
-		this.phoneNumber = phoneNumber;
-		this.email = email;
-		this.birth = birth;
-		this.address = address;
-		this.nickname = nickname;
-		this.regDate = regDate;
-	}
-	public void update(User updateUser) {
+	/*public void update(User updateUser) {
         this.password = updateUser.password;
         this.name = updateUser.name;
         this.email = updateUser.email;
         this.phoneNumber = updateUser.phoneNumber;
-    }
+    }*/
 
 	public boolean matchPassword(String password) {
 		if (password == null) {
@@ -143,7 +134,13 @@ public class User {
 		this.point = point;
 	}
 
-
+//	public List<Meeting> getMeeting() {
+//		return meeting;
+//	}
+//
+//	public void setMeeting(List<Meeting> meeting) {
+//		this.meeting = meeting;
+//	}
 
 	public int getRegDate() {
 		return regDate;

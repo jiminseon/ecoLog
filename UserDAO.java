@@ -21,16 +21,11 @@ public class UserDAO {
 	 * 사용자 관리 테이블에 새로운 사용자 생성.
 	 */
 	public int create(User user) throws SQLException {
-		String sql = "INSERT INTO USER_INFO (ID, PASSWORD, NAME, PHONENUMBER, EMAIL, ADDRESS, BIRTH, nickname, POINT, REGDATE)"
-				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";	
+		String sql = "INSERT INTO USER_INFO (ID, PASSWORD, NAME, PHONENUMBER, EMAIL, ADDRESS, BIRTH, nickname, POINT, MEETING, REGDATE)"
+				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";	
 		Object[] param = new Object[] {user.getId(), user.getPassword(), 
-<<<<<<< HEAD
-				user.	getName(), user.getphoneNumber(), user.getEmail(), user.getAddress(), user.getBirth(), user.getNickname(),
-				0, "NULL", "2020/02/02"};		//포인트와 meeting 0과 null로 표시		
-=======
 				user.getName(), user.getphoneNumber(), user.getEmail(), user.getAddress(), user.getBirth(), user.getNickname(),
-				0, "2020/02/02"};		//포인트와 meeting 0과 null로 표시		
->>>>>>> branch 'main2' of https://github.com/jiminseon/ecoLog.git
+				0, "NULL", "2020/02/02"};		//포인트와 meeting 0과 null로 표시		
 		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil 에 insert문과 매개 변수 설정
 		System.out.println(user.getName() + user.getNickname()+ user.getBirth()+ user.getphoneNumber()+ user.getEmail());
 		try {				
@@ -112,8 +107,8 @@ public class UserDAO {
 						rs.getString("name"),
 						rs.getString("phoneNumber"),
 						rs.getString("email"),
-						rs.getString("address"),
 						rs.getString("birth"),
+						rs.getString("address"),
 						rs.getString("nickname"));
 				System.out.println("유저 정보 저장 성공");
 				return user;
