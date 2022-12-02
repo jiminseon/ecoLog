@@ -5,13 +5,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.BookMark;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import model.dao.JDBCUtil;
 
 public class bookMarkDAO {
 private JDBCUtil jdbcUtil = null;
-	
-	public bookMarkDAO() {			
+
+private static final Logger log = LoggerFactory.getLogger(bookMarkDAO.class);
+
+	public bookMarkDAO() {		
+		log.debug("hihi");
 		jdbcUtil = new JDBCUtil();	// JDBCUtil 객체 생성
 	}
 		
@@ -61,22 +66,26 @@ private JDBCUtil jdbcUtil = null;
 	 * 사용자의 북마크 리스트 출력
 	 */
 	public List<BookMark> findBookMarkList(String userId) throws SQLException {
-        String sql = "SELECT bmId, postNum " 
+		log.debug("DAO22-1");	
+        String sql = "SELECT bmId, postNum, userId " 
         		   + "FROM bookMark "
-        		   + "WHERE userId = ? "
-        		   + "ORDER BY bmId";
-		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});		// JDBCUtil에 query문 설정
-					
+        		+ "where userId = 200";
+		jdbcUtil.setSqlAndParameters(sql, null);		// JDBCUtil에 query문 설정
+
+		log.debug("DAO22-"+userId);			
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();			// query 실행			
-			List<BookMark> userList = new ArrayList<BookMark>();	// User들의 리스트 생성
+			List<BookMark> bmkList = new ArrayList<BookMark>();	// User들의 리스트 생성
 			while (rs.next()) {
-				BookMark bm = new BookMark(	   //--그냥 생성자 3개할까...
+				BookMark bm = new BookMark(
+					rs.getString("bmId"),
 					rs.getString("postNum"),
 					rs.getString("userId"));
-				userList.add(bm);				
+				bmkList.add(bm);	
+				log.debug(bm.toString() + "bm");
 			}		
-			return userList;					
+			log.debug("bmList" + bmkList);
+			return bmkList;					
 			
 		} catch (Exception ex) {
 			ex.printStackTrace();
