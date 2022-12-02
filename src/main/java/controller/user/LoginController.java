@@ -27,7 +27,8 @@ public class LoginController implements Controller {
 			UserManager manager = UserManager.getInstance();
 			System.out.println("로그인 비교 시작");
 			manager.login(Id, password);
-			if(manager.login(Id, password)) System.out.println("True");
+			if(manager.login(Id, password)) 
+				System.out.println("True");
 			// 세션에 사용자 이이디 저장
 			HttpSession session = request.getSession();
             session.setAttribute(UserSessionUtils.USER_SESSION_KEY, Id);

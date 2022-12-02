@@ -37,6 +37,7 @@ public class RequestMapping {
         mappings.put("/user/update", new UpdateUserController());
         
         mappings.put("/user/delete", new DeleteUserController());
+        mappings.put("/user/myPage", new MyPageController());
         
         // 커뮤니티 관련 request URI 추가
         // 커뮤니티 리스트 요청 처리 컨트롤러 변경
@@ -51,8 +52,6 @@ public class RequestMapping {
 //        mappings.put("/community/list/json", new ListCommunityJsonController());
 //        mappings.put("/community/view/json", new ViewCommunityJsonController());
 
-        logger.info("Initialized Request Mapping!");
-        
         mappings.put("/user/createBM", new createBookMarkController());
         mappings.put("/user/createMymt", new createMyMeetingController());
         mappings.put("/user/BookMark", new BookMarkController());
@@ -62,6 +61,9 @@ public class RequestMapping {
         
         mappings.put("//cal/calulator", new ForwardController("/main/calculator.jsp"));
         mappings.put("/cal/create", new createCalculator());
+        
+        logger.info("Initialized Request Mapping!");
+        
     }
 
     public Controller findController(String uri) {	

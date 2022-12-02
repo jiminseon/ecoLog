@@ -21,11 +21,11 @@ public class UserDAO {
 	 * 사용자 관리 테이블에 새로운 사용자 생성.
 	 */
 	public int create(User user) throws SQLException {
-		String sql = "INSERT INTO USER_INFO (ID, PASSWORD, NAME, PHONENUMBER, EMAIL, ADDRESS, BIRTH, nickname, POINT, MEETING, REGDATE)"
-				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";	
+		String sql = "INSERT INTO USER_INFO (ID, PASSWORD, NAME, PHONENUMBER, EMAIL, ADDRESS, BIRTH, nickname, POINT, REGDATE)"
+				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";	
 		Object[] param = new Object[] {user.getId(), user.getPassword(), 
 				user.getName(), user.getphoneNumber(), user.getEmail(), user.getAddress(), user.getBirth(), user.getNickname(),
-				0, "NULL", "2020/02/02"};		//포인트와 meeting 0과 null로 표시		
+				0, "2020/02/02"};		//포인트와 meeting 0과 null로 표시		
 		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil 에 insert문과 매개 변수 설정
 		System.out.println(user.getName() + user.getNickname()+ user.getBirth()+ user.getphoneNumber()+ user.getEmail());
 		try {				
@@ -107,8 +107,8 @@ public class UserDAO {
 						rs.getString("name"),
 						rs.getString("phoneNumber"),
 						rs.getString("email"),
-						rs.getString("birth"),
 						rs.getString("address"),
+						rs.getString("birth"),
 						rs.getString("nickname"));
 				System.out.println("유저 정보 저장 성공");
 				return user;
@@ -127,7 +127,7 @@ public class UserDAO {
 //	 * 전체 사용자 정보를 검색하여 List에 저장 및 반환
 //	 */
 	public List<User> findUserList() throws SQLException {
-		String sql = "SELECT Id, name, email " 
+		String sql = "SELECT Id, password, name, phoneNumber, email, address, birth, nickname " 
 				+ "FROM USER_INFO "
 				+ "ORDER BY Id";
 		jdbcUtil.setSqlAndParameters(sql, null);		// JDBCUtil에 query문 설정

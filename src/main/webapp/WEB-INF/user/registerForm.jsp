@@ -101,15 +101,13 @@ function userList(targetUri) {
 						<tr height="40">
 							<td width="700" align="center" bgcolor="E6ECDE">이름</td>
 							<td width="700" bgcolor="ffffff" style="padding-left: 10"><input
-								type="text" style="width: 240" name="name"
-								<c:if test="${registerFailed}">value="${user.name}"</c:if>>
+								type="text" style="width: 240" name="name">
 							</td>
 						</tr>
 						<tr height="40">
 							<td width="700" align="center" bgcolor="E6ECDE">닉네임</td>
 							<td width="700" bgcolor="ffffff" style="padding-left: 10"><input
-								type="text" style="width: 240" name="nickName"
-								<c:if test="${registerFailed}">value="${user.nickName}"</c:if>>
+								type="text" style="width: 240" name="nickName">
 							</td>
 						</tr>
 						<tr height="40">
@@ -122,22 +120,19 @@ function userList(targetUri) {
 						<tr height="40">
 							<td width="700" align="center" bgcolor="E6ECDE">이메일 주소</td>
 							<td width="700" bgcolor="ffffff" style="padding-left: 10"><input
-								type="text" style="width: 240" name="email"
-								<c:if test="${registerFailed}">value="${user.email}"</c:if>>
+								type="text" style="width: 240" name="email">
 							</td>
 						</tr>
 						<tr height="40">
 							<td width="700" align="center" bgcolor="E6ECDE">전화번호</td>
 							<td width="700" bgcolor="ffffff" style="padding-left: 10"><input
-								type="text" style="width: 240" name="phoneNumber"
-								<c:if test="${registerFailed}">value="${user.phoneNumber}"</c:if>>
+								type="text" style="width: 240" name="phoneNumber">
 							</td>
 						</tr>
 						<tr height="40">
 							<td width="700" align="center" bgcolor="E6ECDE">주소</td>
 							<td width="700" bgcolor="ffffff" style="padding-left: 10"><input
-								type="text" style="width: 240" name="address"
-								<c:if test="${registerFailed}">value="${user.address}"</c:if>>
+								type="text" style="width: 240" name="address">
 							</td>
 						</tr>
 					</table> <br>
