@@ -20,10 +20,10 @@ public class BookMarkController implements Controller {
 		 //post 방식
 		 UserManager manager = UserManager.getInstance();
 		 //String userId = request.getParameter("userId");
-		 String id = "200";
+		 String id = "tt";
 		List<BookMark> bmList = manager.getBookMark(id);
-		log.debug("DAO20");		
-			request.setAttribute("bmkList", bmList);				
+		log.debug("bmList22" + bmList);		
+			request.setAttribute("bmList", bmList);				
 			
 			return "/user/bookMarkList.jsp";        
 	    }

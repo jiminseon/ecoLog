@@ -2,11 +2,9 @@
 <%-- <%@page import="java.util.*, model.*" %> --%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 	@SuppressWarnings("unchecked") 
-	List<BookMark> bmList = (List<BookMark>)request.getAttribute("bmkList");
-	System.out.pirnt(bmList);
+	List<BookMark> bmList = (List<BookMark>)request.getAttribute("bmList");
+	System.out.print(bmList + "bbb");
 --%>
 <html>
 <head>

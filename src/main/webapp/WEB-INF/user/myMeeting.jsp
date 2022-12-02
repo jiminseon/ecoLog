@@ -1,12 +1,74 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
+<%@page contentType="text/html; charset=utf-8" %>
+<%-- <%@page import="java.util.*, model.*" %> --%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--
+	@SuppressWarnings("unchecked") 
+	List<MyMeeting> bmList = (List<MyMeeting>)request.getAttribute("bmList");
+	System.out.print(bmList + "bbb");
+--%>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>즐겨찾기 목록</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel=stylesheet href="<c:url value='/css/MyMeeting.css' />" type="text/css">
 </head>
 <body>
+<br>
+<table style="width:100%">
 
+  <tr>
+	<td width="20"></td>
+	<td>
+	  <table>
+		<tr>
+		  <td class="title">&nbsp;&nbsp;<b>즐겨찾기 목록</b>&nbsp;&nbsp;</td>
+		</tr>
+	  </table>  
+	  <br>		  
+	  <table style="background-color: YellowGreen">
+		<tr>
+		  <td width="190" align="center" bgcolor="E6ECDE" height="22">포스트 number</td>
+		   <td width="200" align="center" bgcolor="E6ECDE">포스트 이름</td>
+		  <td width="200" align="center" bgcolor="E6ECDE">카테고리</td>
+		</tr>
+<%-- 
+	if (bmList != null) {	
+	  Iterator<MyMeeting> myMeetingIter = bmList.iterator();
+	
+	  //사용자 리스트를 클라이언트에게 보여주기 위하여 출력.
+	  while ( MyMeetingIter.hasNext() ) {
+		MyMeeting myMeeting = (MyMeeting)myMeetingIter.next();
+--%>	  	
+	  <c:forEach var="myMeeting" items="${bmList}">  			  	
+  		<tr>
+		  <td width="190" align="center" bgcolor="ffffff" height="20">
+		  	${myMeeting.myMtId}       <%-- <%=MyMeeting.getMyMtId()%> --%>
+		  </td>
+		  <td width="200" bgcolor="ffffff" style="padding-left: 10">
+			<a href="<c:url value='/MyMeeting/view'>
+					   <c:param name='Id' value='${myMeeting.postNum}'/>
+			 		 </c:url>">
+			  ${myMeeting.postNum}</a>	 <%-- <%=MyMeeting.getPostNum()%></a> --%>
+		  </td>
+		  <td width="200" align="center" bgcolor="ffffff" height="20">
+		    ${myMeeting.userId}        <%-- <%=MyMeeting.getUserId()%> --%>
+		  </td>
+		</tr>
+	  </c:forEach> 
+<%--
+	  }
+	}
+	else
+	{
+	system.out.println("ooo");
+	}
+--%>	 
+	  </table>	  	 
+	  <br>   
+	  <a href="<c:url value='/' />">게시판 이동</a>
+	  <br>  
+	</td>
+  </tr>
+</table>  
 </body>
 </html>

@@ -67,10 +67,11 @@ private static final Logger log = LoggerFactory.getLogger(bookMarkDAO.class);
 	 */
 	public List<BookMark> findBookMarkList(String userId) throws SQLException {
 		log.debug("DAO22-1");	
-        String sql = "SELECT bmId, postNum, userId " 
+        String sql = "SELECT * " 
         		   + "FROM bookMark "
-        		+ "where userId = 200";
-		jdbcUtil.setSqlAndParameters(sql, null);		// JDBCUtil에 query문 설정
+        		+ "where userId= ? "
+        		   + "order by bmId";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});		// JDBCUtil에 query문 설정
 
 		log.debug("DAO22-"+userId);			
 		try {
@@ -81,7 +82,7 @@ private static final Logger log = LoggerFactory.getLogger(bookMarkDAO.class);
 					rs.getString("bmId"),
 					rs.getString("postNum"),
 					rs.getString("userId"));
-				bmkList.add(bm);	
+				bmkList.add(bm);
 				log.debug(bm.toString() + "bm");
 			}		
 			log.debug("bmList" + bmkList);
