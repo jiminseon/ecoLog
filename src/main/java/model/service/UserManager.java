@@ -38,6 +38,7 @@ private static final Logger log = LoggerFactory.getLogger(UserManager.class);
 	}
 	
 	public static UserManager getInstance() {
+		log.debug("12121");
 		return userMan;
 	}
 	

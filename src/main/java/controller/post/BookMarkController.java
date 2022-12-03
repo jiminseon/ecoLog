@@ -16,7 +16,7 @@ public class BookMarkController implements Controller {
 	private static final Logger log = LoggerFactory.getLogger(BookMarkController.class);
 	 @Override
 	    public String execute(HttpServletRequest request, HttpServletResponse response)	throws Exception {
-			
+		 log.debug("12121");		
 		 //post 방식
 		 UserManager manager = UserManager.getInstance();
 		 //String userId = request.getParameter("userId");
