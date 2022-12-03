@@ -53,17 +53,10 @@ public class RequestMapping {
 //        mappings.put("/community/list/json", new ListCommunityJsonController());
 //        mappings.put("/community/view/json", new ViewCommunityJsonController());
 
-<<<<<<< HEAD
-        logger.info("Initialized Request Mapping!");
-        
-        mappings.put("/post/createBM", new createBookMarkController());
-        mappings.put("/post/createMymt", new createMyMeetingController());
-        mappings.put("/post/BookMarks", new BookMarkController());
-=======
         mappings.put("/user/createBM", new createBookMarkController());
         mappings.put("/user/createMymt", new createMyMeetingController());
         mappings.put("/user/BookMark", new BookMarkController());
->>>>>>> branch 'main2' of https://github.com/jiminseon/ecoLog.git
+        
         mappings.put("/user/MyMeeting", new MyMeetingController());
         mappings.put("/user/removeBM", new removeBookMarkController());
         mappings.put("/user/removeMymt", new removeMyMeetingController());
