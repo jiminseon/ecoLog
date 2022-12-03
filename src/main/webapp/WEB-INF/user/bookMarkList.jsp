@@ -1,10 +1,14 @@
+<%@page import="model.*" %>
+<%@page import="model.dao.*" %>
+<%@ page import="java.util.ArrayList" %>
 <%@page contentType="text/html; charset=utf-8" %>
 <%-- <%@page import="java.util.*, model.*" %> --%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
 	@SuppressWarnings("unchecked") 
 	List<BookMark> bmList = (List<BookMark>)request.getAttribute("bmList");
-	System.out.print(bmList + "bbb");
+	String cnt = (String)request.getAttribute("cnt");
+	out.print(bmList + "bbb" + cnt);
 --%>
 <html>
 <head>
@@ -22,8 +26,10 @@
 	  <table>
 		<tr>
 		  <td class="title">&nbsp;&nbsp;<b>즐겨찾기 목록</b>&nbsp;&nbsp;</td>
+		  <td></td>
 		</tr>
 	  </table>  
+				<div>내 모임 즐겨찾기 갯수: ${cnt} </div>
 	  <br>		  
 	  <table style="background-color: YellowGreen">
 		<tr>
@@ -57,10 +63,6 @@
 	  </c:forEach> 
 <%--
 	  }
-	}
-	else
-	{
-	system.out.println("ooo");
 	}
 --%>	 
 	  </table>	  	 

@@ -53,9 +53,9 @@ public class RequestMapping {
 //        mappings.put("/community/list/json", new ListCommunityJsonController());
 //        mappings.put("/community/view/json", new ViewCommunityJsonController());
 
-        mappings.put("/user/createBM", new createBookMarkController());
-        mappings.put("/user/createMymt", new createMyMeetingController());
-        mappings.put("/user/BookMark", new BookMarkController());
+        mappings.put("/post/createBM", new createBookMarkController());
+        mappings.put("/post/createMymt", new createMyMeetingController());
+        mappings.put("/post/BookMarks", new BookMarkController());
         
         mappings.put("/user/MyMeeting", new MyMeetingController());
         mappings.put("/user/removeBM", new removeBookMarkController());
@@ -65,7 +65,6 @@ public class RequestMapping {
         mappings.put("/cal/create", new createCalculator());
         
         logger.info("Initialized Request Mapping!");
-        
     }
 
     public Controller findController(String uri) {	

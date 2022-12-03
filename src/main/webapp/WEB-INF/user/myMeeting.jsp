@@ -1,14 +1,19 @@
+<%@page import="model.*" %>
+<%@page import="model.dao.*" %>
+<%@ page import="java.util.ArrayList" %>
 <%@page contentType="text/html; charset=utf-8" %>
 <%-- <%@page import="java.util.*, model.*" %> --%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
 	@SuppressWarnings("unchecked") 
-	List<MyMeeting> bmList = (List<MyMeeting>)request.getAttribute("bmList");
-	System.out.print(bmList + "bbb");
+	List<MyMeeting> myMtList = (List<MyMeeting>)request.getAttribute("meetingList");
+	
+	String cnt = (String)request.getAttribute("cnt");
+	System.out.print(meetingList + "mmm");
 --%>
 <html>
 <head>
-<title>즐겨찾기 목록</title>
+<title>나의모임</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel=stylesheet href="<c:url value='/css/MyMeeting.css' />" type="text/css">
 </head>
@@ -21,9 +26,10 @@
 	<td>
 	  <table>
 		<tr>
-		  <td class="title">&nbsp;&nbsp;<b>즐겨찾기 목록</b>&nbsp;&nbsp;</td>
+		  <td class="title">&nbsp;&nbsp;<b>나의모임 목록</b>&nbsp;&nbsp;</td>
 		</tr>
 	  </table>  
+	  		<div>내 모임 갯수: ${cnt}</div>
 	  <br>		  
 	  <table style="background-color: YellowGreen">
 		<tr>
@@ -32,14 +38,14 @@
 		  <td width="200" align="center" bgcolor="E6ECDE">카테고리</td>
 		</tr>
 <%-- 
-	if (bmList != null) {	
-	  Iterator<MyMeeting> myMeetingIter = bmList.iterator();
+	if (myMtList != null) {	
+	  Iterator<MyMeeting> myMeetingIter = myMtList.iterator();
 	
 	  //사용자 리스트를 클라이언트에게 보여주기 위하여 출력.
-	  while ( MyMeetingIter.hasNext() ) {
+	  while ( myMeetingIter.hasNext() ) {
 		MyMeeting myMeeting = (MyMeeting)myMeetingIter.next();
 --%>	  	
-	  <c:forEach var="myMeeting" items="${bmList}">  			  	
+	  <c:forEach var="myMeeting" items="${myMtList}">  			  	
   		<tr>
 		  <td width="190" align="center" bgcolor="ffffff" height="20">
 		  	${myMeeting.myMtId}       <%-- <%=MyMeeting.getMyMtId()%> --%>
@@ -57,10 +63,6 @@
 	  </c:forEach> 
 <%--
 	  }
-	}
-	else
-	{
-	system.out.println("ooo");
 	}
 --%>	 
 	  </table>	  	 

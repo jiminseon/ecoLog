@@ -102,7 +102,8 @@ private static final Logger log = LoggerFactory.getLogger(bookMarkDAO.class);
 	 */
 	public int getNumberOfBookMark(String userId) {
 		String sql = "SELECT COUNT(userId) FROM bookMark "
-     				+ "WHERE userId = ?";              
+     				+ "WHERE userId = ?";      
+		
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});	// JDBCUtil에 query문과 매개 변수 설정
 		
 		try {

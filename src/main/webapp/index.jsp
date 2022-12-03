@@ -1,1 +1,1 @@
-<% response.sendRedirect(request.getContextPath() + "/post/BookMarks"); %>
+<% response.sendRedirect(request.getContextPath() + "/user/MyMeeting"); %>

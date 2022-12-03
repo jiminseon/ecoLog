@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import controller.Controller;
 import model.BookMark;
+import model.dao.bookMarkDAO;
 import model.service.UserManager;
 
 public class BookMarkController implements Controller {
@@ -23,7 +24,11 @@ public class BookMarkController implements Controller {
 		 String id = "tt";
 		List<BookMark> bmList = manager.getBookMark(id);
 		log.debug("bmList22" + bmList);		
-			request.setAttribute("bmList", bmList);				
+			request.setAttribute("bmList", bmList);	
+			
+			bookMarkDAO bookMarkDao = new bookMarkDAO();
+			int cnt = bookMarkDao.getNumberOfBookMark(id);
+			request.setAttribute("cnt", cnt);	
 			
 			return "/user/bookMarkList.jsp";        
 	    }
