@@ -58,7 +58,7 @@
 	<div class="head">
 	<a href="<c:url value='/user/login/form'></c:url>"> 로그인</a>
 	<a href="<c:url value='/user/register'></c:url>">회원가입</a>
-	<a href="<c:url value='/user/login/form'></c:url>">마이페이지</a>
+	<a href="<c:url value='/user/myPage'></c:url>">마이페이지</a>
 	</div>
 	<p/><font size='7' color='004300' weight="bold">EcoLog</font>
 </header>

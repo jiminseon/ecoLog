@@ -22,14 +22,9 @@ function userModify() {
 		form.name.focus();
 		return false;
 	}
-	if (form.nickName.value == "") {
+	if (form.nickname.value == "") {
 		alert("닉네임을 입력하십시오.");
 		form.nickName.focus();
-		return false;
-	}
-	if (form.birth.value == "") {
-		alert("생년월일을 입력하십시오.");
-		form.birth.focus();
 		return false;
 	}
 	var emailExp = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
@@ -41,11 +36,6 @@ function userModify() {
 	if(form.phoneNumber.value =="") {
 		alert("전화번호를 입력하십시오.");
 		form.phoneNumber.focus();
-		return false;
-	}
-	if (form.address.value == "") {
-		alert("주소를 입력하십시오.");
-		form.nickName.focus();
 		return false;
 	}
 	form.submit();
@@ -100,13 +90,13 @@ function userList(targetUri) {
 		 <tr height="40">
 			<td width="150" align="center" bgcolor="E6ECDE">닉네임</td>
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="text" style="width: 240" name="nickName" >
+				<input type="text" style="width: 240" name="nickname" value="${user.nickname}">
 			</td>
 		  </tr>
 		  <tr height="40">
 			<td width="150" align="center" bgcolor="E6ECDE">생년월일</td>
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="text" style="width: 240" name="birth" >
+				<input type="text" style="width: 240" name="birth" value="${user.birth}">
 			</td>
 		  </tr> 
 		  <tr height="40">
@@ -126,7 +116,6 @@ function userList(targetUri) {
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
 				<input type="text" style="width: 240" name="address" value="${user.address}">
 			</td>
-		  </tr>	
 	    </table>
 	    <br>	  
 	    <table style="width: 100%">

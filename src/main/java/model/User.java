@@ -45,24 +45,12 @@ public class User {
 		this.nickname = nickname;
 	}
 	
-	public User(String Id, String password, String name, String phoneNumber, String email, String address,
-			String birth, String nickname, int regDate) {
-		this.Id = Id;
-		this.password = password;
-		this.name = name;
-		this.phoneNumber = phoneNumber;
-		this.email = email;
-		this.birth = birth;
-		this.address = address;
-		this.nickname = nickname;
-		this.regDate = regDate;
-	}
-	public void update(User updateUser) {
-        this.password = updateUser.password;
-        this.name = updateUser.name;
-        this.email = updateUser.email;
-        this.phoneNumber = updateUser.phoneNumber;
-    }
+//	public void update(User updateUser) {
+//        this.password = updateUser.password;
+//        this.name = updateUser.name;
+//        this.email = updateUser.email;
+//        this.phoneNumber = updateUser.phoneNumber;
+//    }
 
 	public boolean matchPassword(String password) {
 		if (password == null) {
@@ -176,7 +164,7 @@ public class User {
 	@java.lang.Override
 	public String toString() {
 		return "user [Id=" + Id + ", password=" + password + ", name=" + name + ", phoneNumber=" + phoneNumber + ", email=" + email
-				+ ", address=" + address + ", birth=" + birth + ", nickname=" + nickname + ", point=" + point
+				 + ", birth=" + birth + ", nickname=" + nickname + ", address=" + address+ ", point=" + point
 				+ ", regDate=" + regDate + "]";
 	}
 	

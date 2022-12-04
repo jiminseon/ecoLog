@@ -46,14 +46,16 @@ public class UserDAO {
 	 */
 	public int update(User user) throws SQLException {
 		String sql = "UPDATE USER_INFO "
-				+ "SET password=?, name=?, nickname=?, birth=?, phoneNumber=?, email=? "
+				+ "SET password=?, name=?, nickname=?, birth=?, email=?, phoneNumber=?, address=? "
 				+ "WHERE Id=?";
-		Object[] param = new Object[] {user.getPassword(), user.getName(), user.getphoneNumber(),
-				user.getNickname(), user.getBirth(), user.getEmail(), 
-				user.getId()};				
+		Object[] param = new Object[] {user.getId(), user.getPassword(), user.getName()
+				, user.getNickname(), user.getBirth(), user.getEmail(), user.getphoneNumber(), user.getAddress()};
+		
+		System.out.println("DAO update에서 sql문 가동\n고치는 아이디는?"+user.getId());
 		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 update문과 매개 변수 설정
 
-		try {				
+		try {		
+			System.out.println("DAO에서 수정 중");
 			int result = jdbcUtil.executeUpdate();	// update 문 실행
 			return result;
 		} catch (Exception ex) {
@@ -61,6 +63,7 @@ public class UserDAO {
 			ex.printStackTrace();
 		}
 		finally {
+			System.out.println("정보 수정 완료");
 			jdbcUtil.commit();
 			jdbcUtil.close();	// resource 반환
 		}		
