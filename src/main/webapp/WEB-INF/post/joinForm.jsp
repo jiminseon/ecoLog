@@ -1,6 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="javax.servlet.http.*"%>
+<%@page import="org.slf4j.Logger" %>
+<%@page import="org.slf4j.LoggerFactory" %>
+<%-- <%@page import="java.util.*, model.*" %> --%>
 <!DOCTYPE html>
+<%--private static final Logger log = LoggerFactory.getLogger(RegisterUserController.class);
+
+	@SuppressWarnings("unchecked") 
+	User user = (User)request.getAttribute("user1");
+	log.debug("joimm" + user1.toString());
+--%>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -17,7 +27,7 @@
             </tr>
             <tr>
                 <td>전화번호 :</td>
-                <td>${user.phone}</td>
+                <td>${user.phoneNumber}</td>
             </tr>
             <tr>
                 <td>이메일 :</td>
@@ -29,7 +39,7 @@
             </tr>
             <tr>
                 <td>생년월일 :</td>
-                <td>${user.birthDate}</td>
+                <td>${user.birth}</td>
             </tr>
             <tr>
                 <td>활동명 :</td>

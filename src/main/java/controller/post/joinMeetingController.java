@@ -2,12 +2,14 @@ package controller.post;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.Controller;
 import controller.user.RegisterUserController;
+import controller.user.UserSessionUtils;
 import model.BookMark;
 import model.MyMeeting;
 import model.User;
@@ -21,7 +23,14 @@ public class joinMeetingController implements Controller{
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
        	if (request.getMethod().equals("GET")) {	
        		log.debug("HIHI");
+       		
+       		HttpSession session = request.getSession();
+            
+            UserManager manager = UserManager.getInstance();
+			User user = manager.findUser((String)session.getAttribute(UserSessionUtils.USER_SESSION_KEY));
 //    		// GET request: 회원정보 등록 form 요청	
+			log.debug("joinnn" + user.toString());
+			request.setAttribute("user1", user);
 			return "/post/joinForm.jsp";   // 검색한 커뮤니티 리스트를 registerForm으로 전송     	
 	    }	
 
