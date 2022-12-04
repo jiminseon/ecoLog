@@ -5,7 +5,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import controller.calculator.createCalculator;
+import controller.calculator.*;
 import controller.post.BookMarkController;
 import controller.post.createBookMarkController;
 import controller.post.removeBookMarkController;
@@ -37,6 +37,7 @@ public class RequestMapping {
         mappings.put("/user/update", new UpdateUserController());
         
         mappings.put("/user/delete", new DeleteUserController());
+        mappings.put("/user/myPage", new MyPageController());
         
         // 커뮤니티 관련 request URI 추가
         // 커뮤니티 리스트 요청 처리 컨트롤러 변경
@@ -50,8 +51,6 @@ public class RequestMapping {
 //        // 커뮤니티 리스트 및 상세정보 검색 request mapping 추가 (JSON 결과 생성)    
 //        mappings.put("/community/list/json", new ListCommunityJsonController());
 //        mappings.put("/community/view/json", new ViewCommunityJsonController());
-
-        logger.info("Initialized Request Mapping!");
         
         mappings.put("/user/createBM", new createBookMarkController());
         mappings.put("/user/createMymt", new createMyMeetingController());
@@ -60,8 +59,11 @@ public class RequestMapping {
         mappings.put("/user/removeBM", new removeBookMarkController());
         mappings.put("/user/removeMymt", new removeMyMeetingController());
         
-        mappings.put("//cal/calulator", new ForwardController("/main/calculator.jsp"));
+        //mappings.put("/cal/calulator", new ForwardController("/main/calculator.jsp"));
+        mappings.put("/cal/calulator", new ListItemController());
         mappings.put("/cal/create", new createCalculator());
+        
+        logger.info("Initialized Request Mapping!");
     }
 
     public Controller findController(String uri) {	

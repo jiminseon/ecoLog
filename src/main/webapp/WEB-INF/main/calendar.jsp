@@ -11,13 +11,13 @@
         <div class="todo-wrap">
           <div class="todo-title"></div>
           <div class="calculator">
-		      <input type="button" value="Send Value" onclick="goCal()">
 		    <p/>
         	
         </div>
       </div>
       </div>
       <div class="content-right">
+      
         <table id="calendar" align="center">
           <thead>
             <tr class="btn-wrap clearfix">

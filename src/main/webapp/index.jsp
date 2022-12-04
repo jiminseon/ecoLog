@@ -50,7 +50,11 @@
 </style>
 
 <script>
-
+function goCal() {
+	window.name = "index";
+	var url = "<c:url value='/cal/calulator'></c:url>"
+	window.open(url,width=50, height=50);
+}
 </script>
 </head>
 <body>
@@ -58,7 +62,7 @@
 	<div class="head">
 	<a href="<c:url value='/user/login/form'></c:url>"> 로그인</a>
 	<a href="<c:url value='/user/register'></c:url>">회원가입</a>
-	<a href="<c:url value='/user/login/form'></c:url>">마이페이지</a>
+	<a href="<c:url value='/user/myPage'></c:url>">마이페이지</a>
 	</div>
 	<p/><font size='7' color='004300' weight="bold">EcoLog</font>
 </header>
@@ -68,6 +72,7 @@
 			<!-- 로그인 되어있을 때는 character.jsp가 뜨도록 구현해두기 -->
 		</div>
 		<div class="tright">
+			<input type="button" value="cal" onclick="goCal()">
 		   <%@ include file="/WEB-INF/main/calendar.jsp" %>
 		</div>
 	</div>

@@ -1,8 +1,10 @@
 package model.service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import model.Calculator;
+import model.Item;
 import model.dao.calculatorDAO;
 
 
@@ -26,4 +28,8 @@ public class CalculatorManager {
     public int create(Calculator cal) throws SQLException, ExistingUserException {
         return calDAO.create(cal);
     }
+    
+	public List<Item> findItemList() throws SQLException {
+		return calDAO.findItemList();
+	}
 }
