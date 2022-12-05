@@ -2,6 +2,7 @@ package model.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import model.User;
@@ -21,11 +22,16 @@ public class UserDAO {
 	 * 사용자 관리 테이블에 새로운 사용자 생성.
 	 */
 	public int create(User user) throws SQLException {
+		/*
+		 * java.util.Date utilDate = new java.util.Date(); java.sql.Date sqlDate = new
+		 * Date(utilDate.getTime());
+		 */
 		String sql = "INSERT INTO USER_INFO (ID, PASSWORD, NAME, PHONENUMBER, EMAIL, ADDRESS, BIRTH, nickname, POINT, REGDATE)"
 				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";	
 		Object[] param = new Object[] {user.getId(), user.getPassword(), 
 				user.getName(), user.getphoneNumber(), user.getEmail(), user.getAddress(), user.getBirth(), user.getNickname(),
-				0, "2020/02/02"};		//포인트와 meeting 0과 null로 표시		
+				0, 1};		//포인트와 meeting 0과 null로 표시		
+
 		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil 에 insert문과 매개 변수 설정
 		System.out.println(user.getName() + user.getNickname()+ user.getBirth()+ user.getphoneNumber()+ user.getEmail());
 		try {				
@@ -51,7 +57,7 @@ public class UserDAO {
 		Object[] param = new Object[] {user.getId(), user.getPassword(), user.getName()
 				, user.getNickname(), user.getBirth(), user.getEmail(), user.getphoneNumber(), user.getAddress()};
 		
-		System.out.println("DAO update에서 sql문 가동\n고치는 아이디는?"+user.getId());
+		System.out.println("DAO update에서 sql문 가동\n고치는 아이디는?"+user.getId() + user.getPassword());
 		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 update문과 매개 변수 설정
 
 		try {		
@@ -59,6 +65,7 @@ public class UserDAO {
 			int result = jdbcUtil.executeUpdate();	// update 문 실행
 			return result;
 		} catch (Exception ex) {
+			System.out.println("DAO 오류");
 			jdbcUtil.rollback();
 			ex.printStackTrace();
 		}

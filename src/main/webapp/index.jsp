@@ -50,6 +50,25 @@
 </style>
 
 <script>
+function login() {
+	if (form.userId.value == "") {
+		alert("사용자 ID를 입력하십시오.");
+		form.userId.focus();
+		return false;
+	} 
+	if (form.password.value == "") {
+		alert("비밀번호를 입력하십시오.");
+		form.password.focus();
+		return false;
+	}		
+	form.submit();
+}
+
+function userCreate(targetUri) {
+	form.action = targetUri;
+	form.method="GET";		// register form 요청
+	form.submit();
+}
 
 </script>
 </head>
@@ -229,7 +248,14 @@ var keyValue = today.getFullYear() + '' + today.getMonth()+ '' + today.getDate()
 function checkList(e){
     e.currentTarget.classList.add('checked');
 }
+
+function new_window() {
+    window.open(
+      "/WEB-INF/main/calculator.jsp",
+      "calculator",
+      "width=400, height=300, top=50, left=50"
+    );
+  }
 		
   </script>
-
 </html>
