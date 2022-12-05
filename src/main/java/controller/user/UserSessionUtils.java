@@ -8,8 +8,6 @@ public class UserSessionUtils {
     /* 현재 로그인한 사용자의 ID를 구함 */
     public static String getLoginId(HttpSession session) {
         String Id = (String)session.getAttribute(USER_SESSION_KEY);
-
-    	System.out.println("Id: "+Id);
         return Id;
     }
 

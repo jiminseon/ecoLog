@@ -1,7 +1,8 @@
 package model;
 
-import java.sql.Date;
 import java.util.List;
+
+
 
 public class User {
 	private String Id;
@@ -13,10 +14,11 @@ public class User {
 	private String birth;
 	private String nickname;  
 	private int point;
+	//private List<Meeting> meeting;
 	private int regDate; 
 	//private Character ch = new Character(id, nickname);
 	private List<String> imageList;
-	
+
 	public User(java.lang.String Id, java.lang.String password, java.lang.String name, java.lang.String phoneNumber,
 			java.lang.String email, java.lang.String address, java.lang.String birth, java.lang.String nickname, int point,
 			int regDate) {
@@ -30,6 +32,7 @@ public class User {
 		this.birth = birth;
 		this.nickname = nickname;
 		this.point = point;
+	//	this.meeting = meeting;
 		this.regDate = regDate;
 	}
 
@@ -44,6 +47,7 @@ public class User {
 		this.birth = birth;
 		this.nickname = nickname;
 	}
+<<<<<<< HEAD
 	
 //	public void update(User updateUser) {
 //        this.password = updateUser.password;
@@ -51,6 +55,15 @@ public class User {
 //        this.email = updateUser.email;
 //        this.phoneNumber = updateUser.phoneNumber;
 //    }
+=======
+
+	/*public void update(User updateUser) {
+        this.password = updateUser.password;
+        this.name = updateUser.name;
+        this.email = updateUser.email;
+        this.phoneNumber = updateUser.phoneNumber;
+    }*/
+>>>>>>> refs/remotes/origin/main3
 
 	public boolean matchPassword(String password) {
 		if (password == null) {
@@ -131,6 +144,17 @@ public class User {
 		this.point = point;
 	}
 
+<<<<<<< HEAD
+=======
+//	public List<Meeting> getMeeting() {
+//		return meeting;
+//	}
+//
+//	public void setMeeting(List<Meeting> meeting) {
+//		this.meeting = meeting;
+//	}
+
+>>>>>>> refs/remotes/origin/main3
 	public int getRegDate() {
 		return regDate;
 	}
@@ -165,5 +189,5 @@ public class User {
 				 + ", birth=" + birth + ", nickname=" + nickname + ", address=" + address+ ", point=" + point
 				+ ", regDate=" + regDate + "]";
 	}
-	
+
 }

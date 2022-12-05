@@ -61,7 +61,6 @@ function userList(targetUri) {
 	form.action = targetUri;
 	form.submit();
 }
-
 </script>
 </head>
 <body>

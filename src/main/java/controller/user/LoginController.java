@@ -13,10 +13,10 @@ import model.service.UserManager;
 public class LoginController implements Controller {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    	
+
     	if (request.getMethod().equals("GET")) {	
 //    		// GET request: 회원정보 등록 form 요청	
-    		
+
 			return "/user/loginForm.jsp";  
 	    }	
     	String Id = request.getParameter("Id");
@@ -32,7 +32,7 @@ public class LoginController implements Controller {
 			// 세션에 사용자 이이디 저장
 			HttpSession session = request.getSession();
             session.setAttribute(UserSessionUtils.USER_SESSION_KEY, Id);
-    		
+
             return "redirect:/";			
 		} catch (Exception e) {
 			/* UserNotFoundException이나 PasswordMismatchException 발생 시

@@ -21,7 +21,6 @@ function login() {
 	}		
 	form.submit();
 }
-
 function userCreate(targetUri) {
 	form.action = targetUri;
 	form.method="GET";		// register form 요청
@@ -35,15 +34,12 @@ function userCreate(targetUri) {
 	margin-right: auto;
 	text-align: center;
 }
-
 table {
 	border: 3px Black
 }
-
 td {
 	border: 1px light Green
 }
-
 #title {
 	background-color: White
 }

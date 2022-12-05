@@ -36,7 +36,6 @@ public class MyPageController implements Controller {
 		}
 		
 		request.setAttribute("user", user);	
-		System.out.println("myPage jsp로 출발");
 		return "/user/myPage.jsp";        
     }
 }

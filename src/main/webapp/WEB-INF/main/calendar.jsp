@@ -7,17 +7,19 @@
         <div class="main-wrap">
           <div id="main-day" class="main-day"></div>
           <div id="main-date" class="main-date" ></div>
+          
+			<input type="button" value="cal" onclick="goCal()">
         </div>
         <div class="todo-wrap">
           <div class="todo-title"></div>
           <div class="calculator">
-		      <input type="button" value="Send Value" onclick="goCal()">
 		    <p/>
         	
         </div>
       </div>
       </div>
       <div class="content-right">
+      
         <table id="calendar" align="center">
           <thead>
             <tr class="btn-wrap clearfix">
