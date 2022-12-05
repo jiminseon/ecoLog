@@ -1,5 +1,5 @@
-package model.dao.mybatis;
-
-public class PostDAO {
-
-}
+//package model.dao.mybatis;
+//
+//public class PostDAO {
+//
+//}

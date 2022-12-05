@@ -68,11 +68,11 @@
     align-items: center;
     justify-content:  center;
     width: 100vw;
-    height: 100vh;
+    height: 100vw;
     background: #ffffff;
   }
   .content-wrap{
-    width: 800px;
+    width: 900px;
     height: 400px;
     margin:0 auto;
     border-radius: 20px;

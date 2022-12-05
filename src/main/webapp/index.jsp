@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ page import="java.util.*, model.User, controller.user.*" %>   
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
@@ -7,50 +8,78 @@
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
 <title>메인</title>
 <style>
-	header {
-		height: 100px;
-		text-align: center;
-	}
-	div.head {
-		text-align: right;
-	}
-	div.wrap {
-		margin: auto;
-	}
-	div.top, div.bottom {
-	  width: 1100px;
-	  margin: auto;
-	}
-	div.tleft, div.bleft {
-	  width: 240px;
-	  float: left;
-	  margin-right: 10px;
-	  box-sizing: border-box;
-	  border: 1px solid #003458;
-	}
-	div.tright {
-	  width: 850px;
-	  float: right;
-	  box-sizing: border-box;
-	}
-	div.bright {
-	  width: 850px;
-	  float: right;
-	  box-sizing: border-box;
-	  border: 1px solid #003458;
-	}	
-	div.tleft, div.tright {
-		height: 400px;
-	}
-	div.bleft, div.bright {
-		height: 250px;
-		margin-top: 10px;
-	}
+body{
+        background:#6e8769;
+        width:99%;
+      height:100%;
+   }
+   header {
+      height: 100px;
+      text-align: center;
+   }
+   div.head {
+      text-align: right;
+   }
+   div.wrap {
+      margin: auto;
+   }
+   div.top, div.bottom {
+     width: 1250px;
+     height:350px;
+     margin: auto;
+   }
+   div.tleft, div.bleft {
+     width: 330px;
+     float: left;
+     margin-right: 10px;
+     box-sizing: border-box;
+     border: 5px solid #ffffff;
+       border-radius: 15px;
+   }
+   div.tright {
+     width: 900px;
+     float: right;
+     box-sizing: border-box;
+   }
+   div.bright {
+     width: 900px;
+     float: right;
+     box-sizing: border-box;
+     border: 5px solid #ffffff;
+       border-radius: 25px;
+   }   
+   div.tleft, div.tright {
+      height: 400px;
+   }
+   div.bleft, div.bright {
+      height: 250px;
+      margin-top: 10px;
+   }
 
 </style>
 
 <script>
+function goCal() {
+	var now = new Date();
+	var str = document.getElementById( "current-year-month" ).innerHTML;
+    var day = document.getElementById( "main-date" ).innerHTML;
+    var words = str.split("&nbsp;");
+    
+	if (monthList[now.getMonth()] == words[0] && now.getFullYear().toString() == words[4] && day == now.getDate().toString()) {
+		window.name = "index";
+		var url = "<c:url value='/cal/calulator'></c:url>"
+		window.open(url,width=50, height=50);
+	}
+	else {
+		alert("오늘 날짜만 입력 가능");		
+	}
+}
 
+function goList() {
+	window.name = "index";
+	var url = "<c:url value='/cal/list'></c:url>"
+	window.open(url,width=50, height=50);
+}
 </script>
 </head>
 <body>
@@ -100,7 +129,7 @@
      pageYear = leapYear;
  }else{
      pageYear = notLeapYear;
- }
+ } 
 
  function showCalendar(){
   currentTitle.innerHTML = monthList[first.getMonth()] + '&nbsp;&nbsp;&nbsp;&nbsp;'+ first.getFullYear();
@@ -128,6 +157,10 @@
     mainTodayDate.innerHTML = today.getDate();
  }
  showCalendar();
+ var clickedDate1 = document.getElementById(today.getDate());
+ var tdGroup = [];
+ clickedDate1.classList.add('active');
+ clickStart();
  
  function removeCalendar(){
      let catchTr = 100;
@@ -186,13 +219,10 @@ function next(){
     reshowingList();
 }
 
-var clickedDate1 = document.getElementById(today.getDate());
-clickedDate1.classList.add('active');
 var prevBtn = document.getElementById('prev');
 var nextBtn = document.getElementById('next');
 prevBtn.addEventListener('click',prev);
 nextBtn.addEventListener('click',next);
-var tdGroup = [];
 function clickStart(){
     for(let i = 1; i <= pageYear[first.getMonth()]; i++){
         tdGroup[i] = document.getElementById(i);
@@ -211,6 +241,7 @@ function changeToday(e){
     showMain();
     keyValue = today.getFullYear() + '' + today.getMonth()+ '' + today.getDate();
     reshowingList();
+    goList();
 }
 
 

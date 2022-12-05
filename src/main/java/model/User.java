@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.Date;
 import java.util.List;
 
 public class User {
@@ -18,7 +19,7 @@ public class User {
 	
 	public User(java.lang.String Id, java.lang.String password, java.lang.String name, java.lang.String phoneNumber,
 			java.lang.String email, java.lang.String address, java.lang.String birth, java.lang.String nickname, int point,
-			 int regDate) {
+			int regDate) {
 		super();
 		this.Id = Id;
 		this.password = password;
@@ -34,7 +35,6 @@ public class User {
 
 	public User(String Id, String password, String name, String phoneNumber, String email, String address,
 			String birth, String nickname) {
-		super();
 		this.Id = Id;
 		this.password = password;
 		this.name = name;
@@ -45,15 +45,13 @@ public class User {
 		this.nickname = nickname;
 	}
 	
-	/*public void update(User updateUser) {
-        this.password = updateUser.password;
-        this.name = updateUser.name;
-        this.email = updateUser.email;
-        this.phoneNumber = updateUser.phoneNumber;
-    }*/
-	
+//	public void update(User updateUser) {
+//        this.password = updateUser.password;
+//        this.name = updateUser.name;
+//        this.email = updateUser.email;
+//        this.phoneNumber = updateUser.phoneNumber;
+//    }
 
-	
 	public boolean matchPassword(String password) {
 		if (password == null) {
 			return false;
@@ -164,7 +162,7 @@ public class User {
 	@java.lang.Override
 	public String toString() {
 		return "user [Id=" + Id + ", password=" + password + ", name=" + name + ", phoneNumber=" + phoneNumber + ", email=" + email
-				+ ", address=" + address + ", birth=" + birth + ", nickname=" + nickname + ", point=" + point
+				 + ", birth=" + birth + ", nickname=" + nickname + ", address=" + address+ ", point=" + point
 				+ ", regDate=" + regDate + "]";
 	}
 	
