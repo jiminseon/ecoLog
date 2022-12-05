@@ -39,7 +39,7 @@ function userRemove() {
 	    <a href="<c:url value='/user/update'>
 	     		   <c:param name='userId' value='<%=user.getId()%>'/>
 			 	 </c:url>">개인정보 수정</a> &nbsp;
-		<a href="<c:url value='/user/BookMark'>
+		<a href="<c:url value='/post/BookMarks'>
 	     		   <c:param name='userId' value='<%=user.getId()%>'/>
 			 	 </c:url>">즐겨찾기 관리</a> &nbsp;
 		<a href="<c:url value='/user/MyMeeting'>

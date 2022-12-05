@@ -26,6 +26,8 @@ public class UserManager {
 	public UserManager() {
 		try {
 			userDAO = new UserDAO();
+			bmDao = new bookMarkDAO();
+			mtDao = new MyMeetingDAO();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}			
