@@ -3,9 +3,6 @@ package model.service;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import model.dao.MyMeetingDAO;
 import model.dao.UserDAO;
 import model.dao.bookMarkDAO;
@@ -26,12 +23,9 @@ public class UserManager {
 	private bookMarkDAO bmDao;
 	private MyMeetingDAO mtDao;  
 
-private static final Logger log = LoggerFactory.getLogger(UserManager.class);
 	public UserManager() {
 		try {
 			userDAO = new UserDAO();
-			bmDao = new bookMarkDAO();
-			mtDao = new MyMeetingDAO();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}			
@@ -49,6 +43,7 @@ private static final Logger log = LoggerFactory.getLogger(UserManager.class);
     }
 
     public int update(User user) throws SQLException, UserNotFoundException {
+		
 		return userDAO.update(user);
 	}	
 
@@ -86,7 +81,7 @@ private static final Logger log = LoggerFactory.getLogger(UserManager.class);
 		return this.userDAO;
 	}
 	
-   public List<User> findUserList() throws SQLException {   
+   public List<User> findUserList() throws SQLException {               
         return userDAO.findUserList();
     }
 
@@ -116,8 +111,6 @@ private static final Logger log = LoggerFactory.getLogger(UserManager.class);
 	}
 
 	public List<BookMark> getBookMark(String Id) throws SQLException {
-		log.debug("DAO2-1");		
-		log.debug("--" + Id);
 		return bmDao.findBookMarkList(Id);		
 	}
 	

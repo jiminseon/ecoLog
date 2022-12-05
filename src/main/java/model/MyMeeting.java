@@ -5,13 +5,6 @@ public class MyMeeting {
 	private String postNum;
 	private String userId;
 	
-	public MyMeeting(String myMtId, String postNum, String userId) {
-		super();
-		this.myMtId = myMtId;
-		this.postNum = postNum;
-		this.userId = userId;
-	}
-
 	public MyMeeting(String postNum, String userId) {
 		super();
 		this.postNum = postNum;

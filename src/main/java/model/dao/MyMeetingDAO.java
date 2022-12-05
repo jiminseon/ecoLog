@@ -5,16 +5,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import model.MyMeeting;
 
 public class MyMeetingDAO {
 	private JDBCUtil jdbcUtil = null;
 	
-	private static final Logger log = LoggerFactory.getLogger(bookMarkDAO.class);
-
 	public MyMeetingDAO() {			
 		jdbcUtil = new JDBCUtil();	// JDBCUtil 객체 생성
 	}
@@ -65,8 +60,7 @@ public class MyMeetingDAO {
 	 * 모임 리스트 출력
 	 */
 	public List<MyMeeting> findMyMtList(String userId) throws SQLException {
-		log.debug("DAO32-1");	
-        String sql = "SELECT * " 
+        String sql = "SELECT mymtId, postNum " 
         		   + "FROM myMeeting "
         		   + "WHERE userId = ? "
         		   + "ORDER BY mymtId";
@@ -74,15 +68,14 @@ public class MyMeetingDAO {
 					
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();			// query 실행			
-			List<MyMeeting> mtList = new ArrayList<MyMeeting>();	// User들의 리스트 생성
+			List<MyMeeting> userList = new ArrayList<MyMeeting>();	// User들의 리스트 생성
 			while (rs.next()) {
-				MyMeeting mymt = new MyMeeting(	
-					rs.getString("myMtId"),
+				MyMeeting mymt = new MyMeeting(	   //--그냥 생성자 3개할까...
 					rs.getString("postNum"),
 					rs.getString("userId"));
-				mtList.add(mymt);				
+				userList.add(mymt);				
 			}		
-			return mtList;					
+			return userList;					
 			
 		} catch (Exception ex) {
 			ex.printStackTrace();

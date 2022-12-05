@@ -19,7 +19,7 @@ public class User {
 	
 	public User(java.lang.String Id, java.lang.String password, java.lang.String name, java.lang.String phoneNumber,
 			java.lang.String email, java.lang.String address, java.lang.String birth, java.lang.String nickname, int point,
-			int regDate) {
+		 int regDate) {
 		super();
 		this.Id = Id;
 		this.password = password;
@@ -40,8 +40,8 @@ public class User {
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 		this.email = email;
-		this.address = address;
 		this.birth = birth;
+		this.address = address;
 		this.nickname = nickname;
 	}
 	
@@ -130,6 +130,8 @@ public class User {
 	public void setPoint(int point) {
 		this.point = point;
 	}
+
+
 
 	public int getRegDate() {
 		return regDate;

@@ -5,18 +5,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.BookMark;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import model.dao.JDBCUtil;
 
 public class bookMarkDAO {
 private JDBCUtil jdbcUtil = null;
-
-private static final Logger log = LoggerFactory.getLogger(bookMarkDAO.class);
-
-	public bookMarkDAO() {		
-		log.debug("hihi");
+	
+	public bookMarkDAO() {			
 		jdbcUtil = new JDBCUtil();	// JDBCUtil 객체 생성
 	}
 		
@@ -66,27 +61,22 @@ private static final Logger log = LoggerFactory.getLogger(bookMarkDAO.class);
 	 * 사용자의 북마크 리스트 출력
 	 */
 	public List<BookMark> findBookMarkList(String userId) throws SQLException {
-		log.debug("DAO22-1");	
-        String sql = "SELECT * " 
+        String sql = "SELECT bmId, postNum " 
         		   + "FROM bookMark "
-        		+ "where userId= ? "
-        		   + "order by bmId";
+        		   + "WHERE userId = ? "
+        		   + "ORDER BY bmId";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});		// JDBCUtil에 query문 설정
-
-		log.debug("DAO22-"+userId);			
+					
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();			// query 실행			
-			List<BookMark> bmkList = new ArrayList<BookMark>();	// User들의 리스트 생성
+			List<BookMark> userList = new ArrayList<BookMark>();	// User들의 리스트 생성
 			while (rs.next()) {
-				BookMark bm = new BookMark(
-					rs.getString("bmId"),
+				BookMark bm = new BookMark(	   //--그냥 생성자 3개할까...
 					rs.getString("postNum"),
 					rs.getString("userId"));
-				bmkList.add(bm);
-				log.debug(bm.toString() + "bm");
+				userList.add(bm);				
 			}		
-			log.debug("bmList" + bmkList);
-			return bmkList;					
+			return userList;					
 			
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -102,8 +92,7 @@ private static final Logger log = LoggerFactory.getLogger(bookMarkDAO.class);
 	 */
 	public int getNumberOfBookMark(String userId) {
 		String sql = "SELECT COUNT(userId) FROM bookMark "
-     				+ "WHERE userId = ?";      
-		
+     				+ "WHERE userId = ?";              
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});	// JDBCUtil에 query문과 매개 변수 설정
 		
 		try {

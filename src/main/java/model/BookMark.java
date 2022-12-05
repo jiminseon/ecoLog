@@ -5,13 +5,6 @@ public class BookMark {
 	private String postNum;
 	private String userId;
 	
-	public BookMark(String bmId, String postNum, String userId) {
-		super();
-		this.bmId = bmId;
-		this.postNum = postNum;
-		this.userId = userId;
-	}
-
 	public BookMark(String postNum, String userId) {
 		super();
 		this.postNum = postNum;

@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import controller.calculator.createCalculator;
 import controller.post.BookMarkController;
 import controller.post.createBookMarkController;
-import controller.post.joinMeetingController;
 import controller.post.removeBookMarkController;
 import controller.user.*;
 //import controller.comm.*;
@@ -24,7 +23,7 @@ public class RequestMapping {
         mappings.put("/", new ForwardController("index.jsp"));
         mappings.put("/user/login/form", new ForwardController("/user/loginForm.jsp"));
         mappings.put("/user/login", new LoginController());
-        mappings.put("/user/logout", new LogoutController());
+    //    mappings.put("/user/logout", new LogoutController());
    //     mappings.put("/user/list", new ListUserController());
     //    mappings.put("/user/view", new ViewUserController());
         
@@ -53,18 +52,18 @@ public class RequestMapping {
 //        mappings.put("/community/list/json", new ListCommunityJsonController());
 //        mappings.put("/community/view/json", new ViewCommunityJsonController());
 
-        mappings.put("/post/createBM", new createBookMarkController());
-        mappings.put("/post/createMymt", new createMyMeetingController());
-        mappings.put("/post/BookMarks", new BookMarkController());
-        
+        mappings.put("/user/createBM", new createBookMarkController());
+        mappings.put("/user/createMymt", new createMyMeetingController());
+        mappings.put("/user/BookMark", new BookMarkController());
         mappings.put("/user/MyMeeting", new MyMeetingController());
         mappings.put("/user/removeBM", new removeBookMarkController());
         mappings.put("/user/removeMymt", new removeMyMeetingController());
-        mappings.put("/post/join", new joinMeetingController());
+        
         mappings.put("//cal/calulator", new ForwardController("/main/calculator.jsp"));
         mappings.put("/cal/create", new createCalculator());
         
         logger.info("Initialized Request Mapping!");
+        
     }
 
     public Controller findController(String uri) {	
