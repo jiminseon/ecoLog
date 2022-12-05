@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ page import="java.util.*, model.User, controller.user.*" %>   
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
@@ -7,45 +8,53 @@
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
 <title>메인</title>
 <style>
-	header {
-		height: 100px;
-		text-align: center;
-	}
-	div.head {
-		text-align: right;
-	}
-	div.wrap {
-		margin: auto;
-	}
-	div.top, div.bottom {
-	  width: 1100px;
-	  margin: auto;
-	}
-	div.tleft, div.bleft {
-	  width: 240px;
-	  float: left;
-	  margin-right: 10px;
-	  box-sizing: border-box;
-	  border: 1px solid #003458;
-	}
-	div.tright {
-	  width: 850px;
-	  float: right;
-	  box-sizing: border-box;
-	}
-	div.bright {
-	  width: 850px;
-	  float: right;
-	  box-sizing: border-box;
-	  border: 1px solid #003458;
-	}	
-	div.tleft, div.tright {
-		height: 400px;
-	}
-	div.bleft, div.bright {
-		height: 250px;
-		margin-top: 10px;
-	}
+body{
+        background:#6e8769;
+        width:99%;
+      height:100%;
+   }
+   header {
+      height: 100px;
+      text-align: center;
+   }
+   div.head {
+      text-align: right;
+   }
+   div.wrap {
+      margin: auto;
+   }
+   div.top, div.bottom {
+     width: 1250px;
+     height:350px;
+     margin: auto;
+   }
+   div.tleft, div.bleft {
+     width: 330px;
+     float: left;
+     margin-right: 10px;
+     box-sizing: border-box;
+     border: 5px solid #ffffff;
+       border-radius: 15px;
+   }
+   div.tright {
+     width: 900px;
+     float: right;
+     box-sizing: border-box;
+   }
+   div.bright {
+     width: 900px;
+     float: right;
+     box-sizing: border-box;
+     border: 5px solid #ffffff;
+       border-radius: 25px;
+   }   
+   div.tleft, div.tright {
+      height: 400px;
+   }
+   div.bleft, div.bright {
+      height: 250px;
+      margin-top: 10px;
+   }
 
 </style>
 
@@ -53,6 +62,12 @@
 function goCal() {
 	window.name = "index";
 	var url = "<c:url value='/cal/calulator'></c:url>"
+	window.open(url,width=50, height=50);
+}
+
+function goList() {
+	window.name = "index";
+	var url = "<c:url value='/cal/list'></c:url>"
 	window.open(url,width=50, height=50);
 }
 </script>
@@ -72,7 +87,6 @@ function goCal() {
 			<!-- 로그인 되어있을 때는 character.jsp가 뜨도록 구현해두기 -->
 		</div>
 		<div class="tright">
-			<input type="button" value="cal" onclick="goCal()">
 		   <%@ include file="/WEB-INF/main/calendar.jsp" %>
 		</div>
 	</div>
@@ -216,6 +230,7 @@ function changeToday(e){
     showMain();
     keyValue = today.getFullYear() + '' + today.getMonth()+ '' + today.getDate();
     reshowingList();
+    goList();
 }
 
 

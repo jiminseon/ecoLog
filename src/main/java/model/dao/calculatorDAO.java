@@ -65,4 +65,36 @@ public class calculatorDAO {
 		return null;
 	}
 	
+	public List<Calculator> findActivityList(String cal_day) throws SQLException {
+        String sql = "SELECT cal_day, cal_content, cal_point, userid " 
+        		   + "FROM calendar "
+        		   + "WHERE cal_day=? ";              
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {cal_day});		// JDBCUtil에 query문 설정
+					
+		System.out.println(cal_day);
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();			// query 실행			
+			List<Calculator> calList = new ArrayList<Calculator>();	// User들의 리스트 생성
+			while (rs.next()) {
+				Calculator cal = new Calculator(	
+					rs.getString("cal_day"),
+					rs.getString("cal_content"),
+					rs.getInt("cal_point"),
+					rs.getString("userid")
+						);
+
+				System.out.println(rs.getString("cal_day"));
+				calList.add(cal);				// List에 User 객체 저장
+			}		
+			
+			return calList;					
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();		// resource 반환
+		}
+		return null;
+	}
+	
 }

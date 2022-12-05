@@ -1,18 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%><%-- <%@page import="java.util.*, model.*" %> --%>
+    pageEncoding="UTF-8"%><%@page import="java.util.*, model.dao.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-private static final Logger log = LoggerFactory.getLogger(ListItemController.class);
-
-   List<Item> itemList = (List<Item>)request.getAttribute("itemList");
-   
-      log.debug(itemList + "itemList2");
---%>
+<%
+//findActivityList
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>목록ㄴ</title>
 <style type="text/css">
       td {
          align:center;
@@ -72,35 +68,19 @@ function resizeWindow(win) {
 	win.resizeTo(wid,hei);
 }
 
-function subFirst(val) {
-	var defVal = "0";
-	
-	if (val == "") {
-		document.getElementById("level1").innerHTML = defVal;
-	}
-	else {
-		document.getElementById("level1").innerHTML = val;
-	}
-	
-}
 </script>
 </head>
 <body onload='resizeWindow(this)'>
-    <center><h2>계산기</h2></center>
+    <center><h2>목록</h2></center>
     <input type="text" value="id" hidden>
         <form name="form" method="POST" action="<c:url value='/cal/create' />" target="index">
       <table  border="10" cellspacing="4" cellpadding="10" width="90%" height="450px" align="center" color="black" bgcolor="white" class="t1">
       <tr height="50px"><td align="center"><div>
-         <input type="text" name="cal_day" id="year" class="cal" placeholder="날짜" style="width:80%" readonly> </div><div><br/>
-         <input type="text" name="cal_point" id="level1" style="width:80%; height:60px;" readonly> </div>
-      </td></tr>
-      <tr height="50px"><td align="center">
-	      <select name="cal_content" style="width:150px;" onchange="subFirst(this.value)" >
-      		<c:forEach var="testList" items="${itemList}" varStatus="i">
-         		<option value="${testList.activity}">${testList.activity}</option>
-      		</c:forEach>
-  		 </select>
-           <input type="button" class="btn btn-primary" value="+" onClick="calSave()"></td></tr>
+         <input type="text" name="cal_day" id="year" class="cal" placeholder="날짜" style="width:80%" readonly> </div><br/>
+      </tr>
+      <tr><td align="center"><c:forEach var="calList" items="${calList}" varStatus="i">
+         		${calList.cal_content}
+      		</c:forEach></td></tr>
      </table>
     </form>
     <script>
@@ -114,7 +94,7 @@ function subFirst(val) {
 
       document.getElementById( "year" ).value = words[4];
       document.getElementById( "year" ).value += words[0];
-      document.getElementById( "year" ).value += "0" + day;
+      document.getElementById( "year" ).value += day;
       </script>
 </body>
 </html>

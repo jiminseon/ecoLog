@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import controller.Controller;
-
+import controller.user.UserSessionUtils;
 import model.Calculator;
 import model.service.CalculatorManager;
 
@@ -18,9 +18,9 @@ public class createCalculator implements Controller {
     	HttpSession session = request.getSession();
     	
     	int point = 0;
-    	String userid = (String)session.getAttribute("id");
+    	String userid = (String)session.getAttribute("id");	
     	
-    	
+    	System.out.println(userid);
        	Calculator cal = new Calculator(
 			request.getParameter("cal_day"),
 			request.getParameter("cal_content"),

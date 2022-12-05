@@ -8,6 +8,7 @@ public class Calculator {
 	
 	
 	
+	
 	public Calculator(String cal_day, String cal_content, int cal_point, String userid) {
 		super();
 		this.cal_day = cal_day;

@@ -18,7 +18,7 @@ public class User {
 	private int regDate; 
 	//private Character ch = new Character(id, nickname);
 	private List<String> imageList;
-	
+
 	public User(java.lang.String Id, java.lang.String password, java.lang.String name, java.lang.String phoneNumber,
 			java.lang.String email, java.lang.String address, java.lang.String birth, java.lang.String nickname, int point,
 		 int regDate) {
@@ -47,7 +47,7 @@ public class User {
 		this.address = address;
 		this.nickname = nickname;
 	}
-	
+
 	/*public void update(User updateUser) {
         this.password = updateUser.password;
         this.name = updateUser.name;
@@ -176,5 +176,5 @@ public class User {
 				+ ", address=" + address + ", birth=" + birth + ", nickname=" + nickname + ", point=" + point
 				+ ", regDate=" + regDate + "]";
 	}
-	
+
 }

@@ -62,7 +62,7 @@ public class RequestMapping {
         //mappings.put("/cal/calulator", new ForwardController("/main/calculator.jsp"));
         mappings.put("/cal/calulator", new ListItemController());
         mappings.put("/cal/create", new createCalculator());
-        
+        mappings.put("/cal/list", new ListCalendarController());
         logger.info("Initialized Request Mapping!");
     }
 

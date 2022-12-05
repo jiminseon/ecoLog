@@ -32,4 +32,9 @@ public class CalculatorManager {
 	public List<Item> findItemList() throws SQLException {
 		return calDAO.findItemList();
 	}
+	
+    
+	public List<Calculator> findActivityList(String cal_day) throws SQLException {
+		return calDAO.findActivityList(cal_day);
+	}
 }

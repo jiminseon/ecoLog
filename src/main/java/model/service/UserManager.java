@@ -30,11 +30,11 @@ public class UserManager {
 			e.printStackTrace();
 		}			
 	}
-	
+
 	public static UserManager getInstance() {
 		return userMan;
 	}
-	
+
     public int create(User user) throws SQLException, ExistingUserException {
         if (userDAO.existingUser(user.getId()) == true) {
             throw new ExistingUserException(user.getId() + "는 존재하는 아이디입니다.");
@@ -43,12 +43,12 @@ public class UserManager {
     }
 
     public int update(User user) throws SQLException, UserNotFoundException {
-		
+
 		return userDAO.update(user);
 	}	
 
 	public int remove(String userId) throws SQLException, UserNotFoundException {
-		
+
 		return userDAO.remove(userId);
 	}
 	public User findUser(String Id)
@@ -56,7 +56,7 @@ public class UserManager {
 		System.out.println("dao로 출발");
 		User user = userDAO.findUser(Id);
 		System.out.println("dao에서 user정보 가져옴");
-		
+
 		if (user == null) {
 			System.out.println("user가 널");
 			throw new UserNotFoundException(Id + "는 존재하지 않는 아이디입니다.");
@@ -70,7 +70,7 @@ public class UserManager {
 		throws SQLException, UserNotFoundException, PasswordMismatchException {
 		User user = findUser(Id);
 		System.out.println("id찾음");
-		
+
 		if (!user.matchPassword(password)) {
 			throw new PasswordMismatchException("비밀번호가 일치하지 않습니다.");
 		}
@@ -80,28 +80,28 @@ public class UserManager {
 	public UserDAO getUserDAO() {
 		return this.userDAO;
 	}
-	
+
    public List<User> findUserList() throws SQLException {               
         return userDAO.findUserList();
     }
 
-   
+
    public int existingNickname(User user) throws SQLException, ExistingUserException {  
        if (userDAO.existingUser(user.getNickname()) == true) {
            throw new ExistingUserException(user.getNickname() + "는 존재하는 닉네임입니다.");
        }
     return 0;
   }
-   
+
 
 	public int removeBookMark(String postNum) throws SQLException {
 		return bmDao.remove(postNum);				
 	}
-	
+
 	public int removeMyMeeting(String postNum) throws SQLException {
 		return mtDao.remove(postNum);				
 	}
-	
+
 	public int createBookMark(BookMark bm) throws SQLException {
 		return bmDao.create(bm);		
 	}
@@ -113,7 +113,7 @@ public class UserManager {
 	public List<BookMark> getBookMark(String Id) throws SQLException {
 		return bmDao.findBookMarkList(Id);		
 	}
-	
+
 	public List<MyMeeting> getMyMeeting(String Id) throws SQLException {
 		return mtDao.findMyMtList(Id);		
 	}
