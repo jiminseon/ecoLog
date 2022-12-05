@@ -1,7 +1,5 @@
 package controller.user;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -11,60 +9,39 @@ import org.slf4j.LoggerFactory;
 
 import controller.Controller;
 import model.service.UserManager;
-//import model.Community;
 import model.User;
 
 public class UpdateUserController implements Controller {
-    private static final Logger log = LoggerFactory.getLogger(UpdateUserController.class);
+	private static final Logger log = LoggerFactory.getLogger(UpdateUserController.class);
+	@Override
+	public String execute(HttpServletRequest request, HttpServletResponse response)	throws Exception {
+		if (request.getMethod().equals("GET")) {	
+			// GET request: 회원정보 수정 form 요청	
 
-    @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response)	throws Exception {
- 
-    	if (request.getMethod().equals("GET")) {	
-    		// GET request: 회원정보 수정 form 요청	
-    		// 원래는 UpdateUserFormController가 처리하던 작업을 여기서 수행
-    		String updateId = request.getParameter("Id");
-
-    		log.debug("UpdateForm Request : {}", updateId);
-    		
-    		UserManager manager = UserManager.getInstance();
+			HttpSession session = request.getSession();
+			
+			String updateId = (String)session.getAttribute("Id");
+			log.debug("UpdateForm Request : {}", updateId);
+			System.out.println("updateID: "+updateId);
+			
+			UserManager manager = UserManager.getInstance();
 			User user = manager.findUser(updateId);	// 수정하려는 사용자 정보 검색
 			request.setAttribute("user", user);			
 
-			HttpSession session = request.getSession();
 			if (UserSessionUtils.isLoginUser(updateId, session) ||
-				UserSessionUtils.isLoginUser("admin", session)) {
+					UserSessionUtils.isLoginUser("admin", session)) {
 				// 현재 로그인한 사용자가 수정 대상 사용자이거나 관리자인 경우 -> 수정 가능
-<<<<<<< HEAD
 
 				System.out.println("updateForm jsp로 이동");
-=======
-								
-//				List<Community> commList = manager.findCommunityList();	// 커뮤니티 리스트 검색
-//				request.setAttribute("commList", commList);	
-				
->>>>>>> refs/remotes/origin/main3
 				return "/user/updateForm.jsp";   // 검색한 사용자 정보 및 커뮤니티 리스트를 updateForm으로 전송     
 			}    
-			
+
 			// else (수정 불가능한 경우) 사용자 보기 화면으로 오류 메세지를 전달
 			request.setAttribute("updateFailed", true);    
 			System.out.println("실패!");
 			return "/user/myPage.jsp";	// 
-	    }	
-    	
-    	// POST request (회원정보가 parameter로 전송됨)
-    	User updateUser = new User(
-    		request.getParameter("Id"),
-    		request.getParameter("password"),
-    		request.getParameter("name"),
-    		request.getParameter("nickName"),
-    		request.getParameter("birth"),
-    		request.getParameter("phoneNumber"),
-    		request.getParameter("email"),
-    		request.getParameter("address"));
+		}	
 
-<<<<<<< HEAD
 		// POST request (회원정보가 parameter로 전송됨)
 		User updateUser = new User(
 				request.getParameter("Id"),
@@ -77,12 +54,9 @@ public class UpdateUserController implements Controller {
 				request.getParameter("nickname"));
 
 		log.debug("Update User : {}", updateUser);
-=======
-    	log.debug("Update User : {}", updateUser);
->>>>>>> refs/remotes/origin/main3
 
 		UserManager manager = UserManager.getInstance();
 		manager.update(updateUser);			
-        return "redirect:/user/myPage";			
-    }
+		return "redirect:/user/myPage";			
+	}
 }

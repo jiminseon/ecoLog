@@ -48,10 +48,10 @@ function userList(targetUri) {
 </script>
 </head>
 <body>
-<br>
+
 <!-- Update Form  -->
 <form name="form" method="POST" action="<c:url value='/user/update' />">
-  <input type="hidden" name="Id" value="${user.Id}"/>	  
+  <input type="hidden" name="Id" value="${user.id}"/>	 
   <table style="width: 100%">
 	<tr>
 	  <td width="20"></td>
@@ -61,22 +61,12 @@ function userList(targetUri) {
 			<td class="title">&nbsp;&nbsp;<b>에코로그 - 수정</b>&nbsp;&nbsp;</td>
 		  </tr>
 	    </table>
-	    <div id="pwCheckForm">
-        <form name="check" target=targetUri>
-            <input type="hidden" name="no" value="${guestbook.guestbook_no}"/>
-            비밀번호 :
-            <input type="password" name="guestbook_password" maxlength="50">    
-            <br><br><br>
-            <input type="button" value="확인" onclick="checkPW()">
-            <input type="button" value="창닫기" onclick="window.close()">
-        </form>
-    </div> 
 	    <br>	  
 	    <table style="background-color: YellowGreen">
 	  	  <tr height="40">
 			<td width="150" align="center" bgcolor="E6ECDE">사용자 ID</td>
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				${user.Id}
+				${user.id}
 			</td>
 		  </tr>
 		  <tr height="40">
@@ -100,23 +90,13 @@ function userList(targetUri) {
 		 <tr height="40">
 			<td width="150" align="center" bgcolor="E6ECDE">닉네임</td>
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-<<<<<<< HEAD
 				<input type="text" style="width: 240" name="nickname" value="${user.nickname}">
-=======
-				<input type="text" style="width: 240" name="nickName" 
-				 	<c:if test="${registerFailed}">value="${user.nickName}"</c:if>>
->>>>>>> refs/remotes/origin/main3
 			</td>
 		  </tr>
 		  <tr height="40">
 			<td width="150" align="center" bgcolor="E6ECDE">생년월일</td>
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-<<<<<<< HEAD
 				<input type="text" style="width: 240" name="birth" value="${user.birth}">
-=======
-				<input type="text" style="width: 240" name="birth" 
-				 	<c:if test="${registerFailed}">value="${user.birth}"</c:if>>
->>>>>>> refs/remotes/origin/main3
 			</td>
 		  </tr> 
 		  <tr height="40">
@@ -142,7 +122,7 @@ function userList(targetUri) {
 		  <tr>
 			<td align="left">
 			<input type="button" value="수정" onClick="userModify()"> &nbsp;
-			<input type="button" value="취소" onClick="userList('<c:url value='/user/myPage' />')">
+			<input type="button" value="뒤로가기" onClick="userList('<c:url value='/user/myPage' />')">
 			</td>
 		  </tr>
 	    </table>
