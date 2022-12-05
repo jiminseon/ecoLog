@@ -14,7 +14,6 @@ function userList(targetUri) {
 	form.action = targetUri;
 	form.submit();
 }
-
 function userRemove() {
 	return confirm("정말 삭제하시겠습니까?");		
 }
@@ -33,11 +32,21 @@ function userRemove() {
 	    </table>  
 		<table>
 			<br>
+			
+		<a href="<c:url value='/post'>
+	     		   <c:param name='userId' value='<%=user.getId()%>'/>
+			 	 </c:url>">내가 쓴 글 보기</a> &nbsp;
 	    <a href="<c:url value='/user/update'>
-	     		   <c:param name='id' value='<%=user.getId()%>'/>
+	     		   <c:param name='userId' value='<%=user.getId()%>'/>
 			 	 </c:url>">개인정보 수정</a> &nbsp;
+		<a href="<c:url value='/user/BookMark'>
+	     		   <c:param name='userId' value='<%=user.getId()%>'/>
+			 	 </c:url>">즐겨찾기 관리</a> &nbsp;
+		<a href="<c:url value='/user/MyMeeting'>
+	     		   <c:param name='userId' value='<%=user.getId()%>'/>
+			 	 </c:url>">모임 관리</a> &nbsp;
  	    <a href="<c:url value='/user/delete'>
-				   <c:param name='id' value='<%=user.getId()%>'/>
+				   <c:param name='userId' value='<%=user.getId()%>'/>
 			 	 </c:url>" onclick="return userRemove();">계정 삭제</a> &nbsp;
  	    <a href="<c:url value='/' />">홈 화면</a> 	    
  	    <br><br>
