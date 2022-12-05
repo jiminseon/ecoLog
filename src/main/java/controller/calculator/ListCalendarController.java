@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory;
 
 import controller.Controller;
 import model.Calculator;
-import model.Item;
 import model.service.CalculatorManager;
 
 public class ListCalendarController implements Controller { 
@@ -22,7 +21,6 @@ public class ListCalendarController implements Controller {
     	
     	
 		CalculatorManager manager = CalculatorManager.getInstance();
-		List<Item> itemList = manager.findItemList();
 		String cal_day = request.getParameter("20221204");
 		System.out.println("날짜request" + cal_day);
 		List<Calculator> calList = manager.findActivityList("20221204");

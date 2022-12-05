@@ -2,12 +2,10 @@
     pageEncoding="UTF-8"%>
 
     <div class="content-wrap">
-    <form method="post" action="<c:url value='/WEB-INF/main/calendar.jsp' />">
       <div class="content-left">
         <div class="main-wrap">
           <div id="main-day" class="main-day"></div>
           <div id="main-date" class="main-date" ></div>
-          
 			<input type="button" value="cal" onclick="goCal()">
         </div>
         <div class="todo-wrap">
@@ -49,5 +47,4 @@
           <tbody id="calendar-body" class="calendar-body"></tbody>
         </table>
       </div>
-      </form>
     </div>

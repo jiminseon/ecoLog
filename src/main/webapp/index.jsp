@@ -60,9 +60,19 @@ body{
 
 <script>
 function goCal() {
-	window.name = "index";
-	var url = "<c:url value='/cal/calulator'></c:url>"
-	window.open(url,width=50, height=50);
+	var now = new Date();
+	var str = document.getElementById( "current-year-month" ).innerHTML;
+    var day = document.getElementById( "main-date" ).innerHTML;
+    var words = str.split("&nbsp;");
+    
+	if (monthList[now.getMonth()] == words[0] && now.getFullYear().toString() == words[4] && day == now.getDate().toString()) {
+		window.name = "index";
+		var url = "<c:url value='/cal/calulator'></c:url>"
+		window.open(url,width=50, height=50);
+	}
+	else {
+		alert("오늘 날짜만 입력 가능");		
+	}
 }
 
 function goList() {
@@ -119,7 +129,7 @@ function goList() {
      pageYear = leapYear;
  }else{
      pageYear = notLeapYear;
- }
+ } 
 
  function showCalendar(){
   currentTitle.innerHTML = monthList[first.getMonth()] + '&nbsp;&nbsp;&nbsp;&nbsp;'+ first.getFullYear();
@@ -147,6 +157,10 @@ function goList() {
     mainTodayDate.innerHTML = today.getDate();
  }
  showCalendar();
+ var clickedDate1 = document.getElementById(today.getDate());
+ var tdGroup = [];
+ clickedDate1.classList.add('active');
+ clickStart();
  
  function removeCalendar(){
      let catchTr = 100;
@@ -205,13 +219,10 @@ function next(){
     reshowingList();
 }
 
-var clickedDate1 = document.getElementById(today.getDate());
-clickedDate1.classList.add('active');
 var prevBtn = document.getElementById('prev');
 var nextBtn = document.getElementById('next');
 prevBtn.addEventListener('click',prev);
 nextBtn.addEventListener('click',next);
-var tdGroup = [];
 function clickStart(){
     for(let i = 1; i <= pageYear[first.getMonth()]; i++){
         tdGroup[i] = document.getElementById(i);
