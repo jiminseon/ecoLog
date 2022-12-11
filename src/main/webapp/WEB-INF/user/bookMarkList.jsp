@@ -31,11 +31,11 @@
 	  </table>  
 				<div>내 모임 즐겨찾기 갯수: ${cnt} </div>
 	  <br>		  
-	  <table style="background-color: YellowGreen">
+	  <table style="background-color: #ff9500">
 		<tr>
-		  <td width="190" align="center" bgcolor="E6ECDE" height="22">포스트 number</td>
-		   <td width="200" align="center" bgcolor="E6ECDE">포스트 이름</td>
-		  <td width="200" align="center" bgcolor="E6ECDE">카테고리</td>
+		  <td width="190" align="center" bgcolor="ffe894" height="22">포스트 number</td>
+		   <td width="200" align="center" bgcolor="ffe894">포스트 이름</td>
+		  <td width="200" align="center" bgcolor="ffe894">카테고리</td>
 		</tr>
 <%-- 
 	if (bmList != null) {	

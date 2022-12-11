@@ -37,7 +37,9 @@ public class RegisterUserController implements Controller {
 			request.getParameter("email"),
 			request.getParameter("address"),
 			request.getParameter("birth"),
-			request.getParameter("nickName"));
+			request.getParameter("nickName"),
+			request.getParameter("regDate")
+			);
 		
         log.debug("Create User : {}", user);
 

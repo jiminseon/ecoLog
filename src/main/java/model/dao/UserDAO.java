@@ -2,7 +2,6 @@ package model.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import model.User;
@@ -26,14 +25,15 @@ public class UserDAO {
 		 * java.util.Date utilDate = new java.util.Date(); java.sql.Date sqlDate = new
 		 * Date(utilDate.getTime());
 		 */
-		String sql = "INSERT INTO USER_INFO (ID, PASSWORD, NAME, PHONENUMBER, EMAIL, ADDRESS, BIRTH, nickname, POINT, REGDATE)"
-				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";	
+		String sql = "INSERT INTO USER_INFO (ID, PASSWORD, NAME, PHONENUMBER, EMAIL, ADDRESS, BIRTH, nickname, POINT, REGDATE) "
+				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, TO_CHAR(SYSDATE, 'YYYY/MM/DD'))";	
 		Object[] param = new Object[] {user.getId(), user.getPassword(), 
 				user.getName(), user.getphoneNumber(), user.getEmail(), user.getAddress(), user.getBirth(), user.getNickname(),
-				0, 1};		//포인트와 meeting 0과 null로 표시		
-
+				0};		//포인트와 meeting 0과 null로 표시		
 		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil 에 insert문과 매개 변수 설정
-		System.out.println(user.getName() + user.getNickname()+ user.getBirth()+ user.getphoneNumber()+ user.getEmail());
+		
+		System.out.println(user.getRegDate());
+		
 		try {				
 			int result = jdbcUtil.executeUpdate();	// insert 문 실행
 			return result;
@@ -81,7 +81,7 @@ public class UserDAO {
 	 * 사용자 Id에 해당하는 사용자를 삭제.
 	 */
 	public int remove(String Id) throws SQLException {
-		String sql = "DELETE FROM USER_INFO WHERE Id=?";		
+		String sql = "DELETE FROM USER_INFO WHERE Id=? " ;		
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {Id});	// JDBCUtil에 delete문과 매개 변수 설정
 
 		try {				
@@ -119,7 +119,7 @@ public class UserDAO {
 						rs.getString("email"),
 						rs.getString("address"),
 						rs.getString("birth"),
-						rs.getString("nickname"));
+						rs.getString("nickName"));
 				System.out.println("유저 정보 저장 성공");
 				return user;
 			}
@@ -154,7 +154,7 @@ public class UserDAO {
 						rs.getString("email"),
 						rs.getString("address"),
 						rs.getString("birth"),
-						rs.getString("nickname"));
+						rs.getString("nickName"));
 				userList.add(user);				// List에 User 객체 저장
 			}		
 			return userList;					
@@ -193,7 +193,7 @@ public class UserDAO {
 							rs.getString("email"),
 							rs.getString("address"),
 							rs.getString("birth"),
-							rs.getString("nickname"));
+							rs.getString("nickName"));
 					userList.add(user);							// 리스트에 User 객체 저장
 				} while ((rs.next()) && (--countPerPage > 0));		
 				return userList;							

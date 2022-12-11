@@ -63,6 +63,27 @@ function userList(targetUri) {
 }
 
 </script>
+<style>
+body {
+         align:center;
+	width: 51%;
+}
+table {
+         align:center;
+        border-radius: 10px;
+	border: 5px Black;
+}
+
+td {
+	border: 1px #adc0de;
+    border-radius: 15px;
+}
+
+table:hover{
+         background: #aad162;
+        }
+
+</style>
 </head>
 <body>
 	<br>
@@ -82,55 +103,55 @@ function userList(targetUri) {
 						test="${registerFailed}">
 						<font color="red"><c:out value="${exception.getMessage()}" /></font>
 					</c:if> <br>
-					<table style="background-color: YellowGreen">
+					<table style="background-color: #ff9500">
 						<tr height="40">
-							<td width="700" align="center" bgcolor="E6ECDE">사용자 ID</td>
+							<td width="700" align="center" bgcolor="ffe894">사용자 ID</td>
 							<td width="700" bgcolor="ffffff" style="padding-left: 10"><input
 								type="text" style="width: 240;" name="Id"></td>
 						</tr>
 						<tr height="40">
-							<td width="700" align="center" bgcolor="E6ECDE">비밀번호</td>
+							<td width="700" align="center" bgcolor="ffe894">비밀번호</td>
 							<td width="700" bgcolor="ffffff" style="padding-left: 10"><input
 								type="password" style="width: 240" name="password"></td>
 						</tr>
 						<tr height="40">
-							<td width="700" align="center" bgcolor="E6ECDE">비밀번호 확인</td>
+							<td width="700" align="center" bgcolor="ffe894">비밀번호 확인</td>
 							<td width="700" bgcolor="ffffff" style="padding-left: 10"><input
 								type="password" style="width: 240" name="password2"></td>
 						</tr>
 						<tr height="40">
-							<td width="700" align="center" bgcolor="E6ECDE">이름</td>
+							<td width="700" align="center" bgcolor="ffe894">이름</td>
 							<td width="700" bgcolor="ffffff" style="padding-left: 10"><input
 								type="text" style="width: 240" name="name">
 							</td>
 						</tr>
 						<tr height="40">
-							<td width="700" align="center" bgcolor="E6ECDE">닉네임</td>
+							<td width="700" align="center" bgcolor="ffe894">닉네임</td>
 							<td width="700" bgcolor="ffffff" style="padding-left: 10"><input
 								type="text" style="width: 240" name="nickName">
 							</td>
 						</tr>
 						<tr height="40">
-							<td width="700" align="center" bgcolor="E6ECDE">생년월일</td>
+							<td width="700" align="center" bgcolor="ffe894">생년월일</td>
 							<td width="700" bgcolor="ffffff" style="padding-left: 10">
 							<input type="text" name="birth" maxlength="8" placeholder="ex)19990101"
 							size="6"> 
 							</td>
 						</tr>
 						<tr height="40">
-							<td width="700" align="center" bgcolor="E6ECDE">이메일 주소</td>
+							<td width="700" align="center" bgcolor="ffe894">이메일 주소</td>
 							<td width="700" bgcolor="ffffff" style="padding-left: 10"><input
 								type="text" style="width: 240" name="email">
 							</td>
 						</tr>
 						<tr height="40">
-							<td width="700" align="center" bgcolor="E6ECDE">전화번호</td>
+							<td width="700" align="center" bgcolor="ffe894">전화번호</td>
 							<td width="700" bgcolor="ffffff" style="padding-left: 10"><input
 								type="text" style="width: 240" name="phoneNumber">
 							</td>
 						</tr>
 						<tr height="40">
-							<td width="700" align="center" bgcolor="E6ECDE">주소</td>
+							<td width="700" align="center" bgcolor="ffe894">주소</td>
 							<td width="700" bgcolor="ffffff" style="padding-left: 10"><input
 								type="text" style="width: 240" name="address">
 							</td>

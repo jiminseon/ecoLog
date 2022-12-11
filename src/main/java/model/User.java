@@ -1,6 +1,5 @@
 package model;
 
-import java.sql.Date;
 import java.util.List;
 
 public class User {
@@ -13,13 +12,13 @@ public class User {
 	private String birth;
 	private String nickname;  
 	private int point;
-	private int regDate; 
+	private String regDate; 
 	//private Character ch = new Character(id, nickname);
 	private List<String> imageList;
 	
 	public User(java.lang.String Id, java.lang.String password, java.lang.String name, java.lang.String phoneNumber,
-			java.lang.String email, java.lang.String address, java.lang.String birth, java.lang.String nickname, int point,
-			int regDate) {
+			java.lang.String email, java.lang.String address, java.lang.String birth, java.lang.String nickname, 
+			int point, String regDate) {
 		super();
 		this.Id = Id;
 		this.password = password;
@@ -131,11 +130,11 @@ public class User {
 		this.point = point;
 	}
 
-	public int getRegDate() {
+	public String getRegDate() {
 		return regDate;
 	}
 
-	public void setRegDate(int regDate) {
+	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
 
