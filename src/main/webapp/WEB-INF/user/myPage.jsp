@@ -53,7 +53,7 @@ td {
   		<td width="500" align="left" >
 			<h1>MY PAGE</h1></td>
 		<td width="500" align="right">
-  			<a href="<c:url value='/' />">홈 화면</a>&nbsp; 
+  			<a href="<c:url value='/main' />">홈 화면</a>&nbsp; 
 			<a href="<c:url value='/user/logout'>
 	     		   <c:param name='logout' value='<%=user.getId()%>'/>
 			 	 </c:url>">로그아웃</a> &nbsp;
