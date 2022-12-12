@@ -76,15 +76,21 @@ function goCal() {
 }
 
 function goList() {
-	window.name = "index";
-	var url = "<c:url value='/cal/list'></c:url>"
-	window.open(url,width=50, height=50);
+	var myForm = document.frm;
+	var url = "<c:url value='/cal/list'></c:url>";
+	window.open("","calList",width=50, height=50);
+	myForm.action=url;
+	myForm.method="post";;
+	myForm.target="calList";
+	myForm.submit();
 }
 </script>
 </head>
 <body>
 <header>
 	<div class="head">
+	<a href="<c:url value='/user/login/form'></c:url>"> 로그인</a>
+	<a href="<c:url value='/user/register'></c:url>">회원가입</a>
 	<a href="<c:url value='/user/myPage'></c:url>">마이페이지</a>
 	</div>
 	<p/><font size='7' color='004300' weight="bold">EcoLog</font>
@@ -95,7 +101,11 @@ function goList() {
 			<!-- 로그인 되어있을 때는 character.jsp가 뜨도록 구현해두기 -->
 		</div>
 		<div class="tright">
+		
 		   <%@ include file="/WEB-INF/main/calendar.jsp" %>
+		   <form name="frm">
+		   	<input type="text" name="cal_day" id="date">
+		   </form>
 		</div>
 	</div>
 	<p/><p/><p/>
@@ -239,6 +249,9 @@ function changeToday(e){
     showMain();
     keyValue = today.getFullYear() + '' + today.getMonth()+ '' + today.getDate();
     reshowingList();
+    document.getElementById( "date" ).value = today.getFullYear();
+    document.getElementById( "date" ).value += today.getMonth() + 1;
+    document.getElementById( "date" ).value += "0"+today.getDate();
     goList();
 }
 
@@ -258,6 +271,7 @@ var keyValue = today.getFullYear() + '' + today.getMonth()+ '' + today.getDate()
 function checkList(e){
     e.currentTarget.classList.add('checked');
 }
+
 		
   </script>
 

@@ -22,18 +22,10 @@ public class ListItemController implements Controller {
     	
 		CalculatorManager manager = CalculatorManager.getInstance();
 		List<Item> itemList = manager.findItemList();
-		String cal_day = request.getParameter("20221204");
-		System.out.println("날짜request" + cal_day);
-		List<Calculator> calList = manager.findActivityList("20221204");
-		
 
-		log.debug(calList + "calList");
-		// userList 객체와 현재 로그인한 사용자 ID를 request에 저장하여 전달
 		request.setAttribute("itemList", itemList);
 		request.setAttribute("point", itemList.get(0).getItemPoint());
-		request.setAttribute("calList", calList);
 		
-		// 사용자 리스트 화면으로 이동(forwarding)
 		return "/main/calculator.jsp"; 
     }
 }
