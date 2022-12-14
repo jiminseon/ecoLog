@@ -88,6 +88,10 @@ function goList() {
 </head>
 <body>
 <header>
+<div class="navbar-header">
+			
+			<a class="navbar-brand" href="postList.jsp">게시판</a>
+		</div>
 	<div class="head">
 	<a href="<c:url value='/user/login/form'></c:url>"> 로그인</a>
 	<a href="<c:url value='/user/register'></c:url>">회원가입</a>
