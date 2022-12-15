@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
  <%@ page import="java.util.*, model.User, controller.user.*" %>   
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	User user = (User)request.getAttribute("user");
+%>
 <html>
 <head>
 <link rel=stylesheet href="<c:url value='/css/calendar.css' />" type="text/css">
@@ -89,8 +92,6 @@ function goList() {
 <body>
 <header>
 	<div class="head">
-	<a href="<c:url value='/user/login/form'></c:url>"> 로그인</a>
-	<a href="<c:url value='/user/register'></c:url>">회원가입</a>
 	<a href="<c:url value='/user/myPage'></c:url>">마이페이지</a>
 	</div>
 	<p/><font size='7' color='004300' weight="bold">EcoLog</font>
@@ -104,7 +105,7 @@ function goList() {
 		
 		   <%@ include file="/WEB-INF/main/calendar.jsp" %>
 		   <form name="frm">
-		   	<input type="text" name="cal_day" id="date">
+		   	<input type="text" name="cal_day" id="date" hidden>
 		   </form>
 		</div>
 	</div>
