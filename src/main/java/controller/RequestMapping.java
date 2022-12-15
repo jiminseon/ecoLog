@@ -10,6 +10,7 @@ import controller.post.BookMarkController;
 import controller.post.createBookMarkController;
 import controller.post.joinMeetingController;
 import controller.post.removeBookMarkController;
+import controller.post.ListPostController;
 import controller.user.*;
 //import controller.comm.*;
 
@@ -63,6 +64,7 @@ public class RequestMapping {
         mappings.put("/post/createBM", new createBookMarkController());
         mappings.put("/post/createMymt", new createMyMeetingController());
         mappings.put("/post/BookMarks", new BookMarkController());
+        mappings.put("/post/postList", new ListPostController());
         
         mappings.put("/user/MyMeeting", new MyMeetingController());
         mappings.put("/user/removeBM", new removeBookMarkController());

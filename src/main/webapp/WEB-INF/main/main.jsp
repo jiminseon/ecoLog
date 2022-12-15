@@ -90,7 +90,7 @@ function goList() {
 <header>
 <div class="navbar-header">
 			
-			<a class="navbar-brand" href="postList.jsp">게시판</a>
+			<a href="<c:url value='/post/postList'></c:url>">게시판</a>
 		</div>
 	<div class="head">
 	<a href="<c:url value='/user/login/form'></c:url>"> 로그인</a>

@@ -84,6 +84,9 @@ function goList() {
 </head>
 <body>
 <header>
+<div class="navbar-header">
+			<a class="navbar-brand" href="postList.jsp">게시판</a>
+		</div>
 	<div class="head">
 	<a href="<c:url value='/user/myPage'></c:url>">마이페이지</a>
 	</div>
