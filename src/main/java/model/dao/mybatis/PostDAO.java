@@ -1,7 +1,11 @@
-package model.dao;
+package model.dao.mybatis;
 
-import java.io.*;
-import java.util.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.Reader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -9,9 +13,22 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import model.Post;
+import model.dao.mybatis.*;
+import model.dao.mybatis.mapper.PostMapper;
 
-public class postDAO {
+public class PostDAO {
 	private static SqlSessionFactory ssf;
+	
+	public PostDAO() {
+		String resource = "mybatis-config.xml";
+		InputStream inputStream;
+		try {
+			inputStream = Resources.getResourceAsStream(resource);
+		} catch (IOException e) {
+			throw new IllegalArgumentException(e);
+		}
+		ssf = new SqlSessionFactoryBuilder().build(inputStream);
+	}
 	
 	static {
 		try {
@@ -154,7 +171,7 @@ public class postDAO {
 	}
 	
 	// 게시글 수정된 내용으로 업데이트
-	public static Post postUpdateDate(int postNo) {
+	public static Post postUpdateData(int postNo) {
 		Post post = new Post();
 		SqlSession session = null;
 		

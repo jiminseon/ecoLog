@@ -3,6 +3,7 @@
 <%@ page import="java.util.*" %>
 <%@ page import="model.dao.mybatis.*" %>
 <%@ page import="model.*" %>
+<%@ page import="model.service.*" %>
 <%
      String strPage=request.getParameter("page");
      if(strPage == null) // 페이지를 보내지 않을 경우 (맨처음에는 페이지를 보낼 수 없다)
@@ -16,9 +17,12 @@
      // map에 저장 => map 저장하는 공간 => 키,값을 설정 할 수 있다 
      map.put("start",start);
      map.put("end",end);
-     List<Post> list = PostDAO.postListData(map);// 1page 1~10
+     // List<Post> list = PostDAO.postListData(map);// 1page 1~10
+     UserManager manager = UserManager.getInstance();
+     String id = "tt";
+	 List<BookMark> list = manager.getBookMark(id);
      // 총페이지읽기
-     int totalpage = PostDAO.postTotalPage();
+     // int totalpage = PostDAO.postTotalPage();
 %> 
 <!DOCTYPE html>
 <html>
@@ -46,7 +50,7 @@ function send()
 </script>
 </head>
 <body>
-		<nav class="navbar navbar-default">
+		<!-- <nav class="navbar navbar-default">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed"
 				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
@@ -73,48 +77,30 @@ function send()
 				</li>
 			</ul>
 		</div>
-	</nav>
+	</nav> -->
    <div class="row">
      <h1 class="text-center">게시판</h1>
      <table class="table">
        <tr>
          <td>
-           <a href="main.jsp?" class="btn btn-sm btn-success">새글</a>
+           <a href="main.jsp?" class="btn btn-sm btn-success">글쓰기</a>
          </td>
        </tr>
      </table>
      <table class="table table-striped">
        <tr class="warning">
          <th class="text-center" width=10%>번호</th>
-         <th class="text-center" width=30%>제목</th>
+         <th class="text-center" width=40%>제목</th>
          <th class="text-center" width=10%>작성자</th>
          <th class="text-center" width=10%>유형</th>
          <th class="text-center" width=20%>작성일</th>
          <th class="text-center" width=10%>조회수</th>
        </tr>
-       <%
-           for(Post post : list)
-           {
-       
-       %>
-               <tr>
-                 <td class="text-center" width=10%><%=post.getPostNum() %></td>
-                 <td width=45%>
-                  <a href="/main/main.jsp&postNum=<%=post.getPostNum()%>"><%=post.getTitle() %></a>
-                 </td>
-                 <td class="text-center" width=15%><%=post.getWriter() %></td>
-                  <td class="text-center" width=15%><%=post.getCategory() %></td>
-                 <td class="text-center" width=20%><%=post.getWriteDate() %></td>
-                 <td class="text-center" width=10%><%=post.getVisitCount() %></td>
-               </tr>
-       <%
-           }
-       %>
      </table>
      <table class="table">
        <tr>
          <td class="text-left">
-          <form method="post" action="/main/main.jsp" name=frm>
+          <form method="post" action="postList.jsp" name=frm>
               Search:
               <select name="fd" class="input-sm">
                 <option value="name">작성자</option>
@@ -132,7 +118,7 @@ function send()
          </td>
          <td class="text-right">
           <a href="#" class="btn btn-sm btn-primary">이전</a>
-           <%=curpage %> page / <%=totalpage %> pages
+           <%=curpage %> page / pages
           <a href="#" class="btn btn-sm btn-primary">다음</a>
          </td>
        </tr>
