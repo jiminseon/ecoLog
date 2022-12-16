@@ -9,23 +9,25 @@
 <title>Insert title here</title>
 <style>
 body{
-        background:#6e8769;
+        
         width:99%;
       height:100%;
-      overflow:hidden;
-		background-image:url(./images/bge.png);
    }
    table,td {
       text-align: right;
-      border:5px solid black;
+      border:0px;
    }
-	.div1 {margin:0px; border:0px;
-	}
-	iframe{border:0px; padding:0px 20px 0px 10px;}
+div{
+        width:99%;
+      height:100%;
+   }
+
 </style>
 </head>
 <body>
-<div class="div1">
-<iframe src="index2.jsp" width="40%" height="1000px" name="right" frameboarder="0" scrolling="no"  align="right">rezsetfA</iframe>
+<header>
+<div class="head"><table width="99%" height="1000px"><tr><td><a href="<c:url value='/user/login/form'></c:url>" target="right"s> 로그인</a>
+	<a href="<c:url value='/user/register'></c:url>" target="right">회원가입</a></td></tr></table>
 </div>
+</header>
 </body>

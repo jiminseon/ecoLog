@@ -36,8 +36,18 @@ function userCreate(targetUri) {
 	text-align: center;
 }
 
-table {
-	border: 3px Black
+.t1 {
+	border: 3px Black;
+	margin-left: 50px;
+	margin-top: 50px;
+}
+.t2 {
+	border: 3px Black;
+	margin-left: 50px;
+}
+.t3 {
+	border: 3px Black;
+	margin-left: 80px;
 }
 
 td {
@@ -53,17 +63,12 @@ td {
 	<br>
 	<!-- login form  -->
 	<form name="form" method="POST" action="<c:url value='/user/login' />">
-		<table style="width: 100%">
+		<table style="width: 70%" class="t3">
 			<tr>
 				<td width="20"></td>
 				<td><b>에코로그</b><br> <br>
-					<table>
-						<tr>
-							<td class="title">&nbsp;&nbsp;에코로그 - 로그인&nbsp;&nbsp;</td>
-						</tr>
-					</table> 
-					<br>
-					<table style="background-color: YellowGreen">
+					
+					<table style="background-color: YellowGreen" class="t1">
 						<tr height="40">
 							<td width="1100" align="center" bgcolor="e6ffe6">사용자 ID</td>
 							<td width="1100" bgcolor="ffffff" style="padding-left: 10">
@@ -77,22 +82,15 @@ td {
 							</td>
 						</tr>
 					</table> <br>
-					<table style="width: 100%">
+					<table style="width: 100%" class="t2">
 						<tr>
-							<td align=left>
+							<td>
 							<input type="button" value="로그인" onClick="login()"> &nbsp; 
 							<input type="button" value="회원가입" onClick="userCreate(
 								'<c:url value='/user/register'/>')">
 							</td>
 						</tr>
 					</table>
-			</tr>
-			<tr height="100">
-				<td>&nbsp;</td>
-				<td><a
-					href="https://raw.githubusercontent.com/dbp-energizo/EcoLog/36373981e5a22cef77deaeefd9e85b6331c2e74a/1%EB%8B%A8%EA%B3%84.png">
-						<img src="<c:url value='/images/logo.gif' />" />
-				</a></td>
 			</tr>
 		</table>
 	</form>
