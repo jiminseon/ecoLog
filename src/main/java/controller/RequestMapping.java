@@ -6,11 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.calculator.*;
-import controller.post.BookMarkController;
-import controller.post.createBookMarkController;
-import controller.post.joinMeetingController;
-import controller.post.removeBookMarkController;
-import controller.post.ListPostController;
+import controller.post.*;
 import controller.user.*;
 //import controller.comm.*;
 
@@ -81,6 +77,9 @@ public class RequestMapping {
         mappings.put("/cal/create", new createCalculator());
         mappings.put("/cal/list", new ListCalendarController());
         logger.info("Initialized Request Mapping!");
+        
+        mappings.put("/post/postList", new ViewPostController());
+        mappings.put("/post/insert_success", new CreatePostController());
     }
 
     public Controller findController(String uri) {	

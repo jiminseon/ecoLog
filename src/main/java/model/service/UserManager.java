@@ -6,8 +6,10 @@ import java.util.List;
 import model.dao.MyMeetingDAO;
 import model.dao.UserDAO;
 import model.dao.bookMarkDAO;
+import model.dao.mybatis.PostDAO;
 import model.BookMark;
 import model.MyMeeting;
+import model.Post;
 import model.User;
 
 /**
@@ -119,4 +121,22 @@ public class UserManager {
 	public List<MyMeeting> getMyMeeting(String Id) throws SQLException {
 		return mtDao.findMyMtList(Id);		
 	}
+	
+	public void postInsert(Post post) throws SQLException{
+		   PostDAO.postInsert(post);
+	   }
+	   
+	   public boolean postUpdate(Post post) throws SQLException {
+		   return PostDAO.postUpdate(post);
+	   }
+	   
+	   public boolean postDelete(int postNum)throws SQLException {
+		   return PostDAO.postDelete(postNum);
+	   }
+	   
+	   public void postView(int postNum) throws SQLException {
+		   PostDAO.postDetailData(postNum);
+	   }
+	   
+	   // 검색은 나중에...
 }
