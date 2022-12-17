@@ -6,11 +6,11 @@ import java.util.List;
 import model.dao.MyMeetingDAO;
 import model.dao.UserDAO;
 import model.dao.bookMarkDAO;
-import model.dao.mybatis.PostDAO;
 import model.BookMark;
 import model.MyMeeting;
-import model.Post;
 import model.User;
+import model.Post;
+import model.dao.mybatis.*;
 
 /**
  * 사용자 관리 API를 사용하는 개발자들이 직접 접근하게 되는 클래스.
@@ -121,7 +121,6 @@ public class UserManager {
 	public List<MyMeeting> getMyMeeting(String Id) throws SQLException {
 		return mtDao.findMyMtList(Id);		
 	}
-	
 	public void postInsert(Post post) throws SQLException{
 		   PostDAO.postInsert(post);
 	   }
