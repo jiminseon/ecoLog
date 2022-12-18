@@ -1,7 +1,9 @@
 package model.service;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import model.dao.MyMeetingDAO;
 import model.dao.UserDAO;
@@ -135,6 +137,11 @@ public class UserManager {
 	   
 	   public void postView(int postNum) throws SQLException {
 		   PostDAO.postDetailData(postNum);
+	   }
+	   
+	   public List<Post> getPostList() throws SQLException {
+		   Map map = new HashMap();
+		   return PostDAO.postListData(map);
 	   }
 	   
 	   // 검색은 나중에...

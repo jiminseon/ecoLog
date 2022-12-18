@@ -9,7 +9,7 @@
          strPage = "1";// 시작페이지를 설정해 준다 
      int curpage = Integer.parseInt(strPage);
      // start:1 , end:10
-     Map map=new HashMap();
+     Map map = new HashMap();
      int rowSize = 10;
      int start = (curpage * rowSize) - (rowSize - 1);
      int end = curpage * rowSize;
