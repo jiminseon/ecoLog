@@ -56,11 +56,11 @@ public class RequestMapping {
         mappings.put("/user/createBM", new createBookMarkController());
         mappings.put("/user/createMymt", new createMyMeetingController());
         mappings.put("/user/BookMark", new BookMarkController());
-
-        
-        mappings.put("/post/createBM", new createBookMarkController());
-        mappings.put("/post/createMymt", new createMyMeetingController());
-        mappings.put("/post/BookMarks", new BookMarkController());
+//
+//        
+//        mappings.put("/post/createBM", new createBookMarkController());
+//        mappings.put("/post/createMymt", new createMyMeetingController());
+//        mappings.put("/post/BookMarks", new BookMarkController());
         //mappings.put("/post/postList", new ListPostController());
         
         mappings.put("/user/MyMeeting", new MyMeetingController());

@@ -92,7 +92,6 @@ function goList() {
 <body>
 <header>
 <div class="navbar-header">
-			
 			<a href="<c:url value='/post/postList'></c:url>">게시판</a>
 		</div>
 	<div class="head">
