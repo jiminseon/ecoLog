@@ -72,7 +72,7 @@ function send()
                <tr>
                  <td class="text-center" width=10%><%=post.getPostNum() %></td>
                  <td width=45%>
-                  <a href="<c:url value='/post/postView' />"><%=post.getTitle() %></a>
+                  <a href="<c:url value='/post/postView' />?postNum=<%=post.getPostNum()%>"><%=post.getTitle() %></a>
                  </td>
                  <td class="text-center" width=15%><%=post.getWriter() %></td>
                   <td class="text-center" width=15%><%=post.getCategory() %></td>
@@ -86,7 +86,7 @@ function send()
      <table class="table">
        <tr>
          <td class="text-left">
-          <form method="post" action="/main/main.jsp" name=frm>
+          <form method="post" action="<c:url value='/post/postList' />" name=frm>
               Search:
               <select name="fd" class="input-sm">
                 <option value="name">작성자</option>
