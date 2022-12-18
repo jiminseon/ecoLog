@@ -36,6 +36,7 @@
 		  <td width="190" align="center" bgcolor="E6ECDE" height="22">포스트 number</td>
 		   <td width="200" align="center" bgcolor="E6ECDE">포스트 이름</td>
 		  <td width="200" align="center" bgcolor="E6ECDE">카테고리</td>
+		   <td>삭제</td>
 		</tr>
 <%-- 
 	if (bmList != null) {	
@@ -59,6 +60,9 @@
 		  <td width="200" align="center" bgcolor="ffffff" height="20">
 		    ${bookMark.userId}        <%-- <%=BookMark.getUserId()%> --%>
 		  </td>
+		   <td><a href="<c:url value='/user/removeBM'>
+			     		   <c:param name='postNum' value='${bookMark.postNum}'/>
+					 	 </c:url>">북마크 삭제</a></td>
 		</tr>
 	  </c:forEach> 
 <%--
