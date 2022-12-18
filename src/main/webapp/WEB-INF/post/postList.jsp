@@ -72,7 +72,7 @@ function send()
                <tr>
                  <td class="text-center" width=10%><%=post.getPostNum() %></td>
                  <td width=45%>
-                  <a href="/main/main.jsp&postNum=<%=post.getPostNum()%>"><%=post.getTitle() %></a>
+                  <a href="<c:url value='/post/postView' />"><%=post.getTitle() %></a>
                  </td>
                  <td class="text-center" width=15%><%=post.getWriter() %></td>
                   <td class="text-center" width=15%><%=post.getCategory() %></td>
