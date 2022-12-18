@@ -79,7 +79,8 @@ public class RequestMapping {
         logger.info("Initialized Request Mapping!");
         
         
-        mappings.put("/post/postList", new ListPostController());
+        mappings.put("/post/postList", new ListPostController());        
+        mappings.put("/post/postView", new ViewPostController());
         mappings.put("/post/insert_success", new CreatePostController());
     }
 
