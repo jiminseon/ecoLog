@@ -97,4 +97,25 @@ public class calculatorDAO {
 		return null;
 	}
 	
+	public int findActivityPoint(String cal_content) throws SQLException {
+        String sql = "SELECT itempoint " 
+        		   + "FROM item "
+        		   + "WHERE activity=? ";              
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {cal_content});		// JDBCUtil에 query문 설정
+					
+		System.out.println("내용은" + cal_content);
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();		
+			rs.next();
+			System.out.println("포인트"+ rs.getInt("itempoint"));
+			return rs.getInt("itempoint");					
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();		// resource 반환
+		}
+		return -1;
+	}
+	
 }

@@ -1,10 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="java.util.*, model.*" %> 
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-	User user = (User)request.getAttribute("user");
-%>
+<%@page import="javax.servlet.http.*"%>
+<%@page import="model.*" %>
+<%@page import="model.dao.*" %>
+<%@page import="org.slf4j.Logger" %>
+<%@page import="org.slf4j.LoggerFactory" %>
+<%--
+	String Id = (String)request.getAttribute("Id");
+--%>
 <html>
 <head>
 <link rel=stylesheet href="<c:url value='/css/calendar.css' />" type="text/css">
@@ -69,9 +74,14 @@ function goCal() {
     var words = str.split("&nbsp;");
     
 	if (monthList[now.getMonth()] == words[0] && now.getFullYear().toString() == words[4] && day == now.getDate().toString()) {
-		window.name = "index";
+		var myFrm = document.frm2;
+		window.name = "index"
 		var url = "<c:url value='/cal/calulator'></c:url>"
-		window.open(url,width=50, height=50);
+		window.open("", "calculator", width=50, height=50);
+		myFrm.action=url;
+		myFrm.method="post";;
+		myFrm.target="calculator";
+		myFrm.submit();
 	}
 	else {
 		alert("오늘 날짜만 입력 가능");		
@@ -117,6 +127,9 @@ function goList() {
 	<div class="bottom">
 		<div class="bleft">
 			<%@ include file="/WEB-INF/main/rank.jsp" %>
+			<form name="frm2">
+		   	<input type="text" name="userId" value="${Id}" hidden>
+		   </form>
 		</div>
 		<div class="bright">
 			게시판 jsp 연결
