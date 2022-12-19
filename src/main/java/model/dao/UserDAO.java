@@ -226,5 +226,31 @@ public class UserDAO {
 		}
 		return false;
 	}
+	
+	public int savePoint(int point, String Id) throws SQLException {
+		String sql = "UPDATE USER_INFO "
+				+ "SET point= point + ? "
+				+ "WHERE Id=?";
+		Object[] param = new Object[] {point, Id};
+		
+		System.out.println("point update "+ point+ Id);
+		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 update문과 매개 변수 설정
+
+		try {		
+			System.out.println("DAO에서 수정 중");
+			int result = jdbcUtil.executeUpdate();	// update 문 실행
+			return result;
+		} catch (Exception ex) {
+			System.out.println("DAO 오류");
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		}
+		finally {
+			System.out.println("정보 수정 완료");
+			jdbcUtil.commit();
+			jdbcUtil.close();	// resource 반환
+		}		
+		return 0;
+	}
 
 }

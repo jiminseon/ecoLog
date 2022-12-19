@@ -34,8 +34,8 @@ public class CalculatorManager {
 	}
 	
     
-	public List<Calculator> findActivityList(String cal_day) throws SQLException {
-		return calDAO.findActivityList(cal_day);
+	public List<Calculator> findActivityList(String cal_day, String userId) throws SQLException {
+		return calDAO.findActivityList(cal_day, userId);
 	}
 	
 	public int findActivityPoint(String cal_content) throws SQLException {

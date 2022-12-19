@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import controller.Controller;
 import model.Calculator;
 import model.service.CalculatorManager;
+import model.service.UserManager;
 
 
 
@@ -17,11 +18,17 @@ public class createCalculator implements Controller {
 		
 		try {
 			CalculatorManager manager = CalculatorManager.getInstance();
+			UserManager userManager = UserManager.getInstance();
+			
 	    	String cal_content = request.getParameter("cal_content");
 	    	int point = manager.findActivityPoint(cal_content);
-	    	String userId = request.getParameter("userId");
 	    	
+	    	
+	    	String userId = request.getParameter("userId");
 	    	System.out.println(userId);
+	    	
+	    	int num = userManager.savePoint(point, userId);
+	    	
 	       	Calculator cal = new Calculator(
 				request.getParameter("cal_day"),
 				cal_content,

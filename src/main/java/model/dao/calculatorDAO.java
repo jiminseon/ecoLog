@@ -65,11 +65,11 @@ public class calculatorDAO {
 		return null;
 	}
 	
-	public List<Calculator> findActivityList(String cal_day) throws SQLException {
+	public List<Calculator> findActivityList(String cal_day, String userId) throws SQLException {
         String sql = "SELECT cal_day, cal_content, cal_point, userid " 
         		   + "FROM calendar "
-        		   + "WHERE cal_day=? ";              
-		jdbcUtil.setSqlAndParameters(sql, new Object[] {cal_day});		// JDBCUtil에 query문 설정
+        		   + "WHERE cal_day=? and userid=?";              
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {cal_day, userId});		// JDBCUtil에 query문 설정
 					
 		System.out.println(cal_day);
 		try {
@@ -83,7 +83,7 @@ public class calculatorDAO {
 					rs.getString("userid")
 						);
 
-				System.out.println(rs.getString("cal_day"));
+				System.out.println("중복" + rs.getString("cal_day"));
 				calList.add(cal);				// List에 User 객체 저장
 			}		
 			

@@ -119,6 +119,7 @@ function goList() {
 		
 		   <%@ include file="/WEB-INF/main/calendar.jsp" %>
 		   <form name="frm">
+		   <input type="text" name="userId" value="${Id}" hidden>
 		   	<input type="text" name="cal_day" id="date" hidden>
 		   </form>
 		</div>
@@ -269,7 +270,7 @@ function changeToday(e){
     reshowingList();
     document.getElementById( "date" ).value = today.getFullYear();
     document.getElementById( "date" ).value += today.getMonth() + 1;
-    document.getElementById( "date" ).value += "0"+today.getDate();
+    document.getElementById( "date" ).value += today.getDate();
     goList();
 }
 
