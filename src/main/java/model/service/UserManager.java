@@ -1,7 +1,9 @@
 package model.service;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import model.dao.MyMeetingDAO;
 import model.dao.UserDAO;
@@ -9,6 +11,8 @@ import model.dao.bookMarkDAO;
 import model.BookMark;
 import model.MyMeeting;
 import model.User;
+import model.Post;
+import model.dao.mybatis.*;
 
 /**
  * 사용자 관리 API를 사용하는 개발자들이 직접 접근하게 되는 클래스.
@@ -118,4 +122,26 @@ public class UserManager {
 	public List<MyMeeting> getMyMeeting(String Id) throws SQLException {
 		return mtDao.findMyMtList(Id);		
 	}
+	public void postInsert(Post post) throws SQLException{
+		   PostDAO.postInsert(post);
+	   }
+	   
+	   public boolean postUpdate(Post post) throws SQLException {
+		   return PostDAO.postUpdate(post);
+	   }
+	   
+	   public boolean postDelete(int postNum)throws SQLException {
+		   return PostDAO.postDelete(postNum);
+	   }
+	   
+	   public void postView(int postNum) throws SQLException {
+		   PostDAO.postDetailData(postNum);
+	   }
+	   
+	   public List<Post> getPostList() throws SQLException {
+		   Map map = new HashMap();
+		   return PostDAO.postListData(map);
+	   }
+	   
+	   // 검색은 나중에...
 }
