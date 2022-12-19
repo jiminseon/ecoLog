@@ -26,9 +26,7 @@ public class RequestMapping {
         mappings.put("/main", new ForwardController("/main/main.jsp"));
         mappings.put("/user/login/form", new ForwardController("/user/loginForm.jsp"));
         mappings.put("/user/login", new LoginController());
-        mappings.put("/user/logout", new LogoutController());
-   //     mappings.put("/user/list", new ListUserController());
-    //    mappings.put("/user/view", new ViewUserController());
+        mappings.put("/user/allow",  new ForwardController("/user/allow.jsp"));
         
         // 회원 가입 폼 요청과 가입 요청 처리 병합 (폼에 커뮤니티 선택 메뉴 추가를 위함)
      // mappings.put("/user/register/form", new ForwardController("/user/registerForm.jsp"));
