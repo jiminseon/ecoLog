@@ -92,8 +92,8 @@ function goList() {
 <body>
 <header>
 <div class="navbar-header">
-			
 			<a href="<c:url value='/post/postList'></c:url>">게시판</a>
+			<a href="<c:url value='/post/join'></c:url>">가입하기(임시로 여기서 test)</a>
 		</div>
 	<div class="head">
 	<a href="<c:url value='/user/myPage'></c:url>">마이페이지</a>

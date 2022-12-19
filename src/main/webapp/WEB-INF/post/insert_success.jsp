@@ -22,5 +22,5 @@
      
      // DAO를 호출한 다음에 INSERT요청 => 저장하는 SQL (databoard-mapper.xml)
      PostDAO.postInsert(post);
-     response.sendRedirect("postList.jsp?mode=1");
+     response.sendRedirect("postView.jsp?postNum");
  %>

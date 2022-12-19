@@ -13,7 +13,7 @@ import model.MyMeeting;
 public class MyMeetingDAO {
 	private JDBCUtil jdbcUtil = null;
 	
-	private static final Logger log = LoggerFactory.getLogger(bookMarkDAO.class);
+	private static final Logger log = LoggerFactory.getLogger(MyMeetingDAO.class);
 
 	public MyMeetingDAO() {			
 		jdbcUtil = new JDBCUtil();	// JDBCUtil 객체 생성
@@ -26,7 +26,7 @@ public class MyMeetingDAO {
 		String sql = "INSERT INTO myMeeting(myMtId, postNum, userId) VALUES (Seq_mm.nextval,?, ?)";		
 		Object[] param = new Object[] {mymt.getPostNum(),mymt.getUserId()};				
 		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil 에 insert문과 매개 변수 설정
-						
+		log.debug("create" + mymt.getPostNum());		
 		try {				
 			int result = jdbcUtil.executeUpdate();	// insert 문 실행
 			return result;
