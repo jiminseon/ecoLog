@@ -36,7 +36,7 @@ public class createCalculator implements Controller {
 				userId);
 	       	
 			manager.create(cal);
-			return "/main/main.jsp";       
+			return "redirect:/main";       
 	        
 		} catch (Exception e) {
             request.setAttribute("registerFailed", true);
