@@ -29,14 +29,13 @@ public class UserDAO {
 				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, TO_CHAR(SYSDATE, 'YYYY/MM/DD'))";	
 		Object[] param = new Object[] {user.getId(), user.getPassword(), 
 				user.getName(), user.getphoneNumber(), user.getEmail(), user.getAddress(), user.getBirth(), user.getNickname(),
-				0};		//포인트는 0으로 설정	
-		
+				0};		//포인트와 meeting 0과 null로 표시		
 		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil 에 insert문과 매개 변수 설정
 		
+		System.out.println(user.getRegDate());
 		
 		try {				
 			int result = jdbcUtil.executeUpdate();	// insert 문 실행
-			System.out.println("regDate: "+user.getRegDate());
 			return result;
 		} catch (Exception ex) {
 			jdbcUtil.rollback();

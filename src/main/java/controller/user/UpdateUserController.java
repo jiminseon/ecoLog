@@ -57,10 +57,7 @@ public class UpdateUserController implements Controller {
 		log.debug("Update User : {}", updateUser);
 
 		UserManager manager = UserManager.getInstance();
-		manager.update(updateUser);		
-		
-		log.debug("manager후 ! Update User : {}", updateUser);	
-		
+		manager.update(updateUser);			
 		return "redirect:/user/myPage";			
 	}
 }

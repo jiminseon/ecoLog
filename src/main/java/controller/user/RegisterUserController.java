@@ -37,14 +37,15 @@ public class RegisterUserController implements Controller {
 			request.getParameter("email"),
 			request.getParameter("address"),
 			request.getParameter("birth"),
-			request.getParameter("nickName")
+			request.getParameter("nickName"),
+			request.getParameter("regDate")
 			);
+		
+        log.debug("Create User : {}", user);
 
 		try {
 			UserManager manager = UserManager.getInstance();
 			manager.create(user);
-			log.debug("Create User : {}", user);
-			
 	        return "redirect:/";	// 성공 시 리스트로 redirect
 	        
 		} catch (ExistingUserException e) {	// 예외 발생 시 회원가입 form으로 forwarding

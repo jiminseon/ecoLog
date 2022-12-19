@@ -49,6 +49,7 @@ public class UserManager {
     }
 
     public int update(User user) throws SQLException, UserNotFoundException {
+
 		return userDAO.update(user);
 	}	
 
