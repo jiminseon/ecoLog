@@ -88,7 +88,7 @@ function resizeWindow(win) {
       <tr height="50px"><td align="center">
 	      <select name="cal_content" style="width:150px;"  >
       		<c:forEach var="testList" items="${itemList}" varStatus="i">
-         		<option value="${testList.activity}">${testList.activity}</option>
+         		<option value="${testList.activity}">${testList.activity} ${testList.itemPoint}</option>
       		</c:forEach>
   		 </select>
            <input type="button" class="btn btn-primary" value="+" onClick="calSave()"></td></tr>

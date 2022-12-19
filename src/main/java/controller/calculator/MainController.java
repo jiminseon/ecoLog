@@ -15,8 +15,8 @@ import model.User;
 import model.service.CalculatorManager;
 import model.service.UserManager;
 
-public class RankController implements Controller {
-	private static final Logger log = LoggerFactory.getLogger(RankController.class);
+public class MainController implements Controller {
+	private static final Logger log = LoggerFactory.getLogger(MainController.class);
 	
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {			
