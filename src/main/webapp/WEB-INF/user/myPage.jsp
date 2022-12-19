@@ -37,38 +37,35 @@ function checkPW() {
 	text-align: center;
 }
 table {
-	border: 3px Black
+	border: 3px Black;
+        border-radius: 10px;
 }
 
 td {
-	border: 1px light Green
+	border: 1px light Green;
+        border-radius: 10px;
 }
 #title {
 	background-color: Green
 }</style>
 </head>
 <body>
-  	<table style="width: 100%"> 
+  	<table style="width: 100%; background-color: YellowGreen">  
   	<tr style="background-color : beige">
-  		<td width="500" align="left" >
-			<h1>MY PAGE</h1></td>
-		<td width="500" align="right">
-  			<a href="<c:url value='/main' />">홈 화면</a>&nbsp; 
-			<a href="<c:url value='/user/logout'>
-	     		   <c:param name='logout' value='<%=user.getId()%>'/>
-			 	 </c:url>">로그아웃</a> &nbsp;
+  		<td width="300px" height = "140" align="left" ><br/>
+			<font size='20' color='004300' weight="bold"><h1>MY PAGE</h1></font></td>
+		<td width="100px" align="right">
   		</td>
 	</tr>
-	
 	</table>  
-	<table> 
-	<tr style = "float:left; background-color : yellowgreen; width: 100%">
-		<td width="1000" align="left">
-			<h2> <%=user.getNickname()%>님, 환영합니다. </h2>
-			<h5> 가입일 : <%=user.getRegDate()%> </h5>
+	<table style = "float:left; width:100%; background-color: YellowGreen"> 
+	<tr style = "background-color : yellowgreen; width: 20%;, height:50%">
+		<td width="500" align="left">
+			<h1> <%=user.getNickname()%>님, 환영합니다. </h1>
+			
 			<h5> <%=user.getNickname()%>님의 마이페이지 입니다. </h5>
 		</td>
-		<td width="1000" align="right">
+		<td width="800" align="right" bgcolor=beige>
 		<a href="<c:url value='/post'>
 			     	<c:param name='userId' value='<%=user.getId()%>'/>
 				 </c:url>">내 캐릭터</a> &nbsp;
@@ -77,8 +74,8 @@ td {
 				 </c:url>">내가 쓴 글 보기</a> &nbsp;
 	</td></tr>
 	</table>  
-	
-		<table style = "float:left; background-color : beige; width: 100%">
+	<br/><br/>
+		<table style = "float:left; background-color : beige; width: 10%; height:50%">
 		<tr style="background-color : beige">
 			<td width="120" align="left">	
 			    <h3>My Page</h3>
@@ -111,17 +108,66 @@ td {
 		</table>
 		
 		<form name="form">
-		<table style="background-color: YellowGreen">
+		<table style="background-color: YellowGreen;  width: 90%; height:50%">
 		<tr height="40">
-			<td width="500" align="center" bgcolor=beige>비밀번호 확인</td>
-				<td width="1100" bgcolor="ffffff" style="padding-left: 10">
+			<td width="300" align="center" bgcolor=beige>비밀번호 확인</td>
+				<td width="100" bgcolor="ffffff" style="padding-left: 10">
 					<input type="password" style="width: 240" name="password">
 				</td>
 		</tr>
 		<tr>
 			<td align=left>
-			<input type="button" value="확인" onClick="checkPW()"> &nbsp;/>
-		</tr>
+			<input type="button" value="확인" onClick="checkPW()" value=""> &nbsp;
+					<table style="background-color: YellowGreen">
+	  	 				 <tr height="40">
+							<td width="150" align="center" bgcolor="E6ECDE">사용자 ID</td>
+							<td width="250" bgcolor="ffffff" style="padding-left: 10">
+							${user.id}
+							</td>
+		  </tr>
+		  <tr height="40">
+			<td width="150" align="center" bgcolor="E6ECDE">비밀번호</td>
+			<td width="250" bgcolor="ffffff" style="padding-left: 10">
+				${user.password}
+			</td>
+		  </tr>
+		  <tr height="40">
+			<td width="150" align="center" bgcolor="E6ECDE">이름</td>
+			<td width="250" bgcolor="ffffff" style="padding-left: 10">
+				${user.name}
+			</td>
+		  </tr>
+		 <tr height="40">
+			<td width="150" align="center" bgcolor="E6ECDE">닉네임</td>
+			<td width="250" bgcolor="ffffff" style="padding-left: 10">
+				${user.nickname}
+			</td>
+		  </tr>
+		  <tr height="40">
+			<td width="150" align="center" bgcolor="E6ECDE">생년월일</td>
+			<td width="250" bgcolor="ffffff" style="padding-left: 10">
+				${user.birth}
+
+			</td>
+		  </tr> 
+		  <tr height="40">
+			<td width="150" align="center" bgcolor="E6ECDE">이메일 주소</td>
+			<td width="250" bgcolor="ffffff" style="padding-left: 10">
+				${user.email}
+			</td>
+		  </tr>	
+		  <tr height="40">
+			<td width="150" align="center" bgcolor="E6ECDE">전화번호</td>
+			<td width="250" bgcolor="ffffff" style="padding-left: 10">
+				${user.phoneNumber}
+			</td>
+		  </tr>	
+		  <tr height="40">
+			<td width="150" align="center" bgcolor="E6ECDE">주소</td>
+			<td width="250" bgcolor="ffffff" style="padding-left: 10">
+				${user.address}
+			</td>
+	    </table>
 		</table>
 		</form>
 </body>

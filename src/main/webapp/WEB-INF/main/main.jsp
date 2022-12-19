@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="java.util.*, model.*" %> 
+ <%@ page import="java.util.*, model.User, controller.user.*" %>   
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-	User user = (User)request.getAttribute("user");
-%>
+
 <html>
 <head>
 <link rel=stylesheet href="<c:url value='/css/calendar.css' />" type="text/css">
@@ -79,22 +77,14 @@ function goCal() {
 }
 
 function goList() {
-	var myForm = document.frm;
-	var url = "<c:url value='/cal/list'></c:url>";
-	window.open("","calList",width=50, height=50);
-	myForm.action=url;
-	myForm.method="post";;
-	myForm.target="calList";
-	myForm.submit();
+	window.name = "index";
+	var url = "<c:url value='/cal/list'></c:url>"
+	window.open(url,width=50, height=50);
 }
 </script>
 </head>
 <body>
 <header>
-<div class="navbar-header">
-			<a href="<c:url value='/post/postList'></c:url>">게시판</a>
-			<a href="<c:url value='/post/join'></c:url>">가입하기(임시로 여기서 test)</a>
-		</div>
 	<div class="head">
 	<a href="<c:url value='/user/myPage'></c:url>">마이페이지</a>
 	</div>
@@ -106,11 +96,7 @@ function goList() {
 			<!-- 로그인 되어있을 때는 character.jsp가 뜨도록 구현해두기 -->
 		</div>
 		<div class="tright">
-		
 		   <%@ include file="/WEB-INF/main/calendar.jsp" %>
-		   <form name="frm">
-		   	<input type="text" name="cal_day" id="date" hidden>
-		   </form>
 		</div>
 	</div>
 	<p/><p/><p/>
@@ -254,9 +240,6 @@ function changeToday(e){
     showMain();
     keyValue = today.getFullYear() + '' + today.getMonth()+ '' + today.getDate();
     reshowingList();
-    document.getElementById( "date" ).value = today.getFullYear();
-    document.getElementById( "date" ).value += today.getMonth() + 1;
-    document.getElementById( "date" ).value += "0"+today.getDate();
     goList();
 }
 
@@ -276,7 +259,6 @@ var keyValue = today.getFullYear() + '' + today.getMonth()+ '' + today.getDate()
 function checkList(e){
     e.currentTarget.classList.add('checked');
 }
-
 		
   </script>
 
