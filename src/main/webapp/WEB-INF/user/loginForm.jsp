@@ -29,31 +29,43 @@ function userCreate(targetUri) {
 }
 </script>
 <style>
+
 #wrap {
-	width: 1000px;
+	width: 61%;
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
 }
 
 table {
-	border: 3px Black
+        border-radius: 15px;
+	border: 3px Black;
 }
 
 td {
-	border: 1px light Green
+	border: 1px #adc0de;
+    border-radius: 15px;
 }
 
 #title {
 	background-color: White
 }
+
+      input:focus{
+            background-color:#fcffcc;
+          }
+          
+          
+table:hover{
+         background: #aad162;
+        }
 </style>
 </head>
 <body>
 	<br>
 	<!-- login form  -->
 	<form name="form" method="POST" action="<c:url value='/user/login' />">
-		<table style="width: 100%">
+		<table style="width: 60%">
 			<tr>
 				<td width="20"></td>
 				<td><b>에코로그</b><br> <br>
@@ -63,15 +75,15 @@ td {
 						</tr>
 					</table> 
 					<br>
-					<table style="background-color: YellowGreen">
+					<table style="background-color: #5988d4">
 						<tr height="40">
-							<td width="1100" align="center" bgcolor="e6ffe6">사용자 ID</td>
+							<td width="1100" align="center" bgcolor="adc0de"><b>사용자 ID</b></td>
 							<td width="1100" bgcolor="ffffff" style="padding-left: 10">
 								<input type="text" style="width: 240" name="Id">
 							</td>
 						</tr>
 						<tr height="40">
-							<td width="1100" align="center" bgcolor="e6ffe6">비밀번호</td>
+							<td width="1100" align="center" bgcolor="adc0de"><b>비밀번호</b></td>
 							<td width="1100" bgcolor="ffffff" style="padding-left: 10">
 								<input type="password" style="width: 240" name="password">
 							</td>
@@ -89,10 +101,7 @@ td {
 			</tr>
 			<tr height="100">
 				<td>&nbsp;</td>
-				<td><a
-					href="https://raw.githubusercontent.com/dbp-energizo/EcoLog/36373981e5a22cef77deaeefd9e85b6331c2e74a/1%EB%8B%A8%EA%B3%84.png">
-						<img src="<c:url value='/images/logo.gif' />" />
-				</a></td>
+				<td></td>
 			</tr>
 		</table>
 	</form>
