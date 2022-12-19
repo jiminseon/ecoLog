@@ -79,7 +79,7 @@ function resizeWindow(win) {
          <input type="text" name="cal_day" id="year" class="cal" placeholder="날짜" style="width:80%" readonly> </div><br/>
       </tr>
       <tr><td align="center"><c:forEach var="calList" items="${calList}" varStatus="i">
-         		${calList.cal_content}<br>
+         		${calList.cal_content}
       		</c:forEach></td></tr>
      </table>
     </form>

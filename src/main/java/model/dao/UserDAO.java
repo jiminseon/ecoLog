@@ -252,5 +252,30 @@ public class UserDAO {
 		}		
 		return 0;
 	}
+	
+	public List<User> rankList() throws SQLException {
+		String sql = "SELECT rownum, nickname, point " 
+				+ "FROM (select nickname, point from USER_INFO ORDER BY point DESC) "
+				+ "WHERE rownum <= 3 and point > 0";
+		jdbcUtil.setSqlAndParameters(sql, null);		// JDBCUtil에 query문 설정
+
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();			// query 실행			
+			List<User> userList = new ArrayList<User>();	// User들의 리스트 생성
+			while (rs.next()) {
+				User user = new User(	
+						rs.getString("nickname"),
+						rs.getInt("point"));
+				userList.add(user);				// List에 User 객체 저장
+			}		
+			return userList;					
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();		// resource 반환
+		}
+		return null;
+	}
 
 }

@@ -20,7 +20,7 @@ public class RequestMapping {
     	// 각 uri에 대응되는 controller 객체를 생성 및 저장
         mappings.put("/", new ForwardController("index2.jsp"));
 
-        mappings.put("/main", new ForwardController("/main/main.jsp"));
+        mappings.put("/main", new RankController());
         mappings.put("/user/login/form", new ForwardController("/user/loginForm.jsp"));
         mappings.put("/user/login", new LoginController());
         mappings.put("/user/allow",  new ForwardController("/user/allow.jsp"));

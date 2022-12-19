@@ -149,5 +149,8 @@ public class UserManager {
 	   return userDAO.savePoint(point, Id);
    }
    
+   public List<User> rankList() throws SQLException {
+	   return userDAO.rankList();
+   }
    // 검색은 나중에...
 }

@@ -52,6 +52,11 @@ public class User {
 //        this.phoneNumber = updateUser.phoneNumber;
 //    }
 
+	public User(String string, int int1) {
+		this.nickname = string;
+		this.point = int1;
+	}
+
 	public boolean matchPassword(String password) {
 		if (password == null) {
 			return false;
