@@ -114,7 +114,7 @@ function subFirst(val) {
 
       document.getElementById( "year" ).value = words[4];
       document.getElementById( "year" ).value += words[0];
-      document.getElementById( "year" ).value += "0" + day;
+      document.getElementById( "year" ).value += day;
       </script>
 </body>
 </html>

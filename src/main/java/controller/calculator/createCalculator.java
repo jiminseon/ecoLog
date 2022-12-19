@@ -30,7 +30,7 @@ public class createCalculator implements Controller {
 		try {
 			CalculatorManager manager = CalculatorManager.getInstance();
 			manager.create(cal);
-			return "redirect:";       
+			return "/main/main.jsp";       
 	        
 		} catch (Exception e) {
             request.setAttribute("registerFailed", true);

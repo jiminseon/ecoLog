@@ -67,10 +67,6 @@ public class RequestMapping {
         mappings.put("/user/removeBM", new removeBookMarkController());
         mappings.put("/user/removeMymt", new removeMyMeetingController());
         mappings.put("/post/join", new joinMeetingController());
-        mappings.put("//cal/calulator", new ForwardController("/main/calculator.jsp"));
-        mappings.put("/cal/create", new createCalculator());
-        
-        logger.info("Initialized Request Mapping!");
         
         //mappings.put("/cal/calulator", new ForwardController("/main/calculator.jsp"));
         mappings.put("/cal/calulator", new ListItemController());
