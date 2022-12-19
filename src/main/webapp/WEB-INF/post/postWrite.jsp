@@ -1,53 +1,55 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@page import="model.*" %>
+<%@page import="model.dao.*" %>
+<%@ page import="java.io.PrintWriter" %>
+<jsp:useBean id="post" class="model.Post" scope="page" />
+<jsp:setProperty name="post" property="title" />
+<jsp:setProperty name="post" property="content" />
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<meta charset="EUC-KR">
+<title>∞‘Ω√∆«</title>
 </head>
 <body>
-  <div class="row">
-   <h1 class="text-center">Í∏ÄÏì∞Í∏∞</h1>
-   <form method="post" action="insert_success.jsp">
-   <table class="table table-hover">
-     <tr>
-       <th class="danger text-right" width=15%>ÏûëÏÑ±Ïûê</th>
-       <td width=85%>
-         <input type=text name=writer size=15 class="input-sm">
-       </td>
-     </tr>
-     <tr>
-       <th class="danger text-right" width=15%>Ï†úÎ™©</th>
-       <td width=85%>
-         <input type=text name=title size=45 class="input-sm">
-       </td>
-     </tr>
-     <tr>
-       <th class="danger text-right" width=15%>ÎÇ¥Ïö©</th>
-       <td width=85%>
-         <textarea rows="10" cols="50" name=contents></textarea>
-       </td>
-     </tr>
-     <tr>
-       <th class="danger text-right" width=10%>Ïú†Ìòï</th>
-       <td width=85%>
-              <select name="category" class="input-sm">
-                <option value="volunteer">Î¥âÏÇ¨</option>
-                <option value="donate">Í∏∞Î∂Ä</option>
-                <option value="campaign">Ï∫†ÌéòÏù∏</option>
-              </select>
-       </td>
-     </tr>
-     <tr>
-       <td colspan="2" class="text-center">
-         <input type=submit value=ÏûëÏÑ± class="btn btn-sm btn-primary">
-         <input type=button value=Ï∑®ÏÜå class="btn btn-sm btn-primary"
-           onclick="javascript:history.back()">
-       </td>
-     </tr>
-   </table>
-   </form>
-  </div>
+  <%
+	String userID = null;
+  	if (session.getAttribute("userID") != null) {
+  		userID = (String) session.getAttribute("userID");
+  	}
+  	
+  	if (userID == null) {
+  		PrintWriter script = response.getWriter();
+  		script.println("<script>");
+  		script.println("alert('∑Œ±◊¿Œ¿ª «œººø‰.')");
+  		script.println("location.href = 'login.jsp'");
+  		script.println("history.back()");
+  		script.println("</script>");
+  	} else {
+  		if (post.getTitle() == null || post.getContent() == null || post.getCategory() == null) {
+  				PrintWriter script = response.getWriter();
+  				script.println("<script>");
+  				script.println("alert('¿‘∑¬¿Ã æ»µ» ªÁ«◊¿Ã ¿÷Ω¿¥œ¥Ÿ.')");
+  				script.println("history.back()");
+  				script.println("</script>");
+  			} else {
+  				postDAO postDAO = new postDAO();
+  				int result = postDAO.write(post.getTitle(), userID, post.getContent(), post.getCategory());
+  				if (result == -1) {
+  					PrintWriter script = response.getWriter();
+  					script.println("<script>");
+  					script.println("alert('±€æ≤±‚ø° Ω«∆– «ﬂΩ¿¥œ¥Ÿ.')");
+  					script.println("history.back()");
+  					script.println("</script>");
+  				} else {
+  					PrintWriter script = response.getWriter();
+  					script.println("<script>");
+  					script.println("location.href = 'postList.jsp'");
+  					script.println("</script>");
+  				}
+  			}
+	}		
+  %>
 </body>
 </html>

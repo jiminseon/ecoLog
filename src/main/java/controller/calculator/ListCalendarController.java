@@ -21,9 +21,9 @@ public class ListCalendarController implements Controller {
     	
     	
 		CalculatorManager manager = CalculatorManager.getInstance();
-		String cal_day = request.getParameter("cal_day");
+		String cal_day = request.getParameter("20221204");
 		System.out.println("날짜request" + cal_day);
-		List<Calculator> calList = manager.findActivityList(cal_day);
+		List<Calculator> calList = manager.findActivityList("20221204");
 		
 
 		log.debug(calList + "calList");

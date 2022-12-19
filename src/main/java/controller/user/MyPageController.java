@@ -32,7 +32,7 @@ public class MyPageController implements Controller {
 		user = manager.findUser(Id);
 		}catch (UserNotFoundException e) {
 			System.out.println("실패!");
-			return "redirect:/main";
+			return "redirect:/";
 		}
 		
 		request.setAttribute("user", user);	

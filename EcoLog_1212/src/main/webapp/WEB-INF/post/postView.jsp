@@ -4,7 +4,7 @@
 
 <%
     String postNum = request.getParameter("postNum");
-    Post post = PostDAO.postDetailData(0);
+    Post post = PostDAO.postDetailData(Integer.parseInt(postNum));
 %>
 <!DOCTYPE html>
 <html>
@@ -26,7 +26,7 @@
          <th class="text-center danger" width=20%>작성자</th>
          <td class="text-center" width=30%><%=post.getWriter() %></td>
          <th class="text-center danger" width=20%>조회수</th>
-         <td class="text-center" width=30%><%=post.getVisitCount() + 1 %></td>
+         <td class="text-center" width=30%><%=post.getVisitCount() %></td>
        </tr>
        <tr>
          <th class="text-center danger" width=20%>제목</th>
@@ -34,15 +34,14 @@
        </tr>
        <tr>
          <td colspan="4" class="text-left" valign="top" height=200>
-          <pre style="white-space: pre-wrap;background-color:white;border:none">테스트 내용</pre>
+          <pre style="white-space: pre-wrap;background-color:white;border:none"><%=post.getContent() %></pre>
          </td>
        </tr>
        <tr>
          <td colspan="4" class="text-right">
-           <a href="../main/main.jsp?postNum=<%=post.getPostNum() %>" class="btn btn-xs btn-primary">수정</a>
-           <a href="../main/main.jsp?postNum=<%=post.getPostNum() %>" class="btn btn-xs btn-success">삭제</a>
-           <a href="../main/main.jsp?postNum=<%=post.getPostNum() %>" class="btn btn-xs btn-primary">북마크</a>
-           <a href="../main/main.jsp?" class="btn btn-xs btn-danger">목록</a>
+           <a href="../main/main.jsp?mode=6&postNum=<%=post.getPostNum() %>" class="btn btn-xs btn-primary">수정</a>
+           <a href="../main/main.jsp?mode=5&postNum=<%=post.getPostNum() %>" class="btn btn-xs btn-success">삭제</a>
+           <a href="../main/main.jsp?mode=1" class="btn btn-xs btn-danger">목록</a>
          </td>
        </tr>
      </table>

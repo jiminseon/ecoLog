@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import controller.Controller;
+import controller.user.UserSessionUtils;
 import model.Calculator;
 import model.service.CalculatorManager;
 
@@ -13,12 +14,11 @@ import model.service.CalculatorManager;
 public class createCalculator implements Controller {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
     	// POST request (회원정보가 parameter로 전송됨)
-
+    	
+    	HttpSession session = request.getSession();
     	
     	int point = 0;
-    	HttpSession session = request.getSession();
-
-    	String userid = (String)session.getAttribute("id");
+    	String userid = (String)session.getAttribute("id");	
     	
     	System.out.println(userid);
        	Calculator cal = new Calculator(
