@@ -56,6 +56,7 @@ public class RequestMapping {
         mappings.put("/user/createBM", new createBookMarkController());
         mappings.put("/user/createMymt", new createMyMeetingController());
         mappings.put("/user/BookMark", new BookMarkController());
+        mappings.put("/user/Info", new ecoInfoController());
 //
 //        
 //        mappings.put("/post/createBM", new createBookMarkController());

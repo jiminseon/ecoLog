@@ -34,8 +34,7 @@
 <link rel=stylesheet href="<c:url value='/css/calendar.css' />" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
 <title>메인</title>
-<style>
-body{
+<style>body{
         background:#6e8769;
         width:99%;
       height:100%;
@@ -51,7 +50,7 @@ body{
       margin: auto;
    }
    div.top, div.bottom {
-     width: 1250px;
+     width: 1280px;
      height:350px;
      margin: auto;
    }
@@ -64,12 +63,12 @@ body{
        border-radius: 15px;
    }
    div.tright {
-     width: 900px;
+     width: 930px;
      float: right;
      box-sizing: border-box;
    }
    div.bright {
-     width: 900px;
+     width: 650px;
      float: right;
      box-sizing: border-box;
      border: 5px solid #ffffff;
@@ -82,7 +81,16 @@ body{
       height: 250px;
       margin-top: 10px;
    }
-
+   div.bt{
+     width: 280px;
+     float: right;
+     margin-right: 10px;
+     box-sizing: border-box;
+     border: 5px solid #ffffff;
+       border-radius: 15px;
+       height: 250px;
+      margin-top: 10px;
+   }
 </style>
 
 <script>
@@ -116,6 +124,8 @@ function goList() {
 	myForm.target="calList";
 	myForm.submit();
 }
+
+window.open("<c:url value='/user/Info'></c:url>",'news','toolbar=no,location=no,status=no,menubar=no, scrollbars=no,resizable=no,width=600,height=700 top=100 left=100')
 </script>
 </head>
 <body>
@@ -171,6 +181,10 @@ function goList() {
        <%
            }
        %>
+		</div>
+		<div class="bt">
+			<%@ include file="/WEB-INF/main/ecoSites.jsp" %>
+			
 		</div>
 	</div>
 </div>
