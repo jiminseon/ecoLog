@@ -13,11 +13,15 @@ body{
         width:99%;
       height:100%;
       overflow:hidden;
-		background-image:url(./images/bge.png);
+		background-image:url(./images/bge1.png);
+		 background-repeat:no-repeat;
+             background-position:center;
+             background-size:cover;
    }
    table,td {
       text-align: right;
       border:5px solid black;
+      margin:500px;
    }
 	.div1 {margin:0px; border:0px;
 	}
