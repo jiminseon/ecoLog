@@ -1,5 +1,6 @@
 package controller.post;
 import java.sql.Date;
+import java.util.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -16,7 +17,8 @@ public class CreatePostController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		Date date = null;
+		Date date = new Date(2022,12,20);
+		int postNum = 2;
 		try {
 		    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		    date = (Date) formatter.parse(request.getParameter("writeDate"));

@@ -39,25 +39,12 @@ public class RequestMapping {
         
         mappings.put("/user/delete", new DeleteUserController());
         mappings.put("/user/myPage", new MyPageController());
-        
-        // 커뮤니티 관련 request URI 추가
-        // 커뮤니티 리스트 요청 처리 컨트롤러 변경
-//		mappings.put("/community/list", new ListCommunityController());
-//		mappings.put("/community/list", new ListAndViewCommunityController());
-//        mappings.put("/community/view", new ViewCommunityController());
-//        mappings.put("/community/create/form", new ForwardController("/community/creationForm.jsp"));
-//        mappings.put("/community/create", new CreateCommunityController());
-//        mappings.put("/community/update", new UpdateCommunityController());
-//        
-//        // 커뮤니티 리스트 및 상세정보 검색 request mapping 추가 (JSON 결과 생성)    
-//        mappings.put("/community/list/json", new ListCommunityJsonController());
-//        mappings.put("/community/view/json", new ViewCommunityJsonController());
+
 
         mappings.put("/user/createBM", new createBookMarkController());
         mappings.put("/user/createMymt", new createMyMeetingController());
         mappings.put("/user/BookMark", new BookMarkController());
-//
-//        
+      
 //        mappings.put("/post/createBM", new createBookMarkController());
 //        mappings.put("/post/createMymt", new createMyMeetingController());
 //        mappings.put("/post/BookMarks", new BookMarkController());
@@ -81,7 +68,10 @@ public class RequestMapping {
         
         mappings.put("/post/postList", new ListPostController());        
         mappings.put("/post/postView", new ViewPostController());
-        mappings.put("/post/insert_success", new CreatePostController());
+        mappings.put("/post/postWrite", new ForwardController("/post/insert_success.jsp"));
+        mappings.put("/post/insert_success", new CreatePostController())
+        mappings.put("post/insert_success", new CreatePostController());
+        mappings.put("/post/postDelete", new DeletePostController());
     }
 
     public Controller findController(String uri) {	

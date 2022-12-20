@@ -39,10 +39,14 @@
          </td>
        </tr>
        <tr>
+       	<th class="text-center danger" width=20%>유형</th>
+         <td class="text-center" width=30%><%=post.getCategory() %></td>
+       </tr>
+       <tr>
          <td colspan="4" class="text-right">
-           <a href="../main/main.jsp?mode=6&postNum=<%=post.getPostNum() %>" class="btn btn-xs btn-primary">수정</a>
-           <a href="../main/main.jsp?mode=5&postNum=<%=post.getPostNum() %>" class="btn btn-xs btn-success">삭제</a>
-           <a href="../main/main.jsp?mode=1" class="btn btn-xs btn-danger">목록</a>
+           <a href="<c:url value='/post/postUpdate' />?postNum=<%=post.getPostNum() %>" class="btn btn-xs btn-primary">수정</a>
+           <a href="<c:url value='/post/postDelete' />?postNum=<%=post.getPostNum() %>" class="btn btn-xs btn-success">삭제</a>
+           <a href="<c:url value='/post/postList' />?" class="btn btn-xs btn-danger">목록</a>
          </td>
        </tr>
      </table>
