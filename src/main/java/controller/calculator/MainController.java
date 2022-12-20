@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 
 import controller.Controller;
 import model.Item;
+import model.Post;
 import model.User;
 import model.service.CalculatorManager;
 import model.service.UserManager;
@@ -25,6 +26,10 @@ public class MainController implements Controller {
 
     	UserManager manager = UserManager.getInstance();
     	List<User> rankList = manager.rankList();
+    	
+    	List<Post> postList = manager.getPostListLast();
+		log.debug("PostList" + postList);		
+		request.setAttribute("postList", postList);	
     	
     	String Id = (String)session.getAttribute("Id");
     	log.debug("userId" + (String)session.getAttribute("Id"));

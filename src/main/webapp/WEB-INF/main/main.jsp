@@ -3,6 +3,8 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="javax.servlet.http.*"%>
+<%@ page import="java.util.*" %>
+<%@ page import="model.dao.mybatis.*" %>
 <%@page import="model.*" %>
 <%@page import="model.dao.*" %>
 <%@page import="org.slf4j.Logger" %>
@@ -10,6 +12,23 @@
 <%--
 	String Id = (String)request.getAttribute("Id");
 --%>
+<%
+     String strPage=request.getParameter("page");
+     if(strPage == null) // 페이지를 보내지 않을 경우 (맨처음에는 페이지를 보낼 수 없다)
+         strPage = "1";// 시작페이지를 설정해 준다 
+     int curpage = Integer.parseInt(strPage);
+     // start:1 , end:10
+     Map map = new HashMap();
+     int rowSize = 10;
+     int start = (curpage * rowSize) - (rowSize - 1);
+     int end = curpage * rowSize;
+     // map에 저장 => map 저장하는 공간 => 키,값을 설정 할 수 있다 
+     map.put("start",start);
+     map.put("end",end);
+     List<Post> list = PostDAO.postListLast(map);// 1page 1~10
+     // 총페이지읽기
+     int totalpage = PostDAO.postTotalPage();
+%> 
 <html>
 <head>
 <link rel=stylesheet href="<c:url value='/css/calendar.css' />" type="text/css">
@@ -133,7 +152,25 @@ function goList() {
 		   </form>
 		</div>
 		<div class="bright">
-			게시판 jsp 연결
+			       <%
+           for(Post post : list)
+           {
+       
+       %>
+               <tr>
+                 <td class="text-center" width=10%><%=post.getPostNum() %></td>
+                 <td width=45%>
+                  <a href="<c:url value='/post/postView' />?postNum=<%=post.getPostNum()%>"><%=post.getTitle() %></a>
+                 </td>
+                 <td class="text-center" width=15%><%=post.getWriter() %></td>
+                  <td class="text-center" width=15%><%=post.getCategory() %></td>
+                 <td class="text-center" width=20%><%=post.getWriteDate() %></td>
+                 <td class="text-center" width=10%><%=post.getVisitCount() %></td>
+               </tr>
+               <br>
+       <%
+           }
+       %>
 		</div>
 	</div>
 </div>

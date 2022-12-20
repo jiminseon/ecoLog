@@ -58,6 +58,24 @@ public class PostDAO {
 		return list;		
 	}
 	
+	public static List<Post> postListLast(Map map) {
+		List<Post> list = new ArrayList<Post>();
+		SqlSession session = null;
+		
+		try {
+			session = ssf.openSession();
+			list = session.selectList("postListLast", map);
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(session != null) {
+				session.close();
+			}			
+		}
+		
+		return list;		
+	}
+	
 	// 게시글의 총 페이지 수를 반환
 	public static int postTotalPage() {
 		int total = 0;
