@@ -93,14 +93,14 @@ public class PostDAO {
 	}
 	
 	// 게시글 상세 보기
-	public static Post postDetailData(int postNo) {
+	public static Post postDetailData(int postNum) {
 		Post post = new Post();
 		SqlSession session = null;
 		
 		try {
 			session = ssf.openSession();
-			session.update("viewIncrement", postNo);
-			post = session.selectOne("postDetailData", postNo);
+			session.update("viewIncrement", postNum);
+			post = session.selectOne("postDetailData", postNum);
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -149,7 +149,7 @@ public class PostDAO {
 	}
 	
 	// 게시글 삭제(비밀번호 확인 나중에...)
-	public static boolean postDelete(int postNo) {
+	public static boolean postDelete(int postNum) {
 		boolean check = false;
 		SqlSession session=null;
 		
@@ -158,7 +158,7 @@ public class PostDAO {
 			session = ssf.openSession();
 			
 			//String db_pwd=session.selectOne("boardGetPassword",no);
-			session.delete("postDelete", postNo);
+			session.delete("postDelete", postNum);
 			session.commit();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -170,14 +170,30 @@ public class PostDAO {
 		return check;
 	}
 	
+	public static Post postGetInfoData(int postNum)
+	   {
+	       Post post = new Post();
+	       SqlSession session = null;
+	       try {
+	           session = ssf.openSession();
+	           post = session.selectOne("postGetInfoData", postNum);
+	       } catch(Exception ex){
+	           ex.printStackTrace();
+	       } finally{
+	           if(session!=null)
+	               session.close();
+	       }
+	       return post;
+	   }
+	
 	// 게시글 수정된 내용으로 업데이트
-	public static Post postUpdateData(int postNo) {
+	public static Post postUpdateData(int postNum) {
 		Post post = new Post();
 		SqlSession session = null;
 		
 		try {
 			session = ssf.openSession();
-			post = session.selectOne("postDetailData", postNo);
+			post = session.selectOne("postDetailData", postNum);
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {

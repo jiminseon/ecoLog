@@ -10,7 +10,7 @@ public class Post {
 	private String content; //게시글 내용
 	private int visitCount; //조회수
 	private Date writeDate; //작성일
-	private String regdate;
+	private String regdate; //작성일 타입 변경
 	
 	public Post() {
 		super();
