@@ -26,9 +26,16 @@ public class ListCalendarController implements Controller {
 		System.out.println("날짜랑 아이디" + cal_day + userId);
 		List<Calculator> calList = manager.findActivityList(cal_day, userId);
 		
+		if (calList == null) { 
+			request.setAttribute("calList", 0);
+		}
+		else {
+			request.setAttribute("calList", calList);
+		}
+        
 
-		log.debug(calList + "calList");
-		request.setAttribute("calList", calList);
+		log.debug(calList.get(0).getCalNum() + "calList");
+		
 		
 		// 사용자 리스트 화면으로 이동(forwarding)
 		return "/main/calList.jsp"; 		
