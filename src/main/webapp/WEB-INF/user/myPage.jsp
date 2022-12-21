@@ -55,16 +55,21 @@ td {
 </style>
 </head>
 <body>
+<<<<<<< HEAD
 	<header>
 <%@ include file="/WEB-INF/main/header.jsp" %>
 </header>
    <table style="width: 100%; background-color: YellowGreen">
       <tr style="background-color: beige">
+=======
+   <table style="width: 200%; background-color: beige">
+      <tr>
+>>>>>>> branch 'final_final' of https://github.com/jiminseon/ecoLog.git
          <td width="100x" height="140" align="left"><br /> <font
             size='20' color='004300' weight="bold"><h1>MY PAGE</h1></font></td>
       </tr>
    </table>
-   <table style="float: left; width: 100%; background-color: YellowGreen">
+   <table style="float: left; width: 100%; background-color: beige">
       <tr style="background-color: yellowgreen; width: 20%; , height: 50%">
          <td width="500" align="left">
             <h1>
