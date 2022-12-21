@@ -10,6 +10,14 @@
      WHERE rownum BETWEEN #{start} AND #{end}
   	</select>
   	
+  	<select id="myPostList" resultType="POST" parameterType="String">
+     SELECT postnum, title, writer, post_category AS category, post_contents AS content, TO_CHAR(write_date,'YYYY-MM-DD') as regdate, visitcnt 
+     FROM (SELECT postnum, title, writer, post_category, post_contents, write_date, visitcnt, rownum
+     FROM (SELECT postnum, title, writer, post_category, post_contents, write_date, visitcnt
+     FROM POST ORDER BY postnum DESC))
+     WHERE writer = #{name}
+  	</select>
+  	
   	<select id="postTotalPage" resultType="int">
     	SELECT CEIL(COUNT(*)/10.0) FROM POST
   	</select>

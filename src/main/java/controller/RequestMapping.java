@@ -70,6 +70,8 @@ public class RequestMapping {
         mappings.put("/user/removeMymt", new removeMyMeetingController());
         mappings.put("/post/join", new joinMeetingController());
         
+        mappings.put("/user/MyPost", new MyPostController());
+        
         mappings.put("/cal/calulator", new ListItemController());
         mappings.put("/cal/create", new createCalculator());
         mappings.put("/cal/list", new ListCalendarController());

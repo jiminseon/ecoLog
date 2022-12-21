@@ -168,6 +168,10 @@ public class UserManager {
 	   return PostDAO.postListLast(map);
    }
    
+   public List<Post> myPostList(String name) throws SQLException {
+	   return PostDAO.myPostList(name);
+   }
+   
    //포인트저장함수 삭제하면 안돼요!!!
    public int savePoint(int point, String Id) throws SQLException {
 	   return userDAO.savePoint(point, Id);
