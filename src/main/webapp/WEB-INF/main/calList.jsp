@@ -79,7 +79,7 @@ function resizeWindow(win) {
       <tr height="50px"><td align="center"><div>
          <input type="text" name="cal_day" id="year" class="cal" placeholder="날짜" style="width:80%" readonly> </div><br/>
       </tr>
-      <%-- 
+ <%-- 
 	if (calList != null) { 	
 	  Iterator<calList> calListIter = calList.iterator();
 	
@@ -87,13 +87,13 @@ function resizeWindow(win) {
 	  while ( calListIter.hasNext() ) {
 		Calculator calList = (Calculator)calListIter.next();
 --%>	
-      <c:forEach var="calList" items="${calList}" varStatus="i">
-      <tr><td align="center">
-         		${calList.cal_content}
-      		</td>
-     		  <td><a href="<c:url value='/cal/rmvCal'>
-			     		   <c:param name='calNum' value='${calList.calNum}'/>
-			 	 </c:url>">x</a></td></tr>
+	      <c:forEach var="calList" items="${calList}">  	
+	      <tr><td align="center">
+	         		${calList.cal_content}
+	      		</td>
+	     		  <td><a href="<c:url value='/cal/rmvCal'>
+				     		   <c:param name='calNum' value='${calList.calNum}'/>
+				 	 </c:url>">x</a></td></tr>
 			 	 </c:forEach>
      <%--
 	  }

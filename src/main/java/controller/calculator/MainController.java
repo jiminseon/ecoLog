@@ -25,13 +25,18 @@ public class MainController implements Controller {
     	HttpSession session = request.getSession();
 
     	UserManager manager = UserManager.getInstance();
+    	String Id = (String)session.getAttribute("Id");
+    			
+		User user = manager.findUser(Id);	// 수정하려는 사용자 정보 검색
+		request.setAttribute("user", user);
+    	
     	List<User> rankList = manager.rankList();
     	
     	List<Post> postList = manager.getPostListLast();
-		log.debug("PostList" + postList);		
+		log.debug("PostList" + postList + user.getPoint());		
 		request.setAttribute("postList", postList);	
     	
-    	String Id = (String)session.getAttribute("Id");
+    	;
     	log.debug("userId" + (String)session.getAttribute("Id"));
     	request.setAttribute("Id", Id);	
     	request.setAttribute("rankList", rankList);	

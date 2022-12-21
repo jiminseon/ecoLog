@@ -54,14 +54,12 @@ public class UserDAO {
 		String sql = "UPDATE USER_INFO "
 				+ "SET password=?, name=?, nickname=?, birth=?, email=?, phoneNumber=?, address=? "
 				+ "WHERE Id=?";
-		Object[] param = new Object[] {user.getId(), user.getPassword(), user.getName()
-				, user.getNickname(), user.getBirth(), user.getEmail(), user.getphoneNumber(), user.getAddress()};
+		Object[] param = new Object[] {user.getPassword(), user.getName()
+				, user.getNickname(), user.getBirth(), user.getEmail(), user.getphoneNumber(), user.getAddress(), user.getId()};
 		
-		System.out.println("DAO update에서 sql문 가동\n고치는 아이디는?"+user.getId() + user.getPassword());
 		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 update문과 매개 변수 설정
 
 		try {		
-			System.out.println("DAO에서 수정 중");
 			int result = jdbcUtil.executeUpdate();	// update 문 실행
 			return result;
 		} catch (Exception ex) {
@@ -103,7 +101,7 @@ public class UserDAO {
 	 * 저장하여 반환.
 	 */
 	public User findUser(String Id) throws SQLException {
-		String sql = "SELECT password, name, phoneNumber, email, address, birth, nickname "
+		String sql = "SELECT password, name, phoneNumber, email, address, birth, nickname, point "
 				+ "FROM USER_INFO "
 				+ "WHERE Id=? ";              
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {Id});	// JDBCUtil에 query문과 매개 변수 설정
@@ -119,7 +117,8 @@ public class UserDAO {
 						rs.getString("email"),
 						rs.getString("address"),
 						rs.getString("birth"),
-						rs.getString("nickname"));
+						rs.getString("nickname"),
+						rs.getInt("point"));
 				System.out.println("유저 정보 저장 성공");
 				return user;
 			}
@@ -137,7 +136,7 @@ public class UserDAO {
 //	 * 전체 사용자 정보를 검색하여 List에 저장 및 반환
 //	 */
 	public List<User> findUserList() throws SQLException {
-		String sql = "SELECT Id, password, name, phoneNumber, email, address, birth, nickname " 
+		String sql = "SELECT Id, password, name, phoneNumber, email, address, birth, nickname, point " 
 				+ "FROM USER_INFO "
 				+ "ORDER BY Id";
 		jdbcUtil.setSqlAndParameters(sql, null);		// JDBCUtil에 query문 설정
@@ -154,7 +153,8 @@ public class UserDAO {
 						rs.getString("email"),
 						rs.getString("address"),
 						rs.getString("birth"),
-						rs.getString("nickname"));
+						rs.getString("nickname"),
+						rs.getInt("point"));
 				userList.add(user);				// List에 User 객체 저장
 			}		
 			return userList;					

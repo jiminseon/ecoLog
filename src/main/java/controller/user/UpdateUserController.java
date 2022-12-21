@@ -30,8 +30,6 @@ public class UpdateUserController implements Controller {
 
 			if (UserSessionUtils.isLoginUser(updateId, session) ||
 					UserSessionUtils.isLoginUser("admin", session)) {
-				//				List<Community> commList = manager.findCommunityList();	// 커뮤니티 리스트 검색
-				//				request.setAttribute("commList", commList);	
 
 				System.out.println("updateForm jsp로 이동");
 				return "/user/updateForm.jsp";   // 검색한 사용자 정보 및 커뮤니티 리스트를 updateForm으로 전송     

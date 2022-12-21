@@ -34,6 +34,19 @@ public class User {
 	}
 
 	public User(String Id, String password, String name, String phoneNumber, String email, String address,
+			String birth, String nickname, int point) {
+		this.Id = Id;
+		this.password = password;
+		this.name = name;
+		this.phoneNumber = phoneNumber;
+		this.email = email;
+		this.address = address;
+		this.birth = birth;
+		this.nickname = nickname;
+		this.point = point;
+	}
+	
+	public User(String Id, String password, String name, String phoneNumber, String email, String address,
 			String birth, String nickname) {
 		this.Id = Id;
 		this.password = password;
@@ -56,6 +69,9 @@ public class User {
 		this.nickname = string;
 		this.point = int1;
 	}
+	
+
+
 
 	public boolean matchPassword(String password) {
 		if (password == null) {
