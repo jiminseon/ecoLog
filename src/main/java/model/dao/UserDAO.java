@@ -54,10 +54,10 @@ public class UserDAO {
 		String sql = "UPDATE USER_INFO "
 				+ "SET password=?, name=?, nickname=?, birth=?, email=?, phoneNumber=?, address=? "
 				+ "WHERE Id=?";
-		Object[] param = new Object[] {user.getId(), user.getPassword(), user.getName()
-				, user.getNickname(), user.getBirth(), user.getEmail(), user.getphoneNumber(), user.getAddress()};
-		
-		System.out.println("DAO update에서 sql문 가동\n고치는 아이디는?"+user.getId() + user.getPassword());
+		Object[] param = new Object[] {user.getPassword(), user.getName()
+				, user.getNickname(), user.getBirth(), user.getEmail(), user.getphoneNumber(), user.getAddress(), user.getId()};
+
+
 		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 update문과 매개 변수 설정
 
 		try {		
