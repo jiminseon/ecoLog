@@ -103,6 +103,16 @@ body{
  a:hover, a:active {
      background-color: #6e8769;
 }
+
+.w-btn-green-outline {
+    border: 3px solid #77af9c;
+    color: darkgray;
+}
+
+.w-btn-green-outline:hover {
+    background-color: #77af9c;
+    color: #d7fff1;
+}
 </style>
 
 <script>

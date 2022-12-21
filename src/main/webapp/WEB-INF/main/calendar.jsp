@@ -6,7 +6,7 @@
         <div class="main-wrap">
           <div id="main-day" class="main-day"></div>
           <div id="main-date" class="main-date" ></div>
-			<input type="button" value="cal" onclick="goCal()">
+			<button class="w-btn-outline w-btn-green-outline" type="button" onclick="goCal()">활동SAVE</button>
         </div>
         <div class="todo-wrap">
           <div class="todo-title"></div>
