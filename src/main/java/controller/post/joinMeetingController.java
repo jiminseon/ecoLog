@@ -31,26 +31,29 @@ public class joinMeetingController implements Controller{
 //    		// GET request: 회원정보 등록 form 요청	
 			log.debug("joinnn" + user.toString());
 			request.setAttribute("user", user);
-			String postNum = "1234";
+			String postNum = "meeting2";
 			request.setAttribute("postNum", postNum);
 			return "/post/joinForm.jsp";   // 검색한 커뮤니티 리스트를 registerForm으로 전송     	
 	    }	
 
-    	// POST request (회원정보가 parameter로 전송됨)
-       	MyMeeting myMt = new MyMeeting(
-				request.getParameter("postNum"),
-				(String)session.getAttribute("Id"));
-       	log.debug(myMt.toString());
+    	String id = (String)session.getAttribute("Id");
+    	String postNum = "meeting2";
+       	MyMeeting mymt = new MyMeeting(
+       			postNum,id);
+       	log.debug("userId--" + id + "post====" + postNum);		
+		
 		try {
 			UserManager manager = UserManager.getInstance();
-			manager.createMyMeeting(myMt);
-			log.debug("createMyMeeting!!!");
-	        return "redirect:/user/MyMeeting";	// 성공 시 리스트로 redirect
+			if(manager.existingMM(id, postNum) == 0) {
+				log.debug("manager.existingMM(id, postNum) ----" + manager.existingMM(id, postNum));	
+				manager.createMyMeeting(mymt);
+			}
+			return "redirect:/user/MyMeeting";  	// 성공 시 리스트로 redirect
 	        
 		} catch (Exception e) {	// 예외 발생 시 회원가입 form으로 forwarding
             request.setAttribute("registerFailed", true);
 			request.setAttribute("exception", e);
-			request.setAttribute("myMt", myMt);
+			request.setAttribute("myMt", mymt);
 			return "redirect:/user/MyMeeting";
 		}
     }

@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import model.dao.MyMeetingDAO;
 import model.dao.UserDAO;
 import model.dao.bookMarkDAO;
@@ -22,6 +25,8 @@ import model.dao.mybatis.*;
  * 별도로 둘 수 있다.
  */
 public class UserManager {
+	private static final Logger log = LoggerFactory.getLogger(UserManager.class);
+
 	private static UserManager userMan = new UserManager();
 	private UserDAO userDAO;
 	private bookMarkDAO bmDao;
@@ -99,7 +104,21 @@ public class UserManager {
     return 0;
   }
 
+   public int existingMM(String id, String postNum) throws SQLException, ExistingUserException {  
+       if (mtDao.existing(id, postNum) == true) {
+           return 1;
+       }
+       log.debug("mtDao.existing(id, postNum) -- " + mtDao.existing(id, postNum));
+    return 0;
+  }
 
+   public int existingBM(String id, String postNum) throws SQLException, ExistingUserException {  
+	   if (bmDao.existing(id, postNum) == true) {
+           throw new ExistingUserException("이미 가입한 모임입니다.");
+       }
+    return 0;
+  }
+   
 	public int removeBookMark(String postNum, String id) throws SQLException {
 		return bmDao.removeMyBM(postNum, id);				
 	}
