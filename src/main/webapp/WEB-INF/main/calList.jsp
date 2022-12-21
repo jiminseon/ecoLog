@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%><%@page import="java.util.*, model.dao.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-//findActivityList
-%>
+<%--
+	@SuppressWarnings("unchecked")
+		List<Calculator> calList = (List<Calculator>)request.getAttribute("calList");
+--%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,10 +79,27 @@ function resizeWindow(win) {
       <tr height="50px"><td align="center"><div>
          <input type="text" name="cal_day" id="year" class="cal" placeholder="날짜" style="width:80%" readonly> </div><br/>
       </tr>
-      <tr><td align="center"><c:forEach var="calList" items="${calList}" varStatus="i">
+      <%-- 
+	if (calList != null) { 	
+	  Iterator<calList> calListIter = calList.iterator();
+	
+	  //사용자 리스트를 클라이언트에게 보여주기 위하여 출력.
+	  while ( calListIter.hasNext() ) {
+		Calculator calList = (Calculator)calListIter.next();
+--%>	
+      <c:forEach var="calList" items="${calList}" varStatus="i">
+      <tr><td align="center">
          		${calList.cal_content}
-      		</c:forEach></td></tr>
-     </table>
+      		</td>
+     		  <td><a href="<c:url value='/cal/rmvCal'>
+			     		   <c:param name='calNum' value='${calList.calNum}'/>
+			 	 </c:url>">x</a></td></tr>
+			 	 </c:forEach>
+     <%--
+	  }
+	}
+--%>	 
+	  </table>
     </form>
     <script>
       var str = window.opener.document.getElementById( "current-year-month" ).innerHTML;

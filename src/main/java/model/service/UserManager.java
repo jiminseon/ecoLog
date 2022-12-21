@@ -127,22 +127,36 @@ public class UserManager {
 		   PostDAO.postInsert(post);
 	   }
 	   
-	   public boolean postUpdate(Post post) throws SQLException {
-		   return PostDAO.postUpdate(post);
-	   }
-	   
-	   public boolean postDelete(int postNum)throws SQLException {
-		   return PostDAO.postDelete(postNum);
-	   }
-	   
-	   public void postView(int postNum) throws SQLException {
-		   PostDAO.postDetailData(postNum);
-	   }
-	   
-	   public List<Post> getPostList() throws SQLException {
-		   Map map = new HashMap();
-		   return PostDAO.postListData(map);
-	   }
-	   
-	   // 검색은 나중에...
+   public boolean postUpdate(Post post) throws SQLException {
+	   return PostDAO.postUpdate(post);
+   }
+   
+   public boolean postDelete(int postNum)throws SQLException {
+	   return PostDAO.postDelete(postNum);
+   }
+   
+   public void postView(int postNum) throws SQLException {
+	   PostDAO.postDetailData(postNum);
+   }
+   
+   public List<Post> getPostList() throws SQLException {
+	   Map map = new HashMap();
+	   return PostDAO.postListData(map);
+   }
+   
+   public List<Post> getPostListLast() throws SQLException {
+	   Map map = new HashMap();
+	   return PostDAO.postListLast(map);
+   }
+   
+   //포인트저장함수 삭제하면 안돼요!!!
+   public int savePoint(int point, String Id) throws SQLException {
+	   return userDAO.savePoint(point, Id);
+   }
+   
+   public List<User> rankList() throws SQLException {
+	   return userDAO.rankList();
+   }
+   
+   // 검색은 나중에...
 }

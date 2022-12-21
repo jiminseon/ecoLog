@@ -24,15 +24,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="/css/custom.css">
+<!-- <link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="/css/custom.css"> -->
 <title>게시판</title>
-<style type="text/css">
+<!-- <style type="text/css">
 	a, a:hover {
 		color: #000000;
 		text-decoration: none;
 	}
-</style>
+</style> -->
 <script type="text/javascript">
 function send()
 {
@@ -46,10 +46,9 @@ function send()
 </script>
 </head>
 <body>
-<div class="container">
    <div class="row">
      <h1 class="text-center">게시판</h1>
-     <table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+     <table class="table">
        <tr>
          <td>
            <a href="<c:url value='/post/postWrite' />" class="btn btn-sm btn-success">글쓰기</a>
@@ -57,19 +56,18 @@ function send()
        </tr>
      </table>
      <table class="table table-striped">
-     <thead>
        <tr class="warning">
-         <th style="background-color: #eeeeee; text-align: center;">번호</th>
-         <th style="background-color: #eeeeee; text-align: center;">제목</th>
-         <th style="background-color: #eeeeee; text-align: center;">작성자</th>
-         <th style="background-color: #eeeeee; text-align: center;">유형</th>
-         <th style="background-color: #eeeeee; text-align: center;">작성일</th>
+         <th class="text-center" width=10%>번호</th>
+         <th class="text-center" width=30%>제목</th>
+         <th class="text-center" width=10%>작성자</th>
+         <th class="text-center" width=10%>유형</th>
+         <th class="text-center" width=20%>작성일</th>
+         <th class="text-center" width=10%>조회수</th>
        </tr>
-      </thead>
-       <tbody>	
        <%
            for(Post post : list)
            {
+       
        %>
                <tr>
                  <td class="text-center" width=10%><%=post.getPostNum() %></td>
@@ -78,12 +76,12 @@ function send()
                  </td>
                  <td class="text-center" width=15%><%=post.getWriter() %></td>
                   <td class="text-center" width=15%><%=post.getCategory() %></td>
-                 <td class="text-center" width=20%><%=post.getRegdate() %></td>
+                 <td class="text-center" width=20%><%=post.getWriteDate() %></td>
+                 <td class="text-center" width=10%><%=post.getVisitCount() %></td>
                </tr>
        <%
            }
        %>
-       </tbody>	
      </table>
      <table class="table">
        <tr>
@@ -112,8 +110,5 @@ function send()
        </tr>
      </table>
    </div>
-</div>
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="js/bootstrap.js"></script>
 </body>
 </html>

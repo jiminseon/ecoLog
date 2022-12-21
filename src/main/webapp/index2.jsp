@@ -9,16 +9,28 @@
 <title>Insert title here</title>
 <style>
 body{
-        
         width:99%;
-      height:100%;
+      height:30%;
+      margin:0px 0px 0px 260px;	
    }
-   table,td {
-      text-align: right;
-      border:0px;
+   table{
+      text-align: center;
+   	border: 10px #adc0de;
+    border-radius: 15px;
+     margin:200px 200px 0px 0px;	
+   }
+   .k{
+   	text-align: center;
+   	border: 10px #adc0de;
+    border-radius: 15px;
+     background: #aad162;
    }
 div{
-        width:99%;
+   	text-align: center;
+background: #ffffff;
+	border: 5px black;
+    border-radius: 15px;
+        width:30%;
       height:100%;
    }
 
@@ -26,8 +38,8 @@ div{
 </head>
 <body>
 <header>
-<div class="head"><table width="99%" height="1000px"><tr><td><a href="<c:url value='/user/login/form'></c:url>" target="right"s> 로그인</a>
-	<a href="<c:url value='/user/register'></c:url>" target="right">회원가입</a></td></tr></table>
+<div class="head"><center><table width="200px" height="100px"><tr><td class="k"><a href="<c:url value='/user/login/form'></c:url>" target="right"s> 로그인</a></td></tr><tr><td class="k">
+	<a href="<c:url value='/user/register'></c:url>" target="right">회원가입</a></td></tr></table></center>
 </div>
 </header>
 </body>

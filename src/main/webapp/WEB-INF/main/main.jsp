@@ -1,17 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="java.util.*, model.*" %> 
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="javax.servlet.http.*"%>
+<%@ page import="java.util.*" %>
+<%@ page import="model.dao.mybatis.*" %>
+<%@page import="model.*" %>
+<%@page import="model.dao.*" %>
+<%@page import="org.slf4j.Logger" %>
+<%@page import="org.slf4j.LoggerFactory" %>
+<%--
+	String Id = (String)request.getAttribute("Id");
+--%>
 <%
-	User user = (User)request.getAttribute("user");
-%>
+     String strPage=request.getParameter("page");
+     if(strPage == null) // 페이지를 보내지 않을 경우 (맨처음에는 페이지를 보낼 수 없다)
+         strPage = "1";// 시작페이지를 설정해 준다 
+     int curpage = Integer.parseInt(strPage);
+     // start:1 , end:10
+     Map map = new HashMap();
+     int rowSize = 10;
+     int start = (curpage * rowSize) - (rowSize - 1);
+     int end = curpage * rowSize;
+     // map에 저장 => map 저장하는 공간 => 키,값을 설정 할 수 있다 
+     map.put("start",start);
+     map.put("end",end);
+     List<Post> list = PostDAO.postListLast(map);// 1page 1~10
+     // 총페이지읽기
+     int totalpage = PostDAO.postTotalPage();
+%> 
 <html>
 <head>
 <link rel=stylesheet href="<c:url value='/css/calendar.css' />" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
 <title>메인</title>
-<style>
-body{
+<style>body{
         background:#6e8769;
         width:99%;
       height:100%;
@@ -27,7 +50,7 @@ body{
       margin: auto;
    }
    div.top, div.bottom {
-     width: 1250px;
+     width: 1280px;
      height:350px;
      margin: auto;
    }
@@ -40,12 +63,12 @@ body{
        border-radius: 15px;
    }
    div.tright {
-     width: 900px;
+     width: 930px;
      float: right;
      box-sizing: border-box;
    }
    div.bright {
-     width: 900px;
+     width: 650px;
      float: right;
      box-sizing: border-box;
      border: 5px solid #ffffff;
@@ -58,7 +81,16 @@ body{
       height: 250px;
       margin-top: 10px;
    }
-
+   div.bt{
+     width: 280px;
+     float: right;
+     margin-right: 10px;
+     box-sizing: border-box;
+     border: 5px solid #ffffff;
+       border-radius: 15px;
+       height: 250px;
+      margin-top: 10px;
+   }
 </style>
 
 <script>
@@ -69,9 +101,14 @@ function goCal() {
     var words = str.split("&nbsp;");
     
 	if (monthList[now.getMonth()] == words[0] && now.getFullYear().toString() == words[4] && day == now.getDate().toString()) {
-		window.name = "index";
+		var myFrm = document.frm2;
+		window.name = "index"
 		var url = "<c:url value='/cal/calulator'></c:url>"
-		window.open(url,width=50, height=50);
+		window.open("", "calculator", width=50, height=50);
+		myFrm.action=url;
+		myFrm.method="post";;
+		myFrm.target="calculator";
+		myFrm.submit();
 	}
 	else {
 		alert("오늘 날짜만 입력 가능");		
@@ -87,6 +124,8 @@ function goList() {
 	myForm.target="calList";
 	myForm.submit();
 }
+
+window.open("<c:url value='/user/Info'></c:url>",'news','toolbar=no,location=no,status=no,menubar=no, scrollbars=no,resizable=no,width=600,height=700 top=100 left=100')
 </script>
 </head>
 <body>
@@ -109,6 +148,7 @@ function goList() {
 		
 		   <%@ include file="/WEB-INF/main/calendar.jsp" %>
 		   <form name="frm">
+		   <input type="text" name="userId" value="${Id}" hidden>
 		   	<input type="text" name="cal_day" id="date" hidden>
 		   </form>
 		</div>
@@ -117,9 +157,34 @@ function goList() {
 	<div class="bottom">
 		<div class="bleft">
 			<%@ include file="/WEB-INF/main/rank.jsp" %>
+			<form name="frm2">
+		   	<input type="text" name="userId" value="${Id}" hidden>
+		   </form>
 		</div>
 		<div class="bright">
-			게시판 jsp 연결
+			       <%
+           for(Post post : list)
+           {
+       
+       %>
+               <tr>
+                 <td class="text-center" width=10%><%=post.getPostNum() %></td>
+                 <td width=45%>
+                  <a href="<c:url value='/post/postView' />?postNum=<%=post.getPostNum()%>"><%=post.getTitle() %></a>
+                 </td>
+                 <td class="text-center" width=15%><%=post.getWriter() %></td>
+                  <td class="text-center" width=15%><%=post.getCategory() %></td>
+                 <td class="text-center" width=20%><%=post.getWriteDate() %></td>
+                 <td class="text-center" width=10%><%=post.getVisitCount() %></td>
+               </tr>
+               <br>
+       <%
+           }
+       %>
+		</div>
+		<div class="bt">
+			<%@ include file="/WEB-INF/main/ecoSites.jsp" %>
+			
 		</div>
 	</div>
 </div>
@@ -256,7 +321,7 @@ function changeToday(e){
     reshowingList();
     document.getElementById( "date" ).value = today.getFullYear();
     document.getElementById( "date" ).value += today.getMonth() + 1;
-    document.getElementById( "date" ).value += "0"+today.getDate();
+    document.getElementById( "date" ).value += today.getDate();
     goList();
 }
 

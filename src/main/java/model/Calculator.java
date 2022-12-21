@@ -5,18 +5,17 @@ public class Calculator {
 	private String cal_content;
 	private int cal_point = 0;
 	private String userid;
+	private int calNum;
 	
 	
-	
-	
-	public Calculator(String cal_day, String cal_content, int cal_point, String userid) {
+	public Calculator(String cal_day, String cal_content, int cal_point, String userid, int calNum) {
 		super();
 		this.cal_day = cal_day;
 		this.cal_content = cal_content;
 		this.cal_point = cal_point;
 		this.userid = userid;
+		this.calNum = calNum;
 	}
-	
 	
 	public String getCal_day() {
 		return cal_day;
@@ -42,11 +41,18 @@ public class Calculator {
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
+	public int getCalNum() {
+		return calNum;
+	}
+	public void setCalNum(int calNum) {
+		this.calNum = calNum;
+	}
 	@Override
 	public String toString() {
 		return "Calculator [cal_day=" + cal_day + ", cal_content=" + cal_content + ", cal_point=" + cal_point
-				+ ", userid=" + userid + "]";
+				+ ", userid=" + userid + ", calNum=" + calNum + "]";
 	}
+	
 	
 	
 }

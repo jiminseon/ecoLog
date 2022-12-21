@@ -5,6 +5,7 @@
 private static final Logger log = LoggerFactory.getLogger(ListItemController.class);
 
    List<Item> itemList = (List<Item>)request.getAttribute("itemList");
+   String Id = (String)request.getAttribute("Id");
    
       log.debug(itemList + "itemList2");
 --%>
@@ -72,17 +73,6 @@ function resizeWindow(win) {
 	win.resizeTo(wid,hei);
 }
 
-function subFirst(val) {
-	var defVal = "0";
-	
-	if (val == "") {
-		document.getElementById("level1").innerHTML = defVal;
-	}
-	else {
-		document.getElementById("level1").innerHTML = val;
-	}
-	
-}
 </script>
 </head>
 <body onload='resizeWindow(this)'>
@@ -91,13 +81,14 @@ function subFirst(val) {
         <form name="form" method="POST" action="<c:url value='/cal/create' />" target="index">
       <table  border="10" cellspacing="4" cellpadding="10" width="90%" height="450px" align="center" color="black" bgcolor="white" class="t1">
       <tr height="50px"><td align="center"><div>
+      <input type="text" name="userId" value="${Id}" hidden>
          <input type="text" name="cal_day" id="year" class="cal" placeholder="날짜" style="width:80%" readonly> </div><div><br/>
          <input type="text" name="cal_point" id="level1" style="width:80%; height:60px;" readonly> </div>
       </td></tr>
       <tr height="50px"><td align="center">
-	      <select name="cal_content" style="width:150px;" onchange="subFirst(this.value)" >
+	      <select name="cal_content" style="width:150px;"  >
       		<c:forEach var="testList" items="${itemList}" varStatus="i">
-         		<option value="${testList.activity}">${testList.activity}</option>
+         		<option value="${testList.activity}">${testList.activity} ${testList.itemPoint}</option>
       		</c:forEach>
   		 </select>
            <input type="button" class="btn btn-primary" value="+" onClick="calSave()"></td></tr>
@@ -114,7 +105,7 @@ function subFirst(val) {
 
       document.getElementById( "year" ).value = words[4];
       document.getElementById( "year" ).value += words[0];
-      document.getElementById( "year" ).value += "0" + day;
+      document.getElementById( "year" ).value += day;
       </script>
 </body>
 </html>

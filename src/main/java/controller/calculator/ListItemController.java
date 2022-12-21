@@ -22,10 +22,12 @@ public class ListItemController implements Controller {
     	
 		CalculatorManager manager = CalculatorManager.getInstance();
 		List<Item> itemList = manager.findItemList();
+		String Id = request.getParameter("userId");
 
 		request.setAttribute("itemList", itemList);
-		request.setAttribute("point", itemList.get(0).getItemPoint());
-		
+		request.setAttribute("Id", Id);
+
+    	log.debug("userId" + Id);
 		return "/main/calculator.jsp"; 
     }
 }
