@@ -33,7 +33,7 @@ public class createCalculator implements Controller {
 				request.getParameter("cal_day"),
 				cal_content,
 				point,
-				userId);
+				userId, 0);
 	       	
 			manager.create(cal);
 			return "redirect:/main";       

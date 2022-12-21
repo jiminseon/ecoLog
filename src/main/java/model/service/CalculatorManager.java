@@ -41,4 +41,8 @@ public class CalculatorManager {
 	public int findActivityPoint(String cal_content) throws SQLException {
 		return calDAO.findActivityPoint(cal_content);
 	}
+	
+	public int removeCalList(String calNum) throws SQLException {
+		return calDAO.remove(calNum);				
+	}
 }

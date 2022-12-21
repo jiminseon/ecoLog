@@ -72,6 +72,7 @@ public class RequestMapping {
         mappings.put("/cal/calulator", new ListItemController());
         mappings.put("/cal/create", new createCalculator());
         mappings.put("/cal/list", new ListCalendarController());
+        mappings.put("/cal/rmvCal", new removeCalendarController());
         logger.info("Initialized Request Mapping!");
         
         

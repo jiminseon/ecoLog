@@ -18,8 +18,8 @@ public class calculatorDAO {
 	}
 		
 	public int create(Calculator cal) throws SQLException {
-		String sql = "INSERT INTO calendar(cal_day, cal_content, cal_point, userid) VALUES (?, ?, ?, ?)";		
-		Object[] param = new Object[] {cal.getCal_day(), cal.getCal_content(), cal.getCal_point(), cal.getUserid()};				
+		String sql = "INSERT INTO calendar(cal_day, cal_content, cal_point, userid, calnum) VALUES (?, ?, ?, ?, cal_seq.nextval)";		
+		Object[] param = new Object[] {cal.getCal_day(), cal.getCal_content(), cal.getCal_point(), cal.getUserid() };				
 		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil 에 insert문과 매개 변수 설정
 		System.out.println(cal.getCal_day()+ cal.getCal_content()+ cal.getCal_point()+ cal.getUserid());
 		try {				
@@ -66,7 +66,7 @@ public class calculatorDAO {
 	}
 	
 	public List<Calculator> findActivityList(String cal_day, String userId) throws SQLException {
-        String sql = "SELECT cal_day, cal_content, cal_point, userid " 
+        String sql = "SELECT cal_day, cal_content, cal_point, userid, calnum " 
         		   + "FROM calendar "
         		   + "WHERE cal_day=? and userid=?";              
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {cal_day, userId});		// JDBCUtil에 query문 설정
@@ -80,7 +80,8 @@ public class calculatorDAO {
 					rs.getString("cal_day"),
 					rs.getString("cal_content"),
 					rs.getInt("cal_point"),
-					rs.getString("userid")
+					rs.getString("userid"),
+					rs.getInt("calnum")
 						);
 
 				System.out.println("중복" + rs.getString("cal_day"));
@@ -116,6 +117,24 @@ public class calculatorDAO {
 			jdbcUtil.close();		// resource 반환
 		}
 		return -1;
+	}
+	
+	public int remove(String calNum) throws SQLException {
+		String sql = "DELETE FROM calendar WHERE calNum=?";		
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {calNum});	// JDBCUtil에 delete문과 매개 변수 설정
+
+		try {				
+			int result = jdbcUtil.executeUpdate();	// delete 문 실행
+			return result;
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		}
+		finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();	// resource 반환
+		}		
+		return 0;
 	}
 	
 }
