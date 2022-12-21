@@ -25,7 +25,6 @@ public class RequestMapping {
         mappings.put("/user/login", new LoginController());
         mappings.put("/user/allow",  new ForwardController("/user/allow.jsp"));
         mappings.put("/user/MyCharacter", new ForwardController("/main/character.jsp"));
-        mappings.put("/user/profile", new ForwardController("/main/myProfile.jsp"));
     //    mappings.put("/user/logout", new LogoutController());
    //     mappings.put("/user/list", new ListUserController());
     //    mappings.put("/user/view", new ViewUserController());
@@ -71,8 +70,8 @@ public class RequestMapping {
         mappings.put("/user/removeMymt", new removeMyMeetingController());
         mappings.put("/post/join", new joinMeetingController());
         
-        mappings.put("/user/MyPost", new MyPostController());
-        
+	mappings.put("/user/MyPost", new MyPostController());
+
         mappings.put("/cal/calulator", new ListItemController());
         mappings.put("/cal/create", new createCalculator());
         mappings.put("/cal/list", new ListCalendarController());
@@ -82,8 +81,10 @@ public class RequestMapping {
         
         mappings.put("/post/postList", new ListPostController());        
         mappings.put("/post/postView", new ViewPostController());
-        mappings.put("/post/insert_success", new CreatePostController());
-    }
+        mappings.put("/post/postWrite/form", new ForwardController("/post/postWrite.jsp"));
+        mappings.put("/post/postWrite", new CreatePostController());
+        mappings.put("/post/postDelete", new DeletePostController());
+        mappings.put("/post/postUpdate", new UpdatePostController());
 
     public Controller findController(String uri) {	
     	// 주어진 uri에 대응되는 controller 객체를 찾아 반환

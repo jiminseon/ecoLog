@@ -86,7 +86,7 @@ function send()
      <table class="table">
        <tr>
          <td class="text-left">
-          <form method="post" action="<c:url value='/post/postList' />" name=frm>
+          <form method="post" action="<c:url value='/post/postSearch' />" name=frm>
               Search:
               <select name="fd" class="input-sm">
                 <option value="name">작성자</option>

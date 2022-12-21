@@ -9,40 +9,38 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.Controller;
-import model.*;	
+import model.*;
 import model.service.*;
 
 public class UpdatePostController implements Controller {
 	private static final Logger log = LoggerFactory.getLogger(UpdatePostController.class);
- 
-	public String execute(HttpServletRequest request, HttpServletResponse response)	throws Exception {
-		if (request.getMethod().equals("GET")) {	
-			String updatePost = request.getParameter("postNo");
 
-			HttpSession session = request.getSession();
-			
-			log.debug("Post Update : {}", session);
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		//int commId = Integer.parseInt(request.getParameter("commId"));
+		int postNum = Integer.parseInt(request.getParameter("postNum"));
+		
+		if (request.getMethod().equals("GET")) {	// GET request: post 수정 form 요청	
+    		UserManager manager = UserManager.getInstance();
+			Post post = manager.postFind(postNum);	// 수정하려는 post 정보 검색
+			request.setAttribute("post", post);			
+		
+			return "/post/postUpdate.jsp";   // 검색한 정보를 update post로 전송     
+	    }	
+    	
+    	// POST request (커뮤니티 정보가 parameter로 전송됨) 
+    	Post post = new Post(
+    		postNum,
+    		request.getParameter("title"),
+    		request.getParameter("writer"),
+    		request.getParameter("content"),
+    		request.getParameter("category"),
+    		Integer.parseInt(request.getParameter("visitcnt")), 
+    		null);
 
-			UserManager manager = UserManager.getInstance();
-			Post post = manager.findPost(updatePost);	// 수정하려는 게시글 검색
-			request.setAttribute("user", session);			
+    	log.debug("Update Post : {}", post);
 
-			if (/*userSession같은 postSession만든 후 / post의 writer인 경우*/)
-			{
-				return "/post/list.jsp";       
-			}    
-			//반대로 아닌경우 else 타인이 쓴 글은 수정할 수 없습니다 
-		}
-
-		//POST방식 | 업데이트한 게시물 정보 전송
-		Post post = new Post(
-				request.getParameter("title"),
-				request.getParameter("content"));
-
-		log.debug("Post Update : {}", session);
 		UserManager manager = UserManager.getInstance();
-		manager.postUpdate(post);
-
-		return "redirect:/post/list";
+		manager.postUpdate(post);			
+        return "redirect:/post/postList";		
 	}
 }

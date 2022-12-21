@@ -16,7 +16,10 @@ public class CreatePostController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		Date date = null;
+		Date date = new Date(0,0,0);
+		String postNum = request.getParameter("postNum");
+		int pNum = Integer.parseInt(postNum);
+		
 		try {
 		    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		    date = (Date) formatter.parse(request.getParameter("writeDate"));
@@ -31,12 +34,11 @@ public class CreatePostController implements Controller {
 				request.getParameter("writer"),
 				request.getParameter("category"),
 				request.getParameter("content"),
-				0, date);
-		
+				0, date);		
 		try {
 			UserManager manager = UserManager.getInstance();
 			manager.postInsert(post);
-			return "/post/postView.jsp?postNum";
+			return "redirect:/post/postView.jsp?postNum=" + pNum;
 		} catch(Exception e) {
 			request.setAttribute("registerFailed", true);
 			request.setAttribute("exception", e);
