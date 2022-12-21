@@ -72,8 +72,7 @@ function send()
                  </td>
                  <td class="text-center" width=15%><%=post.getWriter() %></td>
                   <td class="text-center" width=15%><%=post.getCategory() %></td>
-                 <td class="text-center" width=20%><%=post.getWriteDate() %></td>
-                 <td class="text-center" width=10%><%=post.getVisitCount() %></td>
+                 <td class="text-center" width=20%><%=post.getRegdate() %></td>
                </tr>
        <%
            }

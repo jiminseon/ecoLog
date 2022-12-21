@@ -36,7 +36,7 @@
 	<!-- 실제 데이터 읽기 -->
     <select id="postDetailData" resultType="Post" parameterType="int">
     	SELECT postnum, title, writer, post_category AS category, post_contents AS content, 
-    	TO_CHAR(write_date,'YYYY-MM-DD') as regDate, visitcnt
+    	TO_CHAR(write_date,'YYYY-MM-DD') as regdate, visitcnt
     	FROM POST
     	<include refid="where-postnum"/>
     </select>
