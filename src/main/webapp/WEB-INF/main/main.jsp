@@ -143,6 +143,7 @@ window.open("<c:url value='/user/Info'></c:url>",'news','toolbar=no,location=no,
 	<div class="top">
 		<div class="tleft">
 			<!-- 로그인 되어있을 때는 character.jsp가 뜨도록 구현해두기 -->
+			 <%@ include file="/WEB-INF/main/character.jsp" %>
 		</div>
 		<div class="tright">
 		
