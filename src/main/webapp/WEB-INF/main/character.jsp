@@ -31,33 +31,46 @@ td {
 </style>
 </head>
 <body>
-
-	<% int point=150; %>
-	<% if (point <= 100) { %>
+<c:choose> 
+	<c:when test="${user.point < 100}">
 	<td align="center"><img src="<c:url value='/images/1단계.png' />"
 		width="200" height="300" /></td>
-	<% } else if (point <= 200 && point > 100) { %>
+	</c:when>
+	
+	<c:when test="${user.point > 100 and user.point < 200}">
 	<td align="center"><img src="<c:url value='/images/2단계.png' />"
 		width="200" height="300" /></td>
-	<% } else if (point <= 300 && point > 200) { %>
+	</c:when>
+	
+	 <c:when test="${user.point > 200 and user.point < 300}">
 	<td align="center"><img src="<c:url value='/images/3단계.png' />"
 		width="200" height="300" /></td>
-	<% } else if (point <= 400 && point > 300) { %>
+	</c:when>
+	
+	<c:when test="${user.point > 300 and user.point < 400}">
 	<td align="center"><img src="<c:url value='/images/4단계.png' />"
 		width="200" height="300" /></td>
-	<% } else if (point <= 500 && point > 400) { %>
+	</c:when>
+	<c:when test="${user.point > 400 and user.point < 500}">
 	<td align="center"><img src="<c:url value='/images/5단계.png' />"
 		width="200" height="300" /></td>
-	<% } else if (point <= 600 && point > 500) { %>
+	</c:when>
+	
+	<c:when test="${user.point > 500 and user.point < 600}">
 	<td align="center"><img src="<c:url value='/images/6단계.png' />"
 		width="200" height="300" /></td>
-	<% } else if (point <= 700 && point > 600) { %>
+	</c:when>
+	
+	<c:when test="${user.point > 600 and user.point < 700}">
 	<td align="center"><img src="<c:url value='/images/7단계.png' />"
 		width="200" height="300" /></td>
-	<% } else if (point > 700) { %>
+	</c:when>
+	
+	<c:when test="${user.point > 700}">
 	<td align="center"><img src="<c:url value='/images/8단계.png' />"
 		width="200" height="300" /></td>
-	<% }  %>
+	</c:when>
+</c:choose>
 
 	<table>
 		<tr>
