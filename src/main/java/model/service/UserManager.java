@@ -163,6 +163,11 @@ public class UserManager {
 	   return PostDAO.postListData(map);
    }
    
+   public Post postFind(int postNum) throws SQLException {
+	   Map map = new HashMap();
+	   return PostDAO.findPost(postNum);
+   }
+   
    public List<Post> getPostListLast() throws SQLException {
 	   Map map = new HashMap();
 	   return PostDAO.postListLast(map);

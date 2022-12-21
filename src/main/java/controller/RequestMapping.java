@@ -81,7 +81,10 @@ public class RequestMapping {
         
         mappings.put("/post/postList", new ListPostController());        
         mappings.put("/post/postView", new ViewPostController());
-        mappings.put("/post/insert_success", new CreatePostController());
+        mappings.put("/post/postWrite/form", new ForwardController("/post/postWrite.jsp"));
+        mappings.put("/post/postWrite", new CreatePostController());
+        mappings.put("/post/postDelete", new DeletePostController());
+        mappings.put("/post/postUpdate", new UpdatePostController());
     }
 
     public Controller findController(String uri) {	

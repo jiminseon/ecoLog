@@ -9,7 +9,7 @@
 <body>
   <div class="row">
    <h1 class="text-center">글쓰기</h1>
-   <form method="post" action="<c:url value='/post/create' />">
+   <form method="post" action="<c:url value='/post/postWrite' />">
    <table class="table table-hover">
      <tr>
        <th class="danger text-right" width=15%>작성자</th>

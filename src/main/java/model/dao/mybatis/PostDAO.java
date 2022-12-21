@@ -75,7 +75,7 @@ public class PostDAO {
 		
 		return list;		
 	}
-	
+
 	public static List<Post> myPostList(String name) {
 		List<Post> list = new ArrayList<Post>();
 		SqlSession session = null;
@@ -204,6 +204,22 @@ public class PostDAO {
 			}
 		}
 		return check;
+	}
+	
+	// 수정할 게시글 postNum으로 탐색
+	public static Post findPost(int postNum) {
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			return session.selectOne("selectPost", postNum);
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(session != null) {
+				session.close();
+			}
+		}
+		return null;		
 	}
 	
 	// 게시글 수정된 내용으로 업데이트
