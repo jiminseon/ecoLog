@@ -43,7 +43,7 @@ private static final Logger log = LoggerFactory.getLogger(ListItemController.cla
             background-color:#fcffcc;
           }
           
-      input {
+   input {
   height: 32px;
   font-size: 15px;
   border: 1px;
@@ -63,29 +63,26 @@ function calSave() {
    
        self.close();
     }
-
-
 }
 
 function resizeWindow(win) {
-	var wid = 500;
-	var hei = 600;
+	var wid = 400;
+	var hei = 500;
 	win.resizeTo(wid,hei);
 }
 
 </script>
 </head>
 <body onload='resizeWindow(this)'>
-    <center><h2>계산기</h2></center>
     <input type="text" value="id" hidden>
         <form name="form" method="POST" action="<c:url value='/cal/create' />" target="index">
-      <table  border="10" cellspacing="4" cellpadding="10" width="90%" height="450px" align="center" color="black" bgcolor="white" class="t1">
-      <tr height="50px"><td align="center"><div>
+      <table  border="10" cellspacing="4" cellpadding="10" width="90%" align="center" color="black" bgcolor="white" class="t1">
+      <tr> <center><h2>계산기</h2></center></tr>
+      <tr height="150"><td align="center"><div>
       <input type="text" name="userId" value="${Id}" hidden>
-         <input type="text" name="cal_day" id="year" class="cal" placeholder="날짜" style="width:80%" readonly> </div><div><br/>
-         <input type="text" name="cal_point" id="level1" style="width:80%; height:60px;" readonly> </div>
+         <input type="text" name="cal_day" id="year" class="cal" placeholder="날짜" style="width:80%" readonly> </div><br/>
       </td></tr>
-      <tr height="50px"><td align="center">
+      <tr height="200"><td align="center">
 	      <select name="cal_content" style="width:150px;"  >
       		<c:forEach var="testList" items="${itemList}" varStatus="i">
          		<option value="${testList.activity}">${testList.activity} ${testList.itemPoint}</option>
