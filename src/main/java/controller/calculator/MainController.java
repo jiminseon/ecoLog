@@ -33,7 +33,7 @@ public class MainController implements Controller {
     	List<User> rankList = manager.rankList();
     	
     	List<Post> postList = manager.getPostListLast();
-		log.debug("PostList" + postList + user.getPoint());		
+		log.debug("PostList" + postList);		
 		request.setAttribute("postList", postList);	
     	
     	;
