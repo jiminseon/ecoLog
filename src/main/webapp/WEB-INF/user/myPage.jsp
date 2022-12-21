@@ -89,10 +89,9 @@ td {
 				<h3>My Page</h3>
 			</td>
 		<tr style="background-color: beige">
-			<td width="120" align="left"><a
-				href="<c:url value='/user/update'>
-			     		   <c:param name='userId' value='<%=user.getId()%>'/>
-					 	 </c:url>">개인정보 수정</a></td>
+			<td width="120" align="left">
+			<a href=<jsp:include page="updateForm.jsp"/>>개인정보 수정</a> 
+		
 		<tr style="background-color: beige">
 			<td width="120" align="left"><a
 				href="<c:url value='/user/BookMark'>
@@ -116,6 +115,8 @@ td {
 		<tr>
 			<td align=left>
 				<%@ include file="/WEB-INF/user/myPassword.jsp" %> 
+			</td>
+		</tr>
 	</table>
 </body>
 </html>
