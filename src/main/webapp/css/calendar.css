@@ -2,16 +2,16 @@
 .main{
   width: 100%;
   display: block;
-  background: #ffffff;
+  background: white;
 }
 .content-wrap{
   width: 100%;
   margin:0 auto;
   overflow: hidden;
-  background: #ffffff;
+  background:#6e8769;
 }
 .content-left{
-  background: #ffffff;
+  background:#6e8769;
   color:#004300;
   float: left;
   width: 100%;
@@ -69,22 +69,22 @@
     justify-content:  center;
     width: 100vw;
     height: 100vw;
-    background: #ffffff;
+    background: #6e8769;
   }
   .content-wrap{
     width: 900px;
-    height: 400px;
+    height: 350px;
     margin:0 auto;
     border-radius: 20px;
     overflow: hidden;
-    background: #ffffff;
+    background: #6e8769;
   }
   .content-left{
-    background: #ffffff;
+    background: #6e8769;
     color:#004300;
     float: left;
     width: 360px;
-    height: 400px;
+    height: 350px;
     padding: 70px 20px 20px 0;
   }
   .main-wrap{
@@ -106,7 +106,7 @@
   .content-right{
     float: left;
     width: 360px;
-    height: 400px;
+    height: 350px;
     padding: 50px 20px 20px 20px;
   }
   .sun{

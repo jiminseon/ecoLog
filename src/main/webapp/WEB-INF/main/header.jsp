@@ -1,7 +1,7 @@
 <style>
     a:link, a:visited {
      background-color: #6e8769;
-     color: maroon;
+     color: black;
      text-decoration: none;
      display: inline-block;
 }

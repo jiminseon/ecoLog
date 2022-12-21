@@ -67,6 +67,8 @@ body{
      width: 930px;
      float: right;
      box-sizing: border-box;
+     border: 5px solid #ffffff;
+     border-radius: 15px;
    }
    div.bright {
      width: 650px;
@@ -142,7 +144,7 @@ window.open("<c:url value='/user/Info'></c:url>",'news','toolbar=no,location=no,
 <header>
 <%@ include file="/WEB-INF/main/header.jsp" %>
 	<div class="head">
-	<a href="<c:url value='/user/myPage'></c:url>">마이페이지</a>
+	
 	</div>
 </header>
 <div class="wrap">
@@ -168,20 +170,18 @@ window.open("<c:url value='/user/Info'></c:url>",'news','toolbar=no,location=no,
 		   	<input type="text" name="userId" value="${Id}" hidden>
 		   </form>
 		</div>
-		<div class="bright">
-		<a href="<c:url value='/post/postList'></c:url>">게시판</a><br>
+		<div class="bright" align="center">
+		<a href="<c:url value='/post/postList'></c:url>"><h2>게시판</h2></a><br>
 			       <%
            for(Post post : list)
            {
        
        %>
                <tr>
-                 <td class="text-center" width=10%><%=post.getPostNum() %></td>
                  <td width=45%>
                   <a href="<c:url value='/post/postView' />?postNum=<%=post.getPostNum()%>"><%=post.getTitle() %></a>
                  </td>
                  <td class="text-center" width=15%><%=post.getWriter() %></td>
-                  <td class="text-center" width=15%><%=post.getCategory() %></td>
                  <td class="text-center" width=20%><%=post.getWriteDate() %></td>
                  <td class="text-center" width=10%><%=post.getVisitCount() %></td>
                </tr>

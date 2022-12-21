@@ -21,7 +21,6 @@ private static final Logger log = LoggerFactory.getLogger(ListItemController.cla
       h2{
          width:200px;
          height:40px;
-         background:#abc7a1;
          
          transition: background;
          transition-duration: 5s;
@@ -31,11 +30,8 @@ private static final Logger log = LoggerFactory.getLogger(ListItemController.cla
              border-radius: 25px;
       }
       td {
-        border-radius: 15px;
+         border-style: hidden;
       }
-      h2:hover{
-         background: purple;
-        }
     .t1:hover{
          background: #abc7a1;
         }
@@ -77,12 +73,11 @@ function resizeWindow(win) {
     <input type="text" value="id" hidden>
         <form name="form" method="POST" action="<c:url value='/cal/create' />" target="index">
       <table  border="10" cellspacing="4" cellpadding="10" width="90%" align="center" color="black" bgcolor="white" class="t1">
-      <tr> <center><h2>계산기</h2></center></tr>
-      <tr height="150"><td align="center"><div>
-      <input type="text" name="userId" value="${Id}" hidden>
-         <input type="text" name="cal_day" id="year" class="cal" placeholder="날짜" style="width:80%" readonly> </div><br/>
+      <tr> <td align="center"><h2>계산기</h2><br>
+      <input type="text" name="cal_day" id="year" class="cal" placeholder="날짜" style="width:80%" readonly> </div><br/>
       </td></tr>
-      <tr height="200"><td align="center">
+      <tr height="170"><td align="center"><div>
+      <input type="text" name="userId" value="${Id}" hidden>
 	      <select name="cal_content" style="width:150px;"  >
       		<c:forEach var="testList" items="${itemList}" varStatus="i">
          		<option value="${testList.activity}">${testList.activity} ${testList.itemPoint}</option>
