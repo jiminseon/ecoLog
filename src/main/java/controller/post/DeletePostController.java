@@ -16,7 +16,7 @@ public class DeletePostController implements Controller {
 		UserManager manager = UserManager.getInstance();
 		manager.postDelete(postNum);
 		
-		return "redirect:/post/postList.jsp";
+		return "redirect:/post/postList";
 	}
 
 }

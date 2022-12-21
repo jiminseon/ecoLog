@@ -34,7 +34,8 @@
 <link rel=stylesheet href="<c:url value='/css/calendar.css' />" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
 <title>메인</title>
-<style>body{
+<style>
+body{
         background:#6e8769;
         width:99%;
       height:100%;
@@ -91,6 +92,15 @@
        height: 250px;
       margin-top: 10px;
    }
+    a:link, a:visited {
+     background-color: #6e8769;
+     color: maroon;
+     text-decoration: none;
+     display: inline-block;
+}
+ a:hover, a:active {
+     background-color: #6e8769;
+}
 </style>
 
 <script>
@@ -130,14 +140,10 @@ window.open("<c:url value='/user/Info'></c:url>",'news','toolbar=no,location=no,
 </head>
 <body>
 <header>
-<div class="navbar-header">
-			<a href="<c:url value='/post/postList'></c:url>">게시판</a>
-			<a href="<c:url value='/post/join'></c:url>">가입하기(임시로 여기서 test)</a>
-		</div>
+<%@ include file="/WEB-INF/main/header.jsp" %>
 	<div class="head">
 	<a href="<c:url value='/user/myPage'></c:url>">마이페이지</a>
 	</div>
-	<p/><font size='7' color='004300' weight="bold">EcoLog</font>
 </header>
 <div class="wrap">
 	<div class="top">
@@ -163,6 +169,7 @@ window.open("<c:url value='/user/Info'></c:url>",'news','toolbar=no,location=no,
 		   </form>
 		</div>
 		<div class="bright">
+		<a href="<c:url value='/post/postList'></c:url>">게시판</a><br>
 			       <%
            for(Post post : list)
            {

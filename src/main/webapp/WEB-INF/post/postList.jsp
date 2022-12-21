@@ -24,15 +24,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<!-- <link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="/css/custom.css"> -->
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="/css/custom.css">
 <title>게시판</title>
-<!-- <style type="text/css">
+<style type="text/css">
 	a, a:hover {
 		color: #000000;
 		text-decoration: none;
 	}
-</style> -->
+</style>
 <script type="text/javascript">
 function send()
 {
@@ -46,24 +46,20 @@ function send()
 </script>
 </head>
 <body>
+<div class="container">
    <div class="row">
      <h1 class="text-center">게시판</h1>
-     <table class="table">
-       <tr>
-         <td>
-           <a href="<c:url value='/post/postWrite' />" class="btn btn-sm btn-success">글쓰기</a>
-         </td>
-       </tr>
-     </table>
-     <table class="table table-striped">
-       <tr class="warning">
-         <th class="text-center" width=10%>번호</th>
-         <th class="text-center" width=30%>제목</th>
-         <th class="text-center" width=10%>작성자</th>
-         <th class="text-center" width=10%>유형</th>
-         <th class="text-center" width=20%>작성일</th>
-         <th class="text-center" width=10%>조회수</th>
-       </tr>
+     <table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+			<thead>
+				<tr>
+					<th style="background-color: #eeeeee; text-align: center;">번호</th>
+					<th style="background-color: #eeeeee; text-align: center;">제목</th>
+					<th style="background-color: #eeeeee; text-align: center;">작성자</th>
+					<th style="background-color: #eeeeee; text-align: center;">유형</th>
+					<th style="background-color: #eeeeee; text-align: center;">작성일</th>
+				</tr>
+			</thead>
+       		<tbody>	
        <%
            for(Post post : list)
            {
@@ -82,6 +78,7 @@ function send()
        <%
            }
        %>
+       	</tbody>
      </table>
      <table class="table">
        <tr>
@@ -110,5 +107,8 @@ function send()
        </tr>
      </table>
    </div>
+</div>
+   	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="js/bootstrap.js"></script>
 </body>
 </html>

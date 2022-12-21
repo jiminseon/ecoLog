@@ -55,6 +55,9 @@ td {
 </style>
 </head>
 <body>
+	<header>
+<%@ include file="/WEB-INF/main/header.jsp" %>
+</header>
    <table style="width: 100%; background-color: YellowGreen">
       <tr style="background-color: beige">
          <td width="100x" height="140" align="left"><br /> <font
