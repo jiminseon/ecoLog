@@ -23,7 +23,7 @@ public class createBookMarkController implements Controller {
     	// POST request (회원정보가 parameter로 전송됨)
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("Id");
-    	String postNum = "meeting2";
+    	String postNum = request.getParameter("postNum");
        	BookMark bm = new BookMark(
        			postNum,id);
 

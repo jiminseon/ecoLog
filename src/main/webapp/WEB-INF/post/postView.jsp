@@ -46,6 +46,7 @@
          <td colspan="4" class="text-right">
            <a href="<c:url value='/post/postUpdate' />?postNum=<%=post.getPostNum() %>" class="btn btn-xs btn-primary">수정</a>
            <a href="<c:url value='/post/postDelete' />?postNum=<%=post.getPostNum() %>" class="btn btn-xs btn-success">삭제</a>
+           <a href="<c:url value='/user/createBM' />?postNum=<%=post.getPostNum() %>" class="btn btn-xs btn-success">즐겨찾기</a>
            <a href="<c:url value='/post/postList' />" class="btn btn-xs btn-danger">목록</a>
          </td>
        </tr>
