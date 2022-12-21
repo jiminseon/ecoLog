@@ -85,6 +85,7 @@ public class RequestMapping {
         mappings.put("/post/postWrite", new CreatePostController());
         mappings.put("/post/postDelete", new DeletePostController());
         mappings.put("/post/postUpdate", new UpdatePostController());
+    }
 
     public Controller findController(String uri) {	
     	// 주어진 uri에 대응되는 controller 객체를 찾아 반환
