@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 
 import controller.Controller;
 import model.BookMark;
+import model.MyMeeting;
 import model.User;
 import model.service.ExistingUserException;
 import model.service.UserManager;
@@ -21,14 +22,18 @@ public class createBookMarkController implements Controller {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
     	// POST request (회원정보가 parameter로 전송됨)
 		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("Id");
+    	String postNum = "meeting2";
        	BookMark bm = new BookMark(
-			"post20",
-			(String)session.getAttribute("Id"));
+       			postNum,id);
 
-		log.debug("postNum : mmmm" + "userId" + (String)session.getAttribute("Id"));		
+       	log.debug("userId" + (String)session.getAttribute("Id"));		
+		
 		try {
 			UserManager manager = UserManager.getInstance();
-			manager.createBookMark(bm);
+			if(manager.existingBM(id, postNum) == 0) {
+				manager.createBookMark(bm);
+			}
 			return "redirect:/user/BookMark";        	// 성공 시 사용자 리스트 화면으로 redirect
 	        
 		} catch (Exception e) {

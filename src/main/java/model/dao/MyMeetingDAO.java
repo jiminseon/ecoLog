@@ -62,7 +62,7 @@ public class MyMeetingDAO {
 	}
 
 	/**
-	 * 북마크 삭제	
+	 * 모임 개인 삭제	
 	 */
 	public int removeMymeet(String postNum, String userId) throws SQLException {
 		String sql = "DELETE FROM myMeeting WHERE postNum=? and userId =?";		
@@ -132,5 +132,27 @@ public class MyMeetingDAO {
 			jdbcUtil.close();		// resource 반환
 		}
 		return 0;
+	}
+	
+	/**
+	 * 주어진 미팅 존재하는지
+	 */
+	public boolean existing(String Id, String postNum) throws SQLException {
+		String sql = "SELECT * FROM myMeeting WHERE postNum=? and userId =?";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {postNum, Id});	// JDBCUtil에 query문과 매개 변수 설정
+
+	       log.debug("---" + postNum + "===" + Id);
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
+			if (rs.next()) {
+				int count = rs.getInt(1);
+				return (count == 1 ? true : false);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();		// resource 반환
+		}
+		return false;
 	}
 }
