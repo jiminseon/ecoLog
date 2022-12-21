@@ -17,7 +17,6 @@ function userList(targetUri) {
 function userRemove() {
    return confirm("정말 삭제하시겠습니까?");
 }
-
 function checkPW() {
    if (form.password.value == "") {
       alert("비밀번호를 입력하십시오.");
@@ -29,7 +28,6 @@ function checkPW() {
       return true;
    }
 }
-
 </script>
 <style>
 #wrap {
@@ -38,38 +36,30 @@ function checkPW() {
    margin-right: auto;
    text-align: center;
 }
-
 table {
    border: 3px Black;
    border-radius: 10px;
 }
-
 td {
    border: 1px light Green;
    border-radius: 10px;
 }
-
 #title {
    background-color: Green
 }
 </style>
 </head>
 <body>
-<<<<<<< HEAD
 	<header>
 <%@ include file="/WEB-INF/main/header.jsp" %>
 </header>
    <table style="width: 100%; background-color: YellowGreen">
       <tr style="background-color: beige">
-=======
-   <table style="width: 200%; background-color: beige">
-      <tr>
->>>>>>> branch 'final_final' of https://github.com/jiminseon/ecoLog.git
          <td width="100x" height="140" align="left"><br /> <font
             size='20' color='004300' weight="bold"><h1>MY PAGE</h1></font></td>
       </tr>
    </table>
-   <table style="float: left; width: 100%; background-color: beige">
+   <table style="float: left; width: 100%; background-color: YellowGreen">
       <tr style="background-color: yellowgreen; width: 20%; , height: 50%">
          <td width="500" align="left">
             <h1>
@@ -119,7 +109,6 @@ td {
             onclick="return userRemove();">계정 삭제</a></td>
       </tr>
    </table>
-
    <table>
       <tr>
          <td align=left>
