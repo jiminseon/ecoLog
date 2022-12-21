@@ -100,12 +100,12 @@ public class UserManager {
   }
 
 
-	public int removeBookMark(String postNum) throws SQLException {
-		return bmDao.remove(postNum);				
+	public int removeBookMark(String postNum, String id) throws SQLException {
+		return bmDao.removeMyBM(postNum, id);				
 	}
 
-	public int removeMyMeeting(String postNum) throws SQLException {
-		return mtDao.remove(postNum);				
+	public int removeMyMeeting(String postNum, String id) throws SQLException {
+		return mtDao.removeMymeet(postNum, id);					
 	}
 
 	public int createBookMark(BookMark bm) throws SQLException {

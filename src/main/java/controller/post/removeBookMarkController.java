@@ -17,12 +17,14 @@ public class removeBookMarkController implements Controller {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response)	throws Exception {
+		HttpSession session = request.getSession();
 		String postNum = request.getParameter("postNum");
 
-       	log.debug("postNum2---" + postNum);
+		 String id = (String)session.getAttribute("Id");
+       	log.debug("postNum2---" + postNum + "id: " + id);
 		UserManager manager = UserManager.getInstance();	
 	
-			manager.removeBookMark(postNum);				
+			manager.removeBookMark(postNum, id);				
 			return "redirect:/user/BookMark";	
 	}
 }

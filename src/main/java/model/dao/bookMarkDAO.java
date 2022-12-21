@@ -63,6 +63,27 @@ private static final Logger log = LoggerFactory.getLogger(bookMarkDAO.class);
 	}
 
 	/**
+	 * 북마크 삭제	
+	 */
+	public int removeMyBM(String postNum, String userId) throws SQLException {
+		String sql = "DELETE FROM bookMark WHERE postNum=? and userId =?";		
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {postNum, userId});	// JDBCUtil에 delete문과 매개 변수 설정
+
+		try {				
+			int result = jdbcUtil.executeUpdate();	// delete 문 실행
+			return result;
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		}
+		finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();	// resource 반환
+		}		
+		return 0;
+	}
+
+	/**
 	 * 사용자의 북마크 리스트 출력
 	 */
 	public List<BookMark> findBookMarkList(String userId) throws SQLException {
