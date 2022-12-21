@@ -136,7 +136,7 @@ public class UserDAO {
 //	 * 전체 사용자 정보를 검색하여 List에 저장 및 반환
 //	 */
 	public List<User> findUserList() throws SQLException {
-		String sql = "SELECT Id, password, name, phoneNumber, email, address, birth, nickname " 
+		String sql = "SELECT Id, password, name, phoneNumber, email, address, birth, nickname, point " 
 				+ "FROM USER_INFO "
 				+ "ORDER BY Id";
 		jdbcUtil.setSqlAndParameters(sql, null);		// JDBCUtil에 query문 설정
@@ -153,7 +153,8 @@ public class UserDAO {
 						rs.getString("email"),
 						rs.getString("address"),
 						rs.getString("birth"),
-						rs.getString("nickname"));
+						rs.getString("nickname"),
+						rs.getInt("point"));
 				userList.add(user);				// List에 User 객체 저장
 			}		
 			return userList;					

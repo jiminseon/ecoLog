@@ -46,6 +46,18 @@ public class User {
 		this.point = point;
 	}
 	
+	public User(String Id, String password, String name, String phoneNumber, String email, String address,
+			String birth, String nickname) {
+		this.Id = Id;
+		this.password = password;
+		this.name = name;
+		this.phoneNumber = phoneNumber;
+		this.email = email;
+		this.address = address;
+		this.birth = birth;
+		this.nickname = nickname;
+	}
+	
 //	public void update(User updateUser) {
 //        this.password = updateUser.password;
 //        this.name = updateUser.name;
@@ -58,6 +70,9 @@ public class User {
 		this.point = int1;
 	}
 	
+
+
+
 	public boolean matchPassword(String password) {
 		if (password == null) {
 			return false;
