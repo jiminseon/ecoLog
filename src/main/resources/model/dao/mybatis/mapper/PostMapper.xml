@@ -43,12 +43,9 @@
     
     <!-- 데이터 삽입 -->
     <insert id="postInsert" parameterType="Post">
-    <selectKey keyProperty="id" resultType="int" order="BEFORE">
-		SELECT POST_SEQ.nextval AS postnum FROM DUAL
-	</selectKey>
     INSERT INTO POST
     VALUES(
-      #{postnum},
+      POST_SEQ.nextval,
       #{title},
       #{writer},
       #{category},
