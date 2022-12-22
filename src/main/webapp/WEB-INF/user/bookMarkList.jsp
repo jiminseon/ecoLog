@@ -31,7 +31,7 @@
 		  <td></td>
 		</tr>
 	  </table>  
-				<div>내 모임 즐겨찾기 갯수: ${cnt} </div>
+				<div>모임 즐겨찾기 갯수: ${cnt} </div>
 	  <br>		  
 	  <table style="background-color: YellowGreen">
 		<tr>
@@ -55,7 +55,7 @@
 	  	  <td>	  	
 		  <a href="<c:url value='/user/removeMymt'>
                        <c:param name='postNum' value='${post.getPostNum()}'/>
-                    </c:url>">모임 탈퇴</a></td>
+                    </c:url>">즐겨찾기 삭제</a></td>
 		  
 		</tr>
 	  </c:forEach> 
