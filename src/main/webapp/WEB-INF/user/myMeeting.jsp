@@ -67,7 +67,7 @@
 --%>    
      </table>         
      <br>   
-     <a href="<c:url value='/post/postList' />" target="_top">게시판 이동</a>
+     <a href="<c:url value='/post/postList' />" target="_parent">게시판 이동</a>
      <br>  
    </td>
   </tr>

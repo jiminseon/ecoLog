@@ -110,7 +110,7 @@ td {
       </tr>
    </table>
 </div><div>
-   <iframe width="89%" height="50%" name="right1" frameboarder="5" scrolling="no"  align="right">rezsetfA</iframe>
+   <iframe width="89%" height="50%" name="right1" frameboarder="5" scrolling="yes"  align="right" >rezsetfA</iframe>
 </div></div>
 </body>
 </html>
