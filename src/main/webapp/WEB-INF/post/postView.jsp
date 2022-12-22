@@ -12,8 +12,8 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="<c:url value='/css/bootstrap.css' />">
+<link rel="stylesheet" href="<c:url value='/css/custom.css' />">
 <title>게시판</title>
 </head>
 <body>
@@ -61,6 +61,6 @@
 	   </div>
 	</div>
    	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="js/bootstrap.js"></script>
+	<script src="<c:url value='/js/bootstrap.js' />"></script>
 </body>
 </html>
