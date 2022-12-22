@@ -32,7 +32,7 @@ public class UpdatePostController implements Controller {
     	Post post = new Post(
     		postNum, request.getParameter("title"),
     		request.getParameter("writer"), request.getParameter("category"), 
-    		request.getParameter("content"), null, visitCnt);
+    		request.getParameter("content"), null, 0);
 
     	log.debug("Update Post : {}", post);
 

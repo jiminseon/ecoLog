@@ -1,9 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="javax.servlet.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%
+	HttpSession session = request.getSession();
+	String id = session.getId();
+%>
 <!DOCTYPE html>
 <html>
 <head>
+
 <script>
 function postWrite() {
 	if (form.title.value == "") {
@@ -39,7 +44,7 @@ function postWrite() {
 	     <tr>
 	       <th class="danger text-right" width=15%>작성자</th> 
 	       <td width=85%>
-	         <input type=text name=writer size=15 class="form-control"> <!-- 작성자는 session.getUserID()로 변경 -->
+	         <%=id %> <!-- 작성자는 session.getUserID()로 변경 -->
 	       </td>
 	     </tr>
 	     <tr>
