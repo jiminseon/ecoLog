@@ -64,7 +64,7 @@ td {
          <td width="800" align="right" bgcolor=beige> <a
             href="<c:url value='/user/MyPost'>
                  <c:param name='userId' value='<%=user.getId()%>'/>
-             </c:url>">내가 쓴 글 보기</a> &nbsp;</td>
+             </c:url>" target="right1"ㄴ>내가 쓴 글 보기</a> &nbsp;</td>
       </tr>
    </table>
    <br />
