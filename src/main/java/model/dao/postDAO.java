@@ -81,6 +81,7 @@ public class postDAO {
 		SqlSession session = null;
 		
 		try {
+			System.out.println("postDAO실행중");
 			session = ssf.openSession();
 			session.update("viewIncrement", postNo);
 			post = session.selectOne("postDetailData", postNo);

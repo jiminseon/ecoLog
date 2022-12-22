@@ -21,6 +21,6 @@ public class ecoInfoController implements Controller {
 			HttpSession session = request.getSession();
 			log.debug("hii22");		
 		
-			return "/main/ecoInfo1.jsp";        
+			return "/ecoInfo/ecoInfo1.jsp";        
 	    }
 }

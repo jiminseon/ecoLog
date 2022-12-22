@@ -1,5 +1,7 @@
 package controller.user;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,9 +13,12 @@ import org.slf4j.LoggerFactory;
 
 import controller.Controller;
 import controller.post.BookMarkController;
+import model.BookMark;
 import model.MyMeeting;
+import model.Post;
 import model.dao.MyMeetingDAO;
 import model.dao.bookMarkDAO;
+import model.dao.postDAO;
 import model.service.UserManager;
 
 public class MyMeetingController implements Controller {
@@ -32,6 +37,18 @@ public class MyMeetingController implements Controller {
 			MyMeetingDAO myMeetingDao = new MyMeetingDAO();
 			int cnt = myMeetingDao.getNumberOfMyMt(id);
 			request.setAttribute("cnt", cnt);	
+			
+			List<Post> pList = new ArrayList<Post>();	// User들의 리스트 생성
+			Iterator<MyMeeting> meetIter = meetingList.iterator();
+			int i = 0;
+			 while ( meetIter.hasNext() ) {
+				 MyMeeting meet = (MyMeeting)meetIter.next();
+				 postDAO postDao = new postDAO();
+				 Post post = postDao.postDetailData(Integer.parseInt(meet.getPostNum()));
+				 pList.add(post);
+				 log.debug(post.getTitle() + " --- post" + i++);
+			}	
+			 request.setAttribute("pList", pList);	
 			
 			return "/user/myMeeting.jsp";        
 	    }
