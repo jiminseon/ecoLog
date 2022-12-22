@@ -46,24 +46,6 @@ function send()
 </script>
 </head>
 <body>
-<nav class="navbar navbar-default">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed"
-				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-				aria-expanded="false">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="main.jsp">JSP 게시판 웹 사이트</a>
-		</div>
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav">
-				<li><a href="<c:url value='/main' />">메인</a></li>
-				<li class="active"><a href="<c:url value='/post/postList' />">게시판</a></li>
-			</ul>		
-		</div>
-	</nav>
 <div class="container">
    <div class="row">
      <h1 class="text-center">게시판</h1>
