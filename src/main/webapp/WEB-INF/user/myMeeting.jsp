@@ -7,7 +7,7 @@
 <%--
    @SuppressWarnings("unchecked") 
    List<MyMeeting> meetingList = (List<MyMeeting>)request.getAttribute("meetingList");
-   
+   List<Post> pList = (List<Post>)request.getAttribute("pList");
    String cnt = (String)request.getAttribute("cnt");
    System.out.print(meetingList + "mmm");
 --%>
@@ -33,34 +33,31 @@
      <br>        
      <table style="background-color: YellowGreen">
       <tr>
-        <td width="190" align="center" bgcolor="E6ECDE" height="22">포스트 number</td>
          <td width="200" align="center" bgcolor="E6ECDE">포스트 이름</td>
         <td>삭제</td>
       </tr>
-<%-- 
+<%--
    if (meetingList != null) {   
      Iterator<MyMeeting> myMeetingIter = meetingList.iterator();
-   
-     //사용자 리스트를 클라이언트에게 보여주기 위하여 출력.
-     while ( myMeetingIter.hasNext() ) {
-      MyMeeting myMeeting = (MyMeeting)myMeetingIter.next();
+     Iterator<Post> postIter = pList.iterator();
+	  //사용자 리스트를 클라이언트에게 보여주기 위하여 출력.
+	  while ( myMeetingIter.hasNext() ) {
+		MyMeeting myMeeting = (MyMeeting)myMeetingIter.next();
+		Post post = (Post)postIter.next();
+		String title = post.getTitle();
 --%>        
-     <c:forEach var="myMeeting" items="${meetingList}">                
-        <tr>
-        <td width="190" align="center" bgcolor="ffffff" height="20">
-           ${myMeeting.myMtId}       <%-- <%=MyMeeting.getMyMtId()%> --%>
-        </td>
-        <td width="200" bgcolor="ffffff" style="padding-left: 10">
-         <a href="<c:url value='/'>
-                  <c:param name='Id' value='${myMeeting.postNum}'/>
-                 </c:url>">
-           ${myMeeting.postNum}</a>    <%-- <%=MyMeeting.getPostNum()%></a> --%>
-        </td>
-        <td><a href="<c:url value='/user/removeMymt'>
-                       <c:param name='postNum' value='${myMeeting.postNum}'/>
+     <c:forEach var="post" items="${pList}"> 
+		  <tr> 	
+		  <td width="200" bgcolor="ffffff" style="padding-left: 10">
+			<a href="<c:url value='/post/postView'>
+					   <c:param name='Id' value='${post.getTitle()}'/>
+			 		 </c:url>">${post.getTitle()}</a>
+		  </td> 
+	  	  <td><a href="<c:url value='/user/removeMymt'>
+                       <c:param name='postNum' value='${post.getPostNum()}'/>
                     </c:url>">모임 탈퇴</a></td>
-      </tr>
-     </c:forEach> 
+		</tr>
+	  </c:forEach> 
 <%--
      }
    }
