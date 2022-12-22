@@ -12,7 +12,7 @@ function postWrite() {
 		return false;
 	} 
 	if (form.content.value == "") {
-		alert("내용은 필수입력 사항입니다..");
+		alert("내용은 필수입력 사항입니다.");
 		form.content.focus();
 		return false;
 	}	
