@@ -13,25 +13,34 @@
       overflow:hidden;
       text-align:center;
    }
+   .ww {
+   background: #e8edbb;
+   margin:5px;
+   font-size:small;
+   }
+   h2 {
+   background:#c8d4c5;
+   margin:5px;
+   }
 </style>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 </head>
 <body>
 <div class="a">
-<h2>환경 운동 사이트 <br>바로가기</h2><text>
-		<a href="http://kfem.or.kr">
-	  		환경운동연합
-		</a><br>		
-		<a href="http://www.konetic.or.kr/">
-	  		국가 환경기술 정보센터
-		</a>		<br>
-		<a href="https://www.eco.or.kr/">
-	  		환경 정의 시민 연대
-		</a>		<br>
-		<a href="http://www.greenkorea.org/">
-	  		녹색연합
-		</a></text>	<br>
+<h2>환경 사이트 추천</h2><text>
+      <a href="http://kfem.or.kr" class="ww">
+           환경운동연합 사이트 바로가기
+      </a><br>      
+      <a href="http://www.konetic.or.kr/" class="ww">
+           국가환경기술정보센터 바로가기
+      </a>      <br>
+      <a href="https://www.eco.or.kr/" class="ww">
+           환경정의시민연대 바로가기
+      </a>      <br>
+      <a href="http://www.greenkorea.org/" class="ww">
+           녹색연합 사이트 바로가기
+      </a></text>   <br>
 </div>
 </body>
 </html>

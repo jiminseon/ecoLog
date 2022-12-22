@@ -35,10 +35,15 @@
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
 <title>메인</title>
 <style>
+
 body{
         background:#ffffff;
         width:99%;
       height:100%;
+		background-image:url(./images/bge2.png);
+		 background-repeat:no-repeat;
+             background-position:center;
+             background-size:cover;
    }
    header {
       height: 100px;
