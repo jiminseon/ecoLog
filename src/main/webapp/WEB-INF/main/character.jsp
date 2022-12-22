@@ -33,41 +33,41 @@ td {
 <table>
 <tr>
 <c:choose> 
-	<c:when test="${user.point < 100}">
+	<c:when test="${user.point < 30}">
 	<td align="center"><img src="<c:url value='/images/1단계.png' />"
 		width="150" height="200" /></td>
 	</c:when>
 	
-	<c:when test="${user.point > 100 and user.point < 200}">
+	<c:when test="${user.point >= 30 and user.point < 70}">
 	<td align="center"><img src="<c:url value='/images/2단계.png' />"
 		width="150" height="200" /></td>
 	</c:when>
 	
-	 <c:when test="${user.point > 200 and user.point < 300}">
+	 <c:when test="${user.point >= 70 and user.point < 120}">
 	<td align="center"><img src="<c:url value='/images/3단계.png' />"
 		width="150" height="200" /></td>
 	</c:when>
 	
-	<c:when test="${user.point > 300 and user.point < 400}">
+	<c:when test="${user.point >= 120 and user.point < 170}">
 	<td align="center"><img src="<c:url value='/images/4단계.png' />"
 		width="150" height="200" /></td>
 	</c:when>
-	<c:when test="${user.point > 400 and user.point < 500}">
+	<c:when test="${user.point >= 170 and user.point < 250}">
 	<td align="center"><img src="<c:url value='/images/5단계.png' />"
 		width="150" height="200" /></td>
 	</c:when>
 	
-	<c:when test="${user.point > 500 and user.point < 600}">
+	<c:when test="${user.point >= 250 and user.point < 350}">
 	<td align="center"><img src="<c:url value='/images/6단계.png' />"
 		width="150" height="200" /></td>
 	</c:when>
 	
-	<c:when test="${user.point > 600 and user.point < 700}">
+	<c:when test="${user.point >= 350 and user.point < 450}">
 	<td align="center"><img src="<c:url value='/images/7단계.png' />"
 		width="150" height="200" /></td>
 	</c:when>
 	
-	<c:when test="${user.point > 700}">
+	<c:when test="${user.point >= 450}">
 	<td align="center"><img src="<c:url value='/images/8단계.png' />"
 		width="150" height="200" /></td>
 	</c:when>
