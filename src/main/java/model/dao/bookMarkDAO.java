@@ -143,15 +143,17 @@ private static final Logger log = LoggerFactory.getLogger(bookMarkDAO.class);
 	/**
 	 * 주어진 즐겨찾기 존재하는지
 	 */
-	public boolean existing(String Id, String postNum) throws SQLException {
+	public boolean existingBM(String Id, String postNum) throws SQLException {
 		String sql = "SELECT * FROM bookmark WHERE postNum=? and userId =?";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {postNum, Id});	// JDBCUtil에 query문과 매개 변수 설정
 
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
 			if (rs.next()) {
+				log.debug("rs------"+rs);			
 				int count = rs.getInt(1);
-				return (count == 1 ? true : false);
+				log.debug("count-"+count);			
+				return (count >= 1 ? true : false);
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();

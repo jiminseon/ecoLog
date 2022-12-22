@@ -137,7 +137,7 @@ public class MyMeetingDAO {
 	/**
 	 * 주어진 미팅 존재하는지
 	 */
-	public boolean existing(String Id, String postNum) throws SQLException {
+	public boolean existingMM(String Id, String postNum) throws SQLException {
 		String sql = "SELECT * FROM myMeeting WHERE postNum=? and userId =?";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {postNum, Id});	// JDBCUtil에 query문과 매개 변수 설정
 
@@ -146,7 +146,7 @@ public class MyMeetingDAO {
 			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
 			if (rs.next()) {
 				int count = rs.getInt(1);
-				return (count == 1 ? true : false);
+				return (count >= 1 ? true : false);
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();

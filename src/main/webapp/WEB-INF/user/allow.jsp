@@ -18,7 +18,7 @@ div{
 </head>
 <body>
 <div>
-<a href="<c:url value='/main'></c:url>" target="_top">사이트 접속하기</a>
+<a href="<c:url value='/header'></c:url>" target="_top">사이트 접속하기</a>
 </div>
 </body>
 </html>
