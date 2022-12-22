@@ -46,10 +46,10 @@ public class MyMeetingController implements Controller {
 				 postDAO postDao = new postDAO();
 				 Post post = postDao.postDetailData(Integer.parseInt(meet.getPostNum()));
 				 pList.add(post);
-				 log.debug(post.getTitle() + " --- post" + i++);
+				 //log.debug(post.getTitle() + " --- post" + i++);
 			}	
 			 request.setAttribute("pList", pList);	
-			
+			 log.debug("--------------------");
 			return "/user/myMeeting.jsp";        
 	    }
 }

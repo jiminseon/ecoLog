@@ -44,7 +44,7 @@ public class BookMarkController implements Controller {
 				postDAO postDao = new postDAO();
 				 Post post = postDao.postDetailData(Integer.parseInt(bookMark.getPostNum()));
 				pList.add(post);
-				log.debug(post.getTitle() + " +++ post");
+				//log.debug(post.getTitle() + " +++ post");
 			}	
 			 request.setAttribute("pList", pList);	
 			

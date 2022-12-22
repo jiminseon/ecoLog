@@ -44,18 +44,17 @@
 	  while ( myMeetingIter.hasNext() ) {
 		MyMeeting myMeeting = (MyMeeting)myMeetingIter.next();
 		Post post = (Post)postIter.next();
-		String title = post.getTitle();
 --%>        
-     <c:forEach var="post" items="${pList}"> 
+   <c:forEach var="post" items="${pList}"> 
 		  <tr> 	
 		  <td width="200" bgcolor="ffffff" style="padding-left: 10">
-			<a href="<c:url value='/post/postView' />?postNum=${post.postNum}">${post.getTitle()}</a>
-		  </td> 
-	  	  <td><a href="<c:url value='/user/removeMymt'>
+		  	<a href="<c:url value='/post/postView' />?postNum=${post.postNum}">${post.getTitle()}</a>
+		  </td>	  	
+		  <a href="<c:url value='/user/removeMymt'>
                        <c:param name='postNum' value='${post.getPostNum()}'/>
                     </c:url>">모임 탈퇴</a></td>
 		</tr>
-	  </c:forEach> 
+	  </c:forEach>
 <%--
      }
    }

@@ -16,6 +16,31 @@ public class Post implements Serializable{
 	
 	public Post() {}
 	
+	public Post(int postNum, String title, String content) {
+		super();
+		this.postNum = postNum;
+		this.title = title;
+		this.content = content;
+	}
+	
+	public Post(int postNum, String title, String writer, String category, String content, Date writeDate) {
+		super();
+		this.postNum = postNum;
+		this.title = title;
+		this.writer = writer;
+		this.category = category;
+		this.content = content;
+		this.writeDate = writeDate;
+	}
+
+	public Post(String title, String writer, String category, String content) {
+		super();
+		this.title = title;
+		this.writer = writer;
+		this.category = category;
+		this.content = content;
+	}
+	
 	public Post(int postNum, String title, String writer, String category, String content, Date writeDate, int visitCount) {
 		super();
 		this.postNum = postNum;
