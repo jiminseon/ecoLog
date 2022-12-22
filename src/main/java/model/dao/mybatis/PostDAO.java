@@ -113,12 +113,12 @@ public class PostDAO {
 	}
 	
 	// 게시글 삽입
-	public static void postInsert(Post post) {
+	public static int postInsert(Post post) {
 		SqlSession session = null;
-		
+		int result = 0;
 		try {
 			session = ssf.openSession();
-			session.insert("postInsert", post);
+			result = session.insert("postInsert", post);
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -126,6 +126,7 @@ public class PostDAO {
 				session.close();
 			}
 		}
+		return result;
 	}
 	
 	// 게시글 상세 보기

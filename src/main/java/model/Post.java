@@ -33,13 +33,12 @@ public class Post implements Serializable{
 		this.writeDate = writeDate;
 	}
 
-	public Post(int postNum, String title, String writer, String category, Date writeDate) {
+	public Post(String title, String writer, String category, String content) {
 		super();
-		this.postNum = postNum;
 		this.title = title;
 		this.writer = writer;
 		this.category = category;
-		this.writeDate = writeDate;
+		this.content = content;
 	}
 	
 	public Post(int postNum, String title, String writer, String category, String content, int visitCount,

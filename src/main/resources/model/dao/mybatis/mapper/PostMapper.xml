@@ -43,16 +43,13 @@
     
     <!-- 데이터 삽입 -->
     <insert id="postInsert" parameterType="Post">
-    <selectKey keyProperty="no" resultType="int" order="BEFORE">
-      SELECT NVL(MAX(postnum) + 1, 1) FROM POST
-    </selectKey>
     INSERT INTO POST VALUES(
-      #{postnum},
+      POST_SEQ.nextval,
       #{title},
       #{writer},
-      #{post_category},
-      #{post_contents},
-      SYSDATE, 
+      #{category},
+      #{content},
+      DEFAULT, 
       0)
     </insert>
     

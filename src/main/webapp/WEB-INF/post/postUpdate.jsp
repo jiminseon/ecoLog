@@ -61,8 +61,7 @@ function postModify() {
        <td colspan="2" class="text-center">
          <input type="button" class="btn btn-primary" value="수정" onClick="postModify()">
          <input type=button value="취소" class="btn btn-sm btn-primary"
-           onclick="javascript:history.back()"
-         >
+           onclick="javascript:history.back()">
        </td>
      </tr>
    </table>

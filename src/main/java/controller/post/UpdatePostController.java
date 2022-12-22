@@ -28,6 +28,7 @@ public class UpdatePostController implements Controller {
 	    }	
     	
     	// POST request (커뮤니티 정보가 parameter로 전송됨)
+		String postN = request.getParameter("postNum");
     	Post post = new Post(
     		postNum, 
     		request.getParameter("title"), null,
