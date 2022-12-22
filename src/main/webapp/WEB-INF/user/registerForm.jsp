@@ -70,23 +70,46 @@ function userList(targetUri) {
 }
 
 </script>
+
+<style>
+.t1 {
+	border: 3px Black;
+	margin-left: 50px;
+	margin-top: 50px;
+}
+.t2 {
+	border: 3px Black;
+	margin-left: 50px;
+}
+.t3 {
+	border: 3px Black;
+	margin-left: 80px;
+}
+
+td {
+   	text-align: center;
+background: #ffffff;
+	border: 5px black;
+    border-radius: 15px;
+}
+
+#title {
+	background-color: White
+}
+table{
+	border: 5px black;
+    border-radius: 20px;
+      padding:20px 20px 20px 20px;
+   }
+</style>
 </head>
 <body>
 	<br>
 	<!-- registration form  -->
 	<form name="form" method="POST"
 		action="<c:url value='/user/register' />">
-		<table style="width: 100%">
-			<tr>
-				<td width="70" align="center"></td>
-				<td>
-					<table>
-						<tr>
-							<td class="title">&nbsp;&nbsp;<b>에코로그 - 회원 가입</b>&nbsp;&nbsp;
-							</td>
-						</tr>
-					</table> <!-- 회원가입이 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 --> <c:if
-						test="${registerFailed}">
+		<div><b>회원 가입</b></div>&nbsp;&nbsp;
+					 <c:if test="${registerFailed}">
 						<font color="red"><c:out value="${exception.getMessage()}" /></font>
 					</c:if> <br>
 					<table style="background-color: YellowGreen">
@@ -143,13 +166,10 @@ function userList(targetUri) {
 								type="text" style="width: 240" name="address">
 							</td>
 						</tr>
-					</table> <br>
-					<table style="width: 100%">
 						<tr>
-							<td align="left"><input type="button" value="회원 가입"
+							<td align="left" colspan="2"><input type="button" value="회원 가입"
 								onClick="userCreate()"> &nbsp; <input type="button"
-								value="로그인 화면"
-								onClick="userList('<c:url value='/user/login' />')"></td>
+								value="로그인 화면" onClick="userList('<c:url value='/user/login' />')"></td>
 						</tr>
 					</table>
 				</td>

@@ -8,17 +8,32 @@
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 <style>
-div{
-        background:#3fffaf;
-        width:150px;
-      height:50px;
-      margin:350px 0px 0px 150px;
+div.a1{
+
+        background:#cdd99c;
+        width:300px;
+      height:100px;
+      margin:200px 0px 0px 160px;
+      border:0px solid #85bf4b;
+      text-align:center;
+      padding:20px 0px 50px 0px;
+     border-radius: 40px;
+   }
+   div.a2{padding:20px 0px 20px 0px;
+   			width:200px;
+      height:70px;
+        background:#85bf4b;
+      border:10px solid black;
+      text-align:center;
+     border-radius: 50px;
    }
 </style>
 </head>
 <body>
-<div>
+<div class="a1"><center>
+<div class="a2">
 <a href="<c:url value='/header'></c:url>" target="_top">사이트 접속하기</a>
+</div></center>
 </div>
 </body>
 </html>

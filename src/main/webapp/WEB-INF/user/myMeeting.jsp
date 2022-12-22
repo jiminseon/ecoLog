@@ -49,9 +49,7 @@
      <c:forEach var="post" items="${pList}"> 
 		  <tr> 	
 		  <td width="200" bgcolor="ffffff" style="padding-left: 10">
-			<a href="<c:url value='/post/postView'>
-					   <c:param name='Id' value='${post.getTitle()}'/>
-			 		 </c:url>">${post.getTitle()}</a>
+			<a href="<c:url value='/post/postView' />?postNum=${post.postNum}">${post.getTitle()}</a>
 		  </td> 
 	  	  <td><a href="<c:url value='/user/removeMymt'>
                        <c:param name='postNum' value='${post.getPostNum()}'/>

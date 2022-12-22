@@ -29,13 +29,6 @@ function userCreate(targetUri) {
 }
 </script>
 <style>
-#wrap {
-	width: 1000px;
-	margin-left: auto;
-	margin-right: auto;
-	text-align: center;
-}
-
 .t1 {
 	border: 3px Black;
 	margin-left: 50px;
@@ -51,23 +44,29 @@ function userCreate(targetUri) {
 }
 
 td {
-	border: 1px light Green
+   	text-align: center;
+background: #ffffff;
+	border: 5px black;
+    border-radius: 15px;
 }
 
 #title {
 	background-color: White
 }
+table{
+	border: 5px black;
+    border-radius: 20px;
+     margin:100px 0px 0px 0px;	
+      padding:20px 20px 20px 20px;
+   }
 </style>
 </head>
 <body>
 	<br>
 	<!-- login form  -->
 	<form name="form" method="POST" action="<c:url value='/user/login' />">
-		<table style="width: 70%" class="t3">
+		<table style="width: 50%" class="t3">
 			<tr>
-				<td width="20"></td>
-				<td><b>에코로그</b><br> <br>
-					
 					<table style="background-color: YellowGreen" class="t1">
 						<tr height="40">
 							<td width="1100" align="center" bgcolor="e6ffe6">사용자 ID</td>
@@ -81,16 +80,14 @@ td {
 								<input type="password" style="width: 240" name="password">
 							</td>
 						</tr>
-					</table> <br>
-					<table style="width: 100%" class="t2">
 						<tr>
-							<td>
+							<td colspan="2">
 							<input type="button" value="로그인" onClick="login()"> &nbsp; 
 							<input type="button" value="회원가입" onClick="userCreate(
 								'<c:url value='/user/register'/>')">
 							</td>
 						</tr>
-					</table>
+					</table> 
 			</tr>
 		</table>
 	</form>

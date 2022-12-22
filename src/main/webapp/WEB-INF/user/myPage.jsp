@@ -32,12 +32,6 @@ function checkPW() {
 
 </script>
 <style>
-#wrap {
-   width: 1000px;
-   margin-left: auto;
-   margin-right: auto;
-   text-align: center;
-}
 
 table {
    border: 3px Black;
@@ -56,12 +50,7 @@ td {
 </head>
 <body>
 <div><div>
-   <table style="width: 200%; background-color: beige">
-      <tr>
-         <td width="100x" height="140" align="left"><br /> <font
-            size='20' color='004300' weight="bold"><h1>MY PAGE</h1></font></td>
-      </tr>
-   </table>
+   <font size='20' color='004300' weight="bold"><h1>MY PAGE</h1></font>
    <table style="float: left; width: 100%; background-color: beige">
       <tr style="background-color: yellowgreen; width: 20%; , height: 50%">
          <td width="500" align="left">
