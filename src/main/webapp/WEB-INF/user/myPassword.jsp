@@ -1,7 +1,6 @@
 <%@page contentType="text/html; charset=utf-8" %>
-
-	<form name="form" method="POST" action="<c:url value='/user/profile' />">
-	
+	<form name="form" method="POST" action="<c:url value='redirect:/user/myProfile.jsp' />">
+	<%int r = 0; %>
 		<table style="background-color: beige; width: 100%; height: 100%" align="center">
 			<tr height=100% align="center">
 				<td width=100% align="center" bgcolor=beige><h3>비밀번호 확인</h3>
@@ -11,7 +10,8 @@
 				<td width="100%" bgcolor="beige" style="padding-left: 10">
 				<input type="password" style="width: 240" name="password"></td>
 				<td align=left><input type="button" value="확인"
-					onClick="javascript:if(checkPW()==true) form.submit();" > &nbsp;</td>
+					onClick="javascript:if(checkPW()==true) r = 1" > &nbsp;</td>
 			</tr>
+
 		</table>
 	</form>
