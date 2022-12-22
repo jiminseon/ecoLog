@@ -3,7 +3,7 @@ package model;
 public class Calculator {
 	private String cal_day;
 	private String cal_content;
-	private int cal_point = 0;
+	private int cal_point;
 	private String userid;
 	private int calNum;
 	
