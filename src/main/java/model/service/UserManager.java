@@ -50,6 +50,15 @@ public class UserManager {
         if (userDAO.existingUser(user.getId()) == true) {
             throw new ExistingUserException(user.getId() + "는 존재하는 아이디입니다.");
         }
+        if (userDAO.existingUserNickName(user.getNickname()) == true) {
+            throw new ExistingUserException(user.getNickname() + "는 존재하는 닉네임입니다.");
+        }
+        if (userDAO.existingUserEmail(user.getEmail()) == true) {
+            throw new ExistingUserException(user.getEmail() + "는 존재하는 이메일입니다.");
+        }
+        if (userDAO.existingUserPhoneNumber(user.getphoneNumber()) == true) {
+            throw new ExistingUserException(user.getphoneNumber() + "는 존재하는 전화번호입니다.");
+        }
         return userDAO.create(user);
     }
 

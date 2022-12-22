@@ -8,7 +8,6 @@
 	type="text/css">
 <script>
 function userCreate() {
-	
 	if (form.Id.value == "") {
 		alert("사용자 ID를 입력하십시오.");
 		form.Id.focus();
@@ -19,6 +18,12 @@ function userCreate() {
 		form.password.focus();
 		return false;
 	}
+	var pwExp =  /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/;
+    if(pwExp.test(form.password.value)==false){            
+        alert('숫자+영문자+특수문자 조합으로 8자리 이상 사용해야 합니다.');
+		form.password.focus();
+        return false;
+    }
 	if (form.password.value != form.password2.value) {
 		alert("비밀번호가 일치하지 않습니다.");
 		form.name.focus();
@@ -29,19 +34,8 @@ function userCreate() {
 		form.name.focus();
 		return false;
 	}
-	if(form.phoneNumber.value =="") {
-		alert("전화번호를 입력하십시오.");
-		form.phoneNumber.focus();
-		return false;
-	}
-	var emailExp = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
-	if(emailExp.test(form.email.value)==false) {
-		alert("이메일 형식이 올바르지 않습니다.");
-		form.email.focus();
-		return false;
-	}
-	if (form.address.value == "") {
-		alert("주소를 입력하십시오.");
+	if (form.nickName.value == "") {
+		alert("닉네임을 입력하십시오.");
 		form.nickName.focus();
 		return false;
 	}
@@ -50,17 +44,30 @@ function userCreate() {
 		form.birth.focus();
 		return false;
 	}
-	if (form.nickName.value == "") {
-		alert("닉네임을 입력하십시오.");
+	var emailExp = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+	if(emailExp.test(form.email.value)==false) {
+		alert("이메일 형식이 올바르지 않습니다.");
+		form.email.focus();
+		return false;
+	}
+	if(form.phoneNumber.value =="") {
+		alert("전화번호를 입력하십시오.");
+		form.phoneNumber.focus();
+		return false;
+	}
+	if (form.address.value == "") {
+		alert("주소를 입력하십시오.");
 		form.nickName.focus();
 		return false;
 	}
+	
 	form.submit();
 }
 function userList(targetUri) {
 	form.action = targetUri;
 	form.submit();
 }
+
 
 </script>
 </head>
@@ -86,7 +93,9 @@ function userList(targetUri) {
 						<tr height="40">
 							<td width="700" align="center" bgcolor="E6ECDE">사용자 ID</td>
 							<td width="700" bgcolor="ffffff" style="padding-left: 10"><input
-								type="text" style="width: 240;" name="Id"></td>
+								type="text" style="width: 240;" name="Id">
+								<input type="button" value="중복확인" class="dup" onclick="winopen()"><br>
+							</td>
 						</tr>
 						<tr height="40">
 							<td width="700" align="center" bgcolor="E6ECDE">비밀번호</td>
@@ -108,6 +117,7 @@ function userList(targetUri) {
 							<td width="700" align="center" bgcolor="E6ECDE">닉네임</td>
 							<td width="700" bgcolor="ffffff" style="padding-left: 10"><input
 								type="text" style="width: 240" name="nickName">
+								<input type="button" value="중복확인" class="dup" onclick="winopen()"><br>
 							</td>
 						</tr>
 						<tr height="40">
