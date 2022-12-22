@@ -28,9 +28,9 @@ function postWrite() {
    <form name="form" method="POST" action="<c:url value='/post/postWrite' />">
    <table class="table table-hover">
      <tr>
-       <th class="danger text-right" width=15%>작성자</th>
+       <th class="danger text-right" width=15%>작성자</th> 
        <td width=85%>
-         <input type=text name=writer size=15 class="input-sm">
+         <input type=text name=writer size=15 class="input-sm"> <!-- 작성자는 session.getUserID()로 변경 -->
        </td>
      </tr>
      <tr>
