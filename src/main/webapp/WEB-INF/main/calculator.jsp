@@ -73,7 +73,7 @@ function resizeWindow(win) {
     <input type="text" value="id" hidden>
         <form name="form" method="POST" action="<c:url value='/cal/create' />" target="index">
       <table  border="10" cellspacing="4" cellpadding="10" width="90%" align="center" color="black" bgcolor="white" class="t1">
-      <tr> <td align="center"><h2>계산기</h2><br>
+      <tr> <td align="center"><h2>활동 기록</h2><br>
       <input type="text" name="cal_day" id="year" class="cal" placeholder="날짜" style="width:80%" readonly> </div><br/>
       </td></tr>
       <tr height="170"><td align="center"><div>
