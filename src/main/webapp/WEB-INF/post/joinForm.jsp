@@ -19,12 +19,13 @@ function userList(targetUri) {
 </script>
 <%
 	String postNum = (String)request.getAttribute("postNum");
+	String title = (String)request.getAttribute("title");
 %>
 </head>
 <body>
 
 <!-- Update Form  -->
-<form name="form" method="POST" action="<c:url value='/post/join'><c:param name='postNum' value='${postNum}'/> </c:url>">
+<form name="form" method="POST" action="<c:url value='/post/join'><c:param name='postNum' value='${postNum}'/><c:param name='title' value='${title}'/> </c:url>">
   <table style="width: 100%">
 	<tr>
 	  <td width="20"></td>
@@ -63,7 +64,11 @@ function userList(targetUri) {
 		  </tr>	
 		  <tr>
                 <td>활동명 :</td>
-                <td><input type="text" name="meetName" value="${postNum}"></td>
+                <td><input type="text" name="title" value="${title}"></td>
+            </tr>
+             <tr>
+                <td>포스트 번호 :</td>
+                <td><input type="text" name="postNum" value="${postNum}"></td>
             </tr>
             <tr>
                 <td>동기 :</td>
@@ -71,7 +76,7 @@ function userList(targetUri) {
             </tr>
               <tr>
                 <td align="center" colspan=2><input type="submit" value="입력">
-                    <input type="reset" value="취소"></td>
+                    <input type=button value="뒤로 가기" onClick="history.back()"></td>
                     </tr>
 	    </table>
 	    <br>

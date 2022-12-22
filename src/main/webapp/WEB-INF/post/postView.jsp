@@ -42,11 +42,12 @@
        	<th class="text-center danger" width=20%>유형</th>
          <td class="text-center" width=30%><%=post.getCategory() %></td>
        </tr>
-       <tr>
+       <tr>url 파라미터 여러개
          <td colspan="4" class="text-right">
            <a href="<c:url value='/post/postUpdate' />?postNum=<%=post.getPostNum() %>" class="btn btn-xs btn-primary">수정</a>
            <a href="<c:url value='/post/postDelete' />?postNum=<%=post.getPostNum() %>" class="btn btn-xs btn-success">삭제</a>
-           <a href="<c:url value='/user/createBM' />?postNum=<%=post.getPostNum() %>" class="btn btn-xs btn-success">즐겨찾기</a>
+           <a href="<c:url value='/user/createBM' />?postNum=<%=post.getPostNum() %>&&title=<%=post.getTitle()%>" class="btn btn-xs btn-success">즐겨찾기</a>
+           <a href="<c:url value='/post/join' />?postNum=<%=post.getPostNum() %>&&title=<%=post.getTitle()%>" class="btn btn-xs btn-success">가입하기</a>
            <a href="<c:url value='/post/postList' />" class="btn btn-xs btn-danger">목록</a>
          </td>
        </tr>

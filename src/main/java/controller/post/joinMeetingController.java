@@ -31,13 +31,16 @@ public class joinMeetingController implements Controller{
 //    		// GET request: 회원정보 등록 form 요청	
 			log.debug("joinnn" + user.toString());
 			request.setAttribute("user", user);
-			String postNum = "meeting2";
+			String postNum = request.getParameter("postNum");
+	    	String title = request.getParameter("title");
 			request.setAttribute("postNum", postNum);
+			request.setAttribute("title", title);
 			return "/post/joinForm.jsp";   // 검색한 커뮤니티 리스트를 registerForm으로 전송     	
 	    }	
 
     	String id = (String)session.getAttribute("Id");
-    	String postNum = "meeting2";
+    	String postNum = request.getParameter("postNum");
+    	String title = request.getParameter("title");
        	MyMeeting mymt = new MyMeeting(
        			postNum,id);
        	log.debug("userId--" + id + "post====" + postNum);		
