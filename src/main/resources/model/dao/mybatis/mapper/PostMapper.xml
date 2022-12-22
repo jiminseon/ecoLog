@@ -43,13 +43,17 @@
     
     <!-- 데이터 삽입 -->
     <insert id="postInsert" parameterType="Post">
-    INSERT INTO POST VALUES(
-      POST_SEQ.nextval,
+    <selectKey keyProperty="id" resultType="int" order="BEFORE">
+		SELECT POST_SEQ.nextval AS postnum FROM DUAL
+	</selectKey>
+    INSERT INTO POST
+    VALUES(
+      #{postnum},
       #{title},
       #{writer},
       #{category},
       #{content},
-      DEFAULT, 
+      SYSDATE, 
       0)
     </insert>
     
@@ -68,21 +72,14 @@
     
     <!-- 수정하기 -->
     <update id="postUpdate" parameterType="Post">
-		UPDATE Post 
-		SET title = #{title}, post_contents AS content= #{post_contents}, write_date AS regdate = DEFAULT
+		UPDATE POST 
+		SET title = #{title}, post_contents = #{content}, write_date AS regdate = DEFAULT
 		WHERE postnum = #{postnum}		
 	</update>
-    <!-- <update id="postUpdate" parameterType="Post">
-      UPDATE POST SET
-      title = #{title},
-      post_contents = #{post_contents}
-      write_date = DEFAULT
-      <include refid="where-postnum"/>
-    </update> -->
     
-	<!--     비밀번호 확인하고 삭제하기
-    <select id="boardGetPassword" resultType="String" parameterType="int">
-      SELECT pwd FROM databoard1
+	<!--     유저 확인하고 삭제하기
+    <select id="postGetUser" resultType="String" parameterType="int">
+      SELECT userId FROM USER 
       <include refid="where-postnum"/>
     </select> --> 
     

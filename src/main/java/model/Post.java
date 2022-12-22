@@ -12,7 +12,7 @@ public class Post implements Serializable{
 	private String content; //게시글 내용
 	private int visitCount; //조회수
 	private Date writeDate; //작성일
-	private String regdate;
+	private String regdate; //작성일(String)
 	
 	public Post() {}
 	
@@ -41,16 +41,16 @@ public class Post implements Serializable{
 		this.content = content;
 	}
 	
-	public Post(int postNum, String title, String writer, String category, String content, int visitCount,
-			Date writeDate) {
+	public Post(int postNum, String title, String writer, String category, String content, Date writeDate,
+			int visitCount) {
 		super();
 		this.postNum = postNum;
 		this.title = title;
 		this.writer = writer;
 		this.category = category;
 		this.content = content;
-		this.visitCount = visitCount;
 		this.writeDate = writeDate;
+		this.visitCount = visitCount;
 	}
 	
 	public int getPostNum() {

@@ -52,10 +52,10 @@ public class UserManager {
         }
         if (userDAO.existingUserNickName(user.getNickname()) == true) {
             throw new ExistingUserException(user.getNickname() + "는 존재하는 닉네임입니다.");
-        } 
+        }
         if (userDAO.existingUserEmail(user.getEmail()) == true) {
             throw new ExistingUserException(user.getEmail() + "는 존재하는 이메일입니다.");
-        } 
+        }
         if (userDAO.existingUserPhoneNumber(user.getphoneNumber()) == true) {
             throw new ExistingUserException(user.getphoneNumber() + "는 존재하는 전화번호입니다.");
         }
@@ -105,6 +105,7 @@ public class UserManager {
         return userDAO.findUserList();
     }
 
+
    public int existingNickname(User user) throws SQLException, ExistingUserException {  
        if (userDAO.existingUser(user.getNickname()) == true) {
            throw new ExistingUserException(user.getNickname() + "는 존재하는 닉네임입니다.");
@@ -151,8 +152,8 @@ public class UserManager {
 	public List<MyMeeting> getMyMeeting(String Id) throws SQLException {
 		return mtDao.findMyMtList(Id);		
 	}
-	public void postInsert(Post post) throws SQLException{
-		   PostDAO.postInsert(post);
+	public Post postInsert(Post post) throws SQLException{
+		   return PostDAO.postInsert(post);
 	   }
 	   
    public int postUpdate(Post post) throws SQLException {

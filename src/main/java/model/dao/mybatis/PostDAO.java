@@ -113,20 +113,17 @@ public class PostDAO {
 	}
 	
 	// 게시글 삽입
-	public static int postInsert(Post post) {
-		SqlSession session = null;
-		int result = 0;
+	public static Post postInsert(Post post) {
+		SqlSession session = ssf.openSession();
 		try {
-			session = ssf.openSession();
-			result = session.insert("postInsert", post);
-		} catch(Exception e) {
-			e.printStackTrace();
-		} finally {
-			if(session != null) {
-				session.close();
+			int result = session.getMapper(PostMapper.class).postInsert(post);
+			if(result > 0) {
+				session.commit();
 			}
+			return post;
+		}  finally {
+				session.close();
 		}
-		return result;
 	}
 	
 	// 게시글 상세 보기

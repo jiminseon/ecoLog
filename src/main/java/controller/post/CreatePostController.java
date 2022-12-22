@@ -22,27 +22,24 @@ public class CreatePostController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		request.setCharacterEncoding("utf-8");
-		String writer = request.getParameter("writer");
-		String title = request.getParameter("title");
-		String content = request.getParameter("content");
-		String category = request.getParameter("category");
-
-		Post post = new Post(title, writer, category, content);
-		
-		PostDAO dao = new PostDAO();
-		int succ = dao.postInsert(post);
-		
-		response.setContentType("text/html; charset = utf-8"); //MIME 설정
-		PrintWriter out =response.getWriter(); 
-		if(succ > 0) {
-			out.println("<script> alert('등록 완료되었습니다.');");
-			out.println("location.href = '<c:url value='/post/postList' />';</script>");
-		} else {
-			out.println("<script> alert('등록 실패했습니다.');");
-			out.println("location.href = '<c:url value='/post/postList' />';</script>");
-		}
-		return "redirect:/post/postList"; 
-					
-	}
+		Post post = new Post(
+	    		0, request.getParameter("title"),
+				request.getParameter("writer"),
+				request.getParameter("category"),
+				request.getParameter("content"), null, 0);		
+	        
+			try {
+				UserManager manager = UserManager.getInstance();
+				manager.postInsert(post);
+				
+		    	log.debug("Create Post : {}", post);
+		        return "redirect:/post/postList";
+		        
+			} catch (Exception e) {		// 예외 발생 시 입력 form으로 forwarding
+	            request.setAttribute("creationFailed", true);
+				request.setAttribute("exception", e);
+				request.setAttribute("post", post);
+				return "/post/postWrite.jsp";
+			}
+	    }
 }

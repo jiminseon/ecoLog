@@ -8,15 +8,14 @@ public interface PostMapper {
 	
 	// 전체 포스트 타입 리스트 반환
 	List<Post> postListData();
-	
-	
+		
 	// 게시글 삽입
-	void postInsert(Post post);   
+	int postInsert(Post post);   
 	 
 	// 게시글 수정
 	int postUpdate(Post post);
 	
 	// 게시글 삭제
-	int postDelete(long postNo);
+	int postDelete(int postNo);
 	
 }
