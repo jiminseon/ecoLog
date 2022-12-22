@@ -222,36 +222,17 @@ public class PostDAO {
 		return null;		
 	}
 	
-	// 게시글 수정된 내용으로 업데이트
-	public static Post postUpdateData(int postNo) {
-		Post post = new Post();
-		SqlSession session = null;
-		
-		try {
-			session = ssf.openSession();
-			post = session.selectOne("postDetailData", postNo);
-		} catch(Exception e) {
-			e.printStackTrace();
-		} finally {
-			if(session != null) {
-				session.close();
-			}
-		}
-		return post;
-	}
-	
 	// 게시글 수정
 	public static int postUpdate(Post post) {
-		SqlSession session = null;
+		SqlSession sqlSession = ssf.openSession();
 		try {
-			session = ssf.openSession();
-			int result = session.getMapper(PostMapper.class).postUpdate(post);
+			int result = sqlSession.getMapper(PostMapper.class).postUpdate(post);
 			if (result > 0) {
-				session.commit();
+				sqlSession.commit();
 			} 
 			return result;
 		} finally {
-			session.close();
+			sqlSession.close();
 		}
 	}
 }

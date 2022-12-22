@@ -71,12 +71,17 @@
     
     <!-- 수정하기 -->
     <update id="postUpdate" parameterType="Post">
+		UPDATE Post 
+		SET title = #{title}, post_contents AS content= #{post_contents}, write_date AS regdate = DEFAULT
+		WHERE postnum = #{postnum}		
+	</update>
+    <!-- <update id="postUpdate" parameterType="Post">
       UPDATE POST SET
       title = #{title},
       post_contents = #{post_contents}
       write_date = DEFAULT
       <include refid="where-postnum"/>
-    </update>
+    </update> -->
     
 	<!--     비밀번호 확인하고 삭제하기
     <select id="boardGetPassword" resultType="String" parameterType="int">

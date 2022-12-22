@@ -1,8 +1,10 @@
 package model;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class Post {
+@SuppressWarnings("serial")
+public class Post implements Serializable{
 	private int postNum; //게시글 번호
 	private String title; //제목
 	private String writer; //작성자
@@ -12,8 +14,13 @@ public class Post {
 	private Date writeDate; //작성일
 	private String regdate;
 	
-	public Post() {
+	public Post() {}
+	
+	public Post(int postNum, String title, String content) {
 		super();
+		this.postNum = postNum;
+		this.title = title;
+		this.content = content;
 	}
 	
 	public Post(int postNum, String title, String writer, String category, String content, Date writeDate) {

@@ -5,7 +5,7 @@
 <%
     String postNum = request.getParameter("postNum");
 	PostDAO postDAO = new PostDAO();
-    Post post = postDAO.postUpdateData(Integer.parseInt(postNum));
+    Post post = postDAO.findPost(Integer.parseInt(postNum));
 %>
 <!DOCTYPE html>
 <html>
@@ -49,6 +49,12 @@ function postModify() {
        <th class="danger text-right" width=15%>내용</th>
        <td width=85%>
          <textarea rows="10" cols="50" name=content><%=post.getContent() %></textarea>
+       </td>
+     </tr>
+     <tr>
+     	<th class="danger text-right" width=15%>유형</th>
+     	<td width=85%>
+         <%=post.getCategory()%>
        </td>
      </tr>
      <tr>

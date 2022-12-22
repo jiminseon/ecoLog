@@ -18,23 +18,25 @@ public class UpdatePostController implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		int postNum = Integer.parseInt(request.getParameter("postNum"));
 		
-		if (request.getMethod().equals("GET")) {	// GET request: post 수정 form 요청	
+		if (request.getMethod().equals("GET")) {	
+    		// GET request: 커뮤니티 수정 form 요청	
     		UserManager manager = UserManager.getInstance();
 			Post post = manager.postFind(postNum);	// 수정하려는 post 정보 검색
-			request.setAttribute("post", post);			
-		
-			return "/post/postUpdate.jsp";   // 검색한 정보를 update  form으로 전송     
+			request.setAttribute("Post", post);		
+				
+			return "/post/postUpdate.jsp";   // 검색한 정보를 update form으로 전송     
 	    }	
     	
-    	// POST request (커뮤니티 정보가 parameter로 전송됨) 
-		Post post = new Post();
-		post.setTitle(request.getParameter("title"));
-		post.setContent(request.getParameter("content"));
-		
-		log.debug("Update Post : {}", post);
+    	// POST request (커뮤니티 정보가 parameter로 전송됨)
+    	Post post = new Post(
+    		postNum, 
+    		request.getParameter("title"), null,
+    		request.getParameter("content"), null, null);
+
+    	log.debug("Update Post : {}", post);
 
 		UserManager manager = UserManager.getInstance();
 		manager.postUpdate(post);		
-        return "redirect:/post/postList";   		
-	}
+        return "redirect:/post/postList";			
+    }
 }
