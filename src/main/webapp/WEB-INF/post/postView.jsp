@@ -11,47 +11,56 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+<meta name="viewport" content="width=device-width", initial-scale"="1">
+<link rel="stylesheet" href="css/bootstrap.css">
 <title>게시판</title>
 </head>
 <body>
-   <div class="row">
-     <h1 class="text-center">내용보기</h1>
-     <table class="table table-striped">
-       <tr>
-         <th class="text-center danger" width=20%>번호</th>
-         <td class="text-center" width=30%><%=post.getPostNum() %></td>
-         <th class="text-center danger" width=20%>작성일</th>
-         <td class="text-center" width=30%><%=post.getRegdate() %></td>
-       </tr>
-       <tr>
-         <th class="text-center danger" width=20%>작성자</th>
-         <td class="text-center" width=30%><%=post.getWriter() %></td>
-         <th class="text-center danger" width=20%>조회수</th>
-         <td class="text-center" width=30%><%=post.getVisitCount() %></td>
-       </tr>
-       <tr>
-         <th class="text-center danger" width=20%>제목</th>
-         <td colspan="3"><%=post.getTitle() %></td>
-       </tr>
-       <tr>
-         <td colspan="4" class="text-left" valign="top" height=200>
-          <pre style="white-space: pre-wrap;background-color:white;border:none"><%=post.getContent() %></pre>
-         </td>
-       </tr>
-       <tr>
-       	<th class="text-center danger" width=20%>유형</th>
-         <td class="text-center" width=30%><%=post.getCategory() %></td>
-       </tr>
-       <tr>url 파라미터 여러개
-         <td colspan="4" class="text-right">
-           <a href="<c:url value='/post/postUpdate' />?postNum=<%=post.getPostNum() %>" class="btn btn-xs btn-primary">수정</a>
-           <a href="<c:url value='/post/postDelete' />?postNum=<%=post.getPostNum() %>" class="btn btn-xs btn-success">삭제</a>
-           <a href="<c:url value='/user/createBM' />?postNum=<%=post.getPostNum() %>&&title=<%=post.getTitle()%>" class="btn btn-xs btn-success">즐겨찾기</a>
-           <a href="<c:url value='/post/join' />?postNum=<%=post.getPostNum() %>&&title=<%=post.getTitle()%>" class="btn btn-xs btn-success">가입하기</a>
-           <a href="<c:url value='/post/postList' />" class="btn btn-xs btn-danger">목록</a>
-         </td>
-       </tr>
-     </table>
-   </div>
+	<div class="container">
+	   <div class="row">
+	     <table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+				<thead>
+					<tr>
+						<th colspan="3" style="background-color: #eeeeee; text-align: center;">게시판 글보기</th>						
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td style="width: 20%;">제목</td>
+						<td colspan="2"><%= post.getTitle().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">","&gt;").replaceAll("\n", "<br>") %></td>
+					</tr>
+					<tr>
+						<td>작성자</td>
+						<td colspan="2"><%= post.getWriter() %></td>
+					</tr>
+					<tr>
+						<td>작성일자</td>
+						<td colspan="2"><%= post.getRegdate() %></td>
+					</tr>
+					<tr>
+						<td>내용</td>
+						<td colspan="2" style="min-height: 200px; text-align: left;"><%= post.getContent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">","&gt;").replaceAll("\n", "<br>") %></td>
+					</tr>
+					<tr>
+						<td>유형</td>
+						<td colspan="2"><%= post.getCategory() %></td>
+					</tr>
+					<tr>
+						<td colspan="2">
+						   <a href="<c:url value='/post/postUpdate' />?postNum=<%=post.getPostNum() %>" class="btn btn-sm btn-primary">수정</a>
+				           <a onclick="return confirm('삭제하시겠습니까?')" href="<c:url value='/post/postDelete' />?postNum=<%=post.getPostNum() %>" class="btn btn-sm btn-danger">삭제</a>
+				           <a href="<c:url value='/user/createBM' />?postNum=<%=post.getPostNum() %>&&title=<%=post.getTitle()%>" class="btn btn-sm btn-primary">즐겨찾기</a>
+				           <a href="<c:url value='/post/join' />?postNum=<%=post.getPostNum() %>&&title=<%=post.getTitle()%>" class="btn btn-sm btn-primary">가입하기</a>
+				           <a href="<c:url value='/post/postList' />" class="btn btn-xs btn-right">목록</a>
+						</td>
+						
+					</tr>
+				</tbody>
+			</table>
+	   </div>
+	</div>
+   	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="js/bootstrap.js"></script>
 </body>
 </html>
