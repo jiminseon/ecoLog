@@ -74,7 +74,7 @@
       UPDATE POST SET
       title = #{title},
       post_contents = #{post_contents}
-      write_date = SYSDATE
+      write_date = DEFAULT
       <include refid="where-postnum"/>
     </update>
     

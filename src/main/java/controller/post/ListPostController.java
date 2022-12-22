@@ -32,6 +32,5 @@ public class ListPostController implements Controller {
 			request.setAttribute("page", page);	
 			
 			return "/post/postList.jsp";    
-
 	}
 }

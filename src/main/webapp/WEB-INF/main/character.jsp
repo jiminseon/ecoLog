@@ -1,7 +1,6 @@
 <%@page contentType="text/html; charset=UTF-8"%>
 <%@page import="java.util.*, model.*"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <html>
 <head>
 <title>캐릭터</title>
@@ -77,7 +76,8 @@ td {
 			<td align=left>
 				<table style="background-color: YellowGreen">
 					<tr height="40">
-						<td width="150" align="center" bgcolor="E6ECDE"><a href="<c:url value='/user/myPage'></c:url>">마이페이지</a></td>
+						<td width="150" align="center" bgcolor="E6ECDE"><a href="<c:url value='/user/myPage'></c:url>" target="_self">마이페이지</a></td>
+						<td width="250" bgcolor="ffffff" style="padding-left: 10"><a href="<c:url value='/user/logout' />">로그아웃(&nbsp;${user.id}&nbsp;)</a></td>
 					</tr>
 					<tr height="40">
 						<td width="150" align="center" bgcolor="E6ECDE">닉네임</td>

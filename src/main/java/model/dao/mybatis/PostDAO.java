@@ -241,20 +241,17 @@ public class PostDAO {
 	}
 	
 	// 게시글 수정
-	public static boolean postUpdate(Post post) {
+	public static int postUpdate(Post post) {
 		SqlSession session = null;
-		
 		try {
 			session = ssf.openSession();
-			session.update("postUpdate", post);
-			session.commit();
-		} catch(Exception e) {
-			e.printStackTrace();
+			int result = session.getMapper(PostMapper.class).postUpdate(post);
+			if (result > 0) {
+				session.commit();
+			} 
+			return result;
 		} finally {
-			if(session != null) {
-				session.close();
-			}
+			session.close();
 		}
-		return true;
 	}
 }

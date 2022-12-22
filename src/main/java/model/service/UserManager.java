@@ -114,17 +114,18 @@ public class UserManager {
   }
 
    public int existingMM(String id, String postNum) throws SQLException, ExistingUserException {  
-       if (mtDao.existing(id, postNum) == true) {
-           return 1;
+       if (mtDao.existingMM(id, postNum) == true) {
+    	   throw new ExistingUserException("이미 가입한 모임입니다.");
        }
-       log.debug("mtDao.existing(id, postNum) -- " + mtDao.existing(id, postNum));
+       log.debug("mtDao.existing(id, postNum) -- " + mtDao.existingMM(id, postNum));
     return 0;
   }
 
    public int existingBM(String id, String postNum) throws SQLException, ExistingUserException {  
-	   if (bmDao.existing(id, postNum) == true) {
-           throw new ExistingUserException("이미 가입한 모임입니다.");
+	   if (bmDao.existingBM(id, postNum) == true) {
+           throw new ExistingUserException("이미 즐겨찾기한 모임입니다.");
        }
+	   log.debug("bmDao.existingBM(id, postNum) === " + bmDao.existingBM(id, postNum));
     return 0;
   }
    
@@ -155,7 +156,7 @@ public class UserManager {
 		   PostDAO.postInsert(post);
 	   }
 	   
-   public boolean postUpdate(Post post) throws SQLException {
+   public int postUpdate(Post post) throws SQLException {
 	   return PostDAO.postUpdate(post);
    }
    

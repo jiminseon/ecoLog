@@ -36,7 +36,7 @@
 <title>메인</title>
 <style>
 body{
-        background:#6e8769;
+        background:#ffffff;
         width:99%;
       height:100%;
    }
@@ -60,21 +60,21 @@ body{
      float: left;
      margin-right: 10px;
      box-sizing: border-box;
-     border: 5px solid #ffffff;
+     border: 1px solid #6e8769;
        border-radius: 15px;
    }
    div.tright {
      width: 930px;
      float: right;
      box-sizing: border-box;
-     border: 5px solid #ffffff;
+     border: 1px solid #6e8769;
      border-radius: 15px;
    }
    div.bright {
      width: 650px;
      float: right;
      box-sizing: border-box;
-     border: 5px solid #ffffff;
+     border: 1px solid #6e8769;
        border-radius: 25px;
    }   
    div.tleft, div.tright {
@@ -89,19 +89,19 @@ body{
      float: right;
      margin-right: 10px;
      box-sizing: border-box;
-     border: 5px solid #ffffff;
+     border: 1px solid #6e8769;
        border-radius: 15px;
        height: 250px;
       margin-top: 10px;
    }
     a:link, a:visited {
-     background-color: #6e8769;
-     color: maroon;
+     background-color: #fffff;
+     color: #6e8769;
      text-decoration: none;
      display: inline-block;
 }
  a:hover, a:active {
-     background-color: #6e8769;
+     background-color: #fffff;
 }
 
 .w-btn-green-outline {
@@ -151,12 +151,6 @@ window.open("<c:url value='/user/Info'></c:url>",'news','toolbar=no,location=no,
 </script>
 </head>
 <body>
-<header>
-<%@ include file="/WEB-INF/main/header.jsp" %>
-	<div class="head">
-	
-	</div>
-</header>
 <div class="wrap">
 	<div class="top">
 		<div class="tleft">
@@ -181,7 +175,7 @@ window.open("<c:url value='/user/Info'></c:url>",'news','toolbar=no,location=no,
 		   </form>
 		</div>
 		<div class="bright" align="center">
-		<a href="<c:url value='/post/postList'></c:url>"><h2>게시판</h2></a><br>
+		<a href="<c:url value='/post/postList'></c:url>" target="_self"><h2>게시판</h2></a><br>
 			       <%
            for(Post post : list)
            {

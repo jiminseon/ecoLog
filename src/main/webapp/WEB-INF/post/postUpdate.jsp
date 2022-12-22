@@ -31,7 +31,7 @@ function postModify() {
 <body>
   <div class="row">
    <h1 class="text-center">수정</h1>
-   <form method="POST" action="<c:url value='/post/postUpdate' />">
+   <form name="form" method="POST" action="<c:url value='/post/postUpdate' />">
    <table class="table table-hover">
      <tr>
        <th class="danger text-right" width=15%>작성자</th>
