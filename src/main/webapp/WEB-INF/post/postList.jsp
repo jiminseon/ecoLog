@@ -24,7 +24,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="/css/bootstrap.css">
 <link rel="stylesheet" href="/css/custom.css">
 <title>게시판</title>
 <style type="text/css">
@@ -109,6 +109,6 @@ function send()
    </div>
 </div>
    	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="js/bootstrap.js"></script>
+	<script src="/js/bootstrap.js"></script>
 </body>
 </html>

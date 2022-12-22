@@ -27,18 +27,12 @@ public class CreatePostController implements Controller {
 				request.getParameter("writer"),
 				request.getParameter("category"),
 				request.getParameter("content"), null, 0);
-
-	        
+		
 			try {
 				UserManager manager = UserManager.getInstance();
 				manager.postInsert(post);
 				
 		    	log.debug("Create Post : {}", post);
-		    	log.debug("title",request.getParameter("title"));
-		    	log.debug("writer", request.getParameter("writer"));
-		    	log.debug("category", request.getParameter("category"));
-		    	log.debug("Content", request.getParameter("content"));
-		    	
 		        return "redirect:/post/postList";
 		        
 			} catch (Exception e) {	

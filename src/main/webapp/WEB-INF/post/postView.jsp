@@ -11,8 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
-<meta name="viewport" content="width=device-width", initial-scale"="1">
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="/css/custom.css">
 <title>게시판</title>
@@ -49,7 +48,7 @@
 					</tr>
 					<tr>
 						<td colspan="2">
-						   <a href="<c:url value='/post/postUpdate' />?postNum=<%=post.getPostNum() %>" class="btn btn-sm btn-primary">수정</a>
+						   <%-- <a href="<c:url value='/post/postUpdate' />?postNum=<%=post.getPostNum() %>" class="btn btn-sm btn-primary">수정</a> --%>
 				           <a onclick="return confirm('삭제하시겠습니까?')" href="<c:url value='/post/postDelete' />?postNum=<%=post.getPostNum() %>" class="btn btn-sm btn-danger">삭제</a>
 				           <a href="<c:url value='/user/createBM' />?postNum=<%=post.getPostNum() %>&&title=<%=post.getTitle()%>" class="btn btn-sm btn-primary">즐겨찾기</a>
 				           <a href="<c:url value='/post/join' />?postNum=<%=post.getPostNum() %>&&title=<%=post.getTitle()%>" class="btn btn-sm btn-primary">가입하기</a>

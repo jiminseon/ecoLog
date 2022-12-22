@@ -4,10 +4,10 @@
 <cache />
 	 <select id="postListData" resultType="POST" parameterType="hashmap">
      SELECT postnum, title, writer, post_category AS category, post_contents AS content, TO_CHAR(write_date,'YYYY-MM-DD') as regdate, visitcnt 
-     FROM (SELECT postnum, title, writer, post_category, post_contents, write_date, visitcnt, rownum
+     FROM (SELECT postnum, title, writer, post_category, post_contents, write_date, visitcnt, rownum AS num
      FROM (SELECT postnum, title, writer, post_category, post_contents, write_date, visitcnt
      FROM POST ORDER BY postnum DESC))
-     WHERE rownum BETWEEN #{start} AND #{end}
+     WHERE num BETWEEN #{start} AND #{end}
   	</select>
   	
   	<select id="myPostList" resultType="POST" parameterType="String">
