@@ -8,7 +8,6 @@
 <head>
 <style>
 .a{
-        background:#6e8769;
         width:99%;
       height:100%;
       overflow:hidden;

@@ -8,10 +8,10 @@
   width: 100%;
   margin:0 auto;
   overflow: hidden;
-  background:#6e8769;
+  background: white;
 }
 .content-left{
-  background:#6e8769;
+  background: white;
   color:#004300;
   float: left;
   width: 100%;
@@ -69,7 +69,7 @@
     justify-content:  center;
     width: 100vw;
     height: 100vw;
-    background: #6e8769;
+    background:  white;
   }
   .content-wrap{
     width: 900px;
@@ -77,10 +77,10 @@
     margin:0 auto;
     border-radius: 20px;
     overflow: hidden;
-    background: #6e8769;
+    background:  white;
   }
   .content-left{
-    background: #6e8769;
+    background:  white;
     color:#004300;
     float: left;
     width: 360px;

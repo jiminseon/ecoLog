@@ -77,7 +77,7 @@ td {
 			<td align=left>
 				<table style="background-color: YellowGreen">
 					<tr height="40">
-						<td width="150" align="center" bgcolor="E6ECDE"><a href="<c:url value='/user/myPage'></c:url>">마이페이지</a></td>
+						<td width="150" align="center" bgcolor="E6ECDE"><a href="<c:url value='/user/myPage'></c:url>" target="_self">마이페이지</a></td>
 					</tr>
 					<tr height="40">
 						<td width="150" align="center" bgcolor="E6ECDE">닉네임</td>

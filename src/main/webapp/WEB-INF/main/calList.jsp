@@ -22,12 +22,13 @@
          transition: background;
          transition-duration: 5s;
        }
+
       table{
               border: 6px solid black;
              border-radius: 25px;
       }
       td {
-        border-radius: 15px;
+         border-style: hidden;
       }
       h2:hover{
          background: purple;
@@ -64,8 +65,8 @@ function calSave() {
 }
 
 function resizeWindow(win) {
-	var wid = 500;
-	var hei = 600;
+	var wid = 400;
+	var hei = 500;
 	win.resizeTo(wid,hei);
 }
 
@@ -75,8 +76,8 @@ function resizeWindow(win) {
     <center><h2>목록</h2></center>
     <input type="text" value="id" hidden>
         <form name="form" method="POST" action="<c:url value='/cal/create' />" target="index">
-      <table  border="10" cellspacing="4" cellpadding="10" width="90%" height="450px" align="center" color="black" bgcolor="white" class="t1">
-      <tr height="50px"><td align="center"><div>
+      <table  border="10" cellspacing="4" cellpadding="10" width="90%" height="200px" align="center" color="black" bgcolor="white" class="t1">
+      <tr height="30px"><td align="center"><div>
          <input type="text" name="cal_day" id="year" class="cal" placeholder="날짜" style="width:80%" readonly> </div><br/>
       </tr>
  <%-- 
@@ -88,7 +89,7 @@ function resizeWindow(win) {
 		Calculator calList = (Calculator)calListIter.next();
 --%>	
 	      <c:forEach var="calList" items="${calList}">  	
-	      <tr><td align="center">
+	      <tr><td align="center" height="10px">
 	         		${calList.cal_content}
 	      		</td>
 	     		  <td><a href="<c:url value='/cal/rmvCal'>

@@ -105,7 +105,7 @@ function send()
          </td>
        </tr>
      </table>
-     <a href="<c:url value='/post/postWrite' />" class="btn btn-primary pull-right">글쓰기</a>
+     <a href="<c:url value='/post/postWrite/form' />" class="btn btn-primary pull-right">글쓰기</a>
    </div>
 </div>
    	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
