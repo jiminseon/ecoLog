@@ -31,7 +31,8 @@ public class UpdatePostController implements Controller {
 		int visitCnt = Integer.parseInt(request.getParameter("visitCount"));
     	Post post = new Post(
     		postNum, request.getParameter("title"),
-    		null, null, request.getParameter("content"), null, Integer.parseInt(request.getParameter("visitCount")));
+    		request.getParameter("writer"), request.getParameter("category"), 
+    		request.getParameter("content"), null, visitCnt);
 
     	log.debug("Update Post : {}", post);
 
