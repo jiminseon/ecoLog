@@ -186,7 +186,7 @@ window.open("<c:url value='/user/Info'></c:url>",'news','toolbar=no,location=no,
                   <a href="<c:url value='/post/postView' />?postNum=<%=post.getPostNum()%>"><%=post.getTitle() %></a>
                  </td>
                  <td class="text-center" width=15%><%=post.getWriter() %></td>
-                 <td class="text-center" width=20%><%=post.getWriteDate() %></td>
+                 <td class="text-center" width=20%><%=post.getRegdate() %></td>
                  <td class="text-center" width=10%><%=post.getVisitCount() %></td>
                </tr>
                <br>
