@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel=stylesheet href="<c:url value='/css/user.css' />"
 	type="text/css">
+
 <script>
 function userCreate() {
 	if (form.Id.value == "") {
@@ -68,7 +69,6 @@ function userList(targetUri) {
 	form.submit();
 }
 
-
 </script>
 </head>
 <body>
@@ -78,7 +78,7 @@ function userList(targetUri) {
 		action="<c:url value='/user/register' />">
 		<table style="width: 100%">
 			<tr>
-				<td width="100" align="center"></td>
+				<td width="70" align="center"></td>
 				<td>
 					<table>
 						<tr>
@@ -92,15 +92,14 @@ function userList(targetUri) {
 					<table style="background-color: YellowGreen">
 						<tr height="40">
 							<td width="700" align="center" bgcolor="E6ECDE">사용자 ID</td>
-							<td width="700" bgcolor="ffffff" style="padding-left: 10"><input
-								type="text" style="width: 240;" name="Id">
-								<input type="button" value="중복확인" class="dup" onclick="winopen()"><br>
+							<td width="700" bgcolor="ffffff" style="padding-left: 10">
+								<input type="text" style="width: 240;" name="Id">								
 							</td>
 						</tr>
 						<tr height="40">
 							<td width="700" align="center" bgcolor="E6ECDE">비밀번호</td>
 							<td width="700" bgcolor="ffffff" style="padding-left: 10"><input
-								type="password" style="width: 240" name="password"></td>
+								type="password" style="width: 240" name="password"  placeholder="숫자+영문자+특수문자 8자리 이상"></td>
 						</tr>
 						<tr height="40">
 							<td width="700" align="center" bgcolor="E6ECDE">비밀번호 확인</td>
@@ -117,7 +116,6 @@ function userList(targetUri) {
 							<td width="700" align="center" bgcolor="E6ECDE">닉네임</td>
 							<td width="700" bgcolor="ffffff" style="padding-left: 10"><input
 								type="text" style="width: 240" name="nickName">
-								<input type="button" value="중복확인" class="dup" onclick="winopen()"><br>
 							</td>
 						</tr>
 						<tr height="40">
