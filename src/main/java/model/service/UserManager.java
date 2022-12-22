@@ -147,7 +147,7 @@ public class UserManager {
 		   PostDAO.postInsert(post);
 	   }
 	   
-   public boolean postUpdate(Post post) throws SQLException {
+   public int postUpdate(Post post) throws SQLException {
 	   return PostDAO.postUpdate(post);
    }
    
